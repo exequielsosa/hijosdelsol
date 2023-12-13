@@ -1,7 +1,11 @@
-export default function Home() {
+import { Home } from "@/components";
+import SeoHome from "../seo/home";
+
+export default function HomeScreen() {
   return (
     <>
-      <p>HIJOS DEL SOL</p>
+      <SeoHome />
+      <Home />
     </>
   );
 }
