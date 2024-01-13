@@ -1,0 +1,7 @@
+User-Agent: Googlebot
+Disallow:
+Allow: /
+User-agent: *
+
+
+Sitemap: https://www.hijosdelsol.com.ar/sitemap.xml
