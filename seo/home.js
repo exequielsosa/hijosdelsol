@@ -35,6 +35,18 @@ const SeoHome = () => {
         property="og:image"
         content="https://www.hijosdelsol.com.ar/devil.png"
       />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@hijosdelsolband" />
+      <meta name="twitter:creator" content="@hijosdelsolband" />
+      <meta name="twitter:title" content="HIJOS DEL SOL" />
+      <meta
+        name="twitter:description"
+        content="Explore the powerful sounds of HIJOS DEL SOL, a metal band hailing from Argentina. Immerse yourself in the raw energy and distinctive style of their demo'98. Witness the evolution of Argentine metal as HIJOS DEL SOL takes you on a musical journey through their gripping compositions. Don't miss the chance to experience the intensity of this emerging force in the metal scene."
+      />
+      <meta
+        name="twitter:image"
+        content="https://www.hijosdelsol.com.ar/devil.png"
+      />
     </Head>
   );
 };
