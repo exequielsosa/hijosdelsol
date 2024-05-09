@@ -17,12 +17,12 @@ export const Youtube = () => {
           className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
         />
         <div className="mx-auto w-full px-6 lg:px-8 max-w-[70%] justify-center flex flex-col items-center">
-          <div
+          <h1
             className="mx-auto w-full sm:w-[100%] md:w-[100%] lg:w-[100%] lg:mx-0 flex justify-center mt-[0px] mb-[30px] md:mb-[20px] lg:mb-[30px] text-[20px] sm:text-[30px] md:text-[45px] lg:text-[60px]"
             data-aos="zoom-in"
           >
             Follow us in YouTube
-          </div>
+          </h1>
         </div>
         <div className="w-full flex justify-center mt-[0px] mb-[0px]">
           <div
@@ -34,9 +34,9 @@ export const Youtube = () => {
               className="w-[350px] h-[262px] sm:w-[500px] sm:h-[375px] md:w-[600px] md:h-[450px] lg:w-[800px] lg:h-[600px]"
               src="https://www.youtube.com/embed/u7U0ZQT4py4?si=_99p4zfVSaTybo_k"
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
         </div>

@@ -6,7 +6,7 @@ const SeoHome = () => {
       <title>HIJOS DEL SOL | hijosdelsol.com.ar</title>
       <meta
         name="description"
-        content="Explore the powerful sounds of HIJOS DEL SOL, a metal band hailing from Argentina. Immerse yourself in the raw energy and distinctive style of their demo'98. Witness the evolution of Argentine metal as HIJOS DEL SOL takes you on a musical journey through their gripping compositions. Don't miss the chance to experience the intensity of this emerging force in the metal scene."
+        content="Explore the raw energy of HIJOS DEL SOL, an Argentine metal band. Dive into their demo'98 for a taste of evolving Argentine metal."
       />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="robots" content="index,follow" />
@@ -19,7 +19,7 @@ const SeoHome = () => {
       <meta property="og:title" content="HIJOS DEL SOL" />
       <meta
         property="og:description"
-        content="Explore the powerful sounds of HIJOS DEL SOL, a metal band hailing from Argentina. Immerse yourself in the raw energy and distinctive style of their demo'98. Witness the evolution of Argentine metal as HIJOS DEL SOL takes you on a musical journey through their gripping compositions. Don't miss the chance to experience the intensity of this emerging force in the metal scene."
+        content="Explore the raw energy of HIJOS DEL SOL, an Argentine metal band. Dive into their demo'98 for a taste of evolving Argentine metal."
       />
       <meta property="og:url" content="https://www.hijosdelsol.com.ar" />
       <meta name="title" content="HIJOS DEL SOL" />
@@ -41,12 +41,30 @@ const SeoHome = () => {
       <meta name="twitter:title" content="HIJOS DEL SOL" />
       <meta
         name="twitter:description"
-        content="Explore the powerful sounds of HIJOS DEL SOL, a metal band hailing from Argentina. Immerse yourself in the raw energy and distinctive style of their demo'98. Witness the evolution of Argentine metal as HIJOS DEL SOL takes you on a musical journey through their gripping compositions. Don't miss the chance to experience the intensity of this emerging force in the metal scene."
+        content="Explore the raw energy of HIJOS DEL SOL, an Argentine metal band. Dive into their demo'98 for a taste of evolving Argentine metal."
       />
       <meta
         name="twitter:image"
         content="https://www.hijosdelsol.com.ar/devil.png"
       />
+      {/* Schema Markup */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org/",
+          "@type": "Person",
+          name: "HIJOS DEL SOL",
+          jobTitle: "Metal Argentine Band",
+          description:
+            "Explore the raw energy of HIJOS DEL SOL, an Argentine metal band. Dive into their demo'98 for a taste of evolving Argentine metal.",
+          url: "https://www.hijosdelsol.com.ar",
+          sameAs: [
+            "https://www.youtube.com/@hijosdelsolband",
+            "https://twitter.com/hijosdelsolband",
+            "https://www.instagram.com/hijosdelsolmusicband/",
+            "https://www.facebook.com/hijosdelsolmusic",
+          ],
+        })}
+      </script>
     </Head>
   );
 };
