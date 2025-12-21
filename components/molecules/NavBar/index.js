@@ -50,7 +50,10 @@ export default function Example() {
                 <img
                   className={`h-6 sm:h-8 w-auto`}
                   src="/hijosdelsolWhite.png"
-                  alt="Your Company"
+                  alt="HIJOS DEL SOL - Logo de la banda"
+                  width="200"
+                  height="32"
+                  loading="eager"
                 />
               </div>
             </div>
@@ -58,51 +61,43 @@ export default function Example() {
               <div className="flex justify-center space-x-10">
                 <div className="flex flex-shrink-0 items-center">
                   <div className="flex w-full items-center">
-                    <p
-                      onClick={() =>
-                        window.open(
-                          "https://www.youtube.com/@hijosdelsolband",
-                          "_blank"
-                        )
-                      }
+                    <a
+                      href="https://www.youtube.com/@hijosdelsolband"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="HIJOS DEL SOL YouTube channel"
                       data-aos="zoom-in"
                     >
                       <FontAwesomeIcon
                         icon={faSquareYoutube}
                         className="cardNav"
                       />
-                    </p>
-                    <p
-                      onClick={() =>
-                        window.open(
-                          "https://twitter.com/hijosdelsolband",
-                          "_blank"
-                        )
-                      }
+                    </a>
+                    <a
+                      href="https://twitter.com/hijosdelsolband"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="HIJOS DEL SOL on Twitter/X"
                       data-aos="zoom-in"
                       data-aos-delay="300"
                     >
                       <FontAwesomeIcon icon={faXTwitter} className="cardNav" />
-                    </p>
-                    <p
-                      onClick={() =>
-                        window.open(
-                          "https://www.instagram.com/hijosdelsolmusicband/",
-                          "_blank"
-                        )
-                      }
+                    </a>
+                    <a
+                      href="https://www.instagram.com/hijosdelsolmusicband/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="HIJOS DEL SOL on Instagram"
                       data-aos="zoom-in"
                       data-aos-delay="600"
                     >
                       <FontAwesomeIcon icon={faInstagram} className="cardNav" />
-                    </p>
-                    <p
-                      onClick={() =>
-                        window.open(
-                          "https://www.facebook.com/hijosdelsolmusic",
-                          "_blank"
-                        )
-                      }
+                    </a>
+                    <a
+                      href="https://www.facebook.com/hijosdelsolmusic"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="HIJOS DEL SOL on Facebook"
                       data-aos="zoom-in"
                       data-aos-delay="900"
                     >
@@ -110,10 +105,10 @@ export default function Example() {
                         icon={faSquareFacebook}
                         className="cardNav"
                       />
-                    </p>
+                    </a>
                     <a
                       href="mailto:hijosdelsolmusicband@gmail.com"
-                      target="_blank"
+                      aria-label="Contact HIJOS DEL SOL via email"
                       data-aos="zoom-in"
                       data-aos-delay="1200"
                     >

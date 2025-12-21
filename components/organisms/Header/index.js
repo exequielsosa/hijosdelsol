@@ -1,10 +1,14 @@
 export default function Header() {
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+    <header className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
       <img
         src="/flames2.jpg"
-        alt="back"
+        alt="Burning flames background representing the energy of metal"
         className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
+        loading="eager"
+        fetchPriority="high"
+        width="1920"
+        height="1080"
       />
       <div
         className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
@@ -34,8 +38,12 @@ export default function Header() {
         <div className="mx-auto w-full lg:w-[80%] lg:mx-0" data-aos="fade-down">
           <img
             src="/hijosdelsol2crop.png"
-            alt="Descripción de la imagen"
+            alt="HIJOS DEL SOL - Official band logo"
             className="w-full h-auto"
+            loading="eager"
+            fetchPriority="high"
+            width="800"
+            height="200"
           />
         </div>
         <div className="w-full flex justify-center">
@@ -44,10 +52,18 @@ export default function Header() {
             data-aos="zoom-in"
             data-aos-delay="500"
           >
-            <img src="/devil.png" alt="Devil" className="w-full h-auto" />
+            <img
+              src="/devil.png"
+              alt="HIJOS DEL SOL emblematic symbol - Devil figure representing the essence of metal"
+              className="w-full h-auto"
+              loading="eager"
+              fetchPriority="high"
+              width="600"
+              height="630"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

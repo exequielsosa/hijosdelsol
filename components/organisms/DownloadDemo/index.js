@@ -23,14 +23,15 @@ export default function DownloadDemo() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-gray-900">
-      <header className="absolute inset-x-0 top-0 z-50"></header>
-
+    <section className="bg-gray-900" aria-labelledby="demo-heading">
       <div className="relative isolate overflow-hidden pt-20 pb-20">
         <img
           src="/fire.jpg"
-          alt=""
+          alt="Fire background representing the intensity of metal"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
+          loading="lazy"
+          width="1920"
+          height="1080"
         />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -50,12 +51,16 @@ export default function DownloadDemo() {
               <img
                 className="h-96 w-full flex-none rounded-2xl object-cover shadow-xl lg:aspect-square lg:h-auto lg:max-w-sm"
                 src="/soloTapa.png"
-                alt=""
+                alt="HIJOS DEL SOL Demo'98 cover - Debut album of the Argentine metal band"
                 data-aos="zoom-in"
                 data-aos-delay="600"
+                loading="lazy"
+                width="400"
+                height="400"
               />
               <div className="w-full flex-auto">
                 <h2
+                  id="demo-heading"
                   className="text-3xl font-bold tracking-tight text-white sm:text-4xl font-['Kaushan_Script']"
                   data-aos="zoom-in"
                 >
@@ -96,6 +101,9 @@ export default function DownloadDemo() {
                     <a
                       href="https://files.catbox.moe/y8r65l.rar"
                       className="text-sm font-semibold leading-6 text-indigo-400 hover:underline"
+                      aria-label="Download HIJOS DEL SOL Demo'98"
+                      download
+                      rel="noopener noreferrer"
                     >
                       Download record <span aria-hidden="true">&rarr;</span>
                     </a>
@@ -108,6 +116,9 @@ export default function DownloadDemo() {
                     <a
                       href="https://files.catbox.moe/z8ale0.rar"
                       className="text-sm font-semibold leading-6 text-indigo-400 hover:underline"
+                      aria-label="Download HIJOS DEL SOL Demo'98 artwork"
+                      download
+                      rel="noopener noreferrer"
                     >
                       Download artwork <span aria-hidden="true">&rarr;</span>
                     </a>
@@ -143,6 +154,6 @@ export default function DownloadDemo() {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,0 +1,18 @@
+/* TEAM */
+Developer: HIJOS DEL SOL Team
+Site: https://www.hijosdelsol.com.ar
+Twitter: @hijosdelsolband
+Location: Argentina
+
+/* SITE */
+Last update: 2025/12/21
+Language: Spanish / English
+Doctype: HTML5
+IDE: Visual Studio Code
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: React, Next.js, Tailwind CSS
+Software: Next.js 14, React 18
+
+/* THANKS */
+To all the fans and supporters of HIJOS DEL SOL
+Metal community in Argentina and worldwide
