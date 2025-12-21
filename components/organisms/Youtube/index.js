@@ -38,6 +38,7 @@ export const Youtube = () => {
             title="HIJOS DEL SOL - Official music video on YouTube"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             loading="lazy"
           ></iframe>
