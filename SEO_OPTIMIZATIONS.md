@@ -6,7 +6,6 @@
 - ✅ Deshabilitado `poweredByHeader` para seguridad
 - ✅ Habilitado compresión y minificación con SWC
 - ✅ Optimización de imágenes (AVIF y WebP)
-- ✅ Configuración i18n (español e inglés)
 - ✅ Headers de seguridad (HSTS, X-Frame-Options, etc.)
 - ✅ Cache-Control para recursos estáticos
 

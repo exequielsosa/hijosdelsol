@@ -130,8 +130,6 @@ const SeoHome = () => {
       />
 
       {/* Open Graph / Facebook */}
-      <meta property="og:locale" content="en_US" />
-      <meta property="og:locale:alternate" content="es_AR" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="HIJOS DEL SOL" />
       <meta
