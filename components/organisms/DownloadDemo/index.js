@@ -55,8 +55,8 @@ export default function DownloadDemo() {
                 data-aos="zoom-in"
                 data-aos-delay="600"
                 loading="lazy"
-                width="400"
-                height="400"
+                width="1009"
+                height="988"
               />
               <div className="w-full flex-auto">
                 <h2

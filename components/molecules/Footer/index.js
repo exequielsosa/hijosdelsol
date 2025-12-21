@@ -26,8 +26,8 @@ export const Footer = () => {
                 alt="HIJOS DEL SOL - Official band logo"
                 className="w-[300px] sm:w-[300px] md:w-[350px] lg:w-[400px] h-auto"
                 loading="lazy"
-                width="400"
-                height="100"
+                width="3560"
+                height="480"
               />
             </div>
           </nav>

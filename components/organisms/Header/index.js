@@ -42,8 +42,8 @@ export default function Header() {
             className="w-full h-auto"
             loading="eager"
             fetchPriority="high"
-            width="800"
-            height="200"
+            width="3560"
+            height="480"
           />
         </div>
         <div className="w-full flex justify-center">
@@ -58,8 +58,8 @@ export default function Header() {
               className="w-full h-auto"
               loading="eager"
               fetchPriority="high"
-              width="600"
-              height="630"
+              width="1367"
+              height="1495"
             />
           </div>
         </div>
