@@ -51,8 +51,8 @@ export default function Example() {
                   className={`h-6 sm:h-8 w-auto`}
                   src="/hijosdelsolWhite.png"
                   alt="HIJOS DEL SOL - Logo de la banda"
-                  width="200"
-                  height="32"
+                  width="1771"
+                  height="249"
                   loading="eager"
                 />
               </div>
