@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXTwitter,
@@ -10,8 +10,6 @@ import {
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export const Footer = () => {
-  const router = useRouter();
-
   return (
     <>
       <footer className="bg-[url('/fireFooter.jpg')]">
@@ -21,13 +19,13 @@ export const Footer = () => {
             aria-label="Footer"
           >
             <div className="pb-6 flex items-center" data-aos="zoom-in">
-              <img
+              <Image
                 src="/hijosdelsol2crop.png"
                 alt="HIJOS DEL SOL - Official band logo"
+                width={3560}
+                height={480}
+                sizes="(max-width: 768px) 300px, (max-width: 1024px) 350px, 400px"
                 className="w-[300px] sm:w-[300px] md:w-[350px] lg:w-[400px] h-auto"
-                loading="lazy"
-                width="3560"
-                height="480"
               />
             </div>
           </nav>
@@ -100,6 +98,7 @@ export const Footer = () => {
               <a
                 href="https://www.custom-xs.com"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="mt-10 text-center text-base leading-5 text-[#fff] hover:text-[#f9d80a]"
               >
                 custom-xs

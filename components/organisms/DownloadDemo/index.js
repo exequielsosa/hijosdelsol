@@ -1,37 +1,17 @@
-import { useState } from "react";
-
+import Image from "next/image";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
-
-const benefits = [
-  "Loves Comes Tonight",
-  "Cry",
-  "All",
-  "Noise",
-  "My Fault",
-  "Nadie Escucha",
-  "La Primera",
-  "Te Quiero",
-  "Inside Tomorrow",
-  "Nadie Escucha",
-  "Don't Tell Me Lies",
-  "Mama",
-  "Never Know",
-  "Excellent",
-];
+import { TRACKS } from "@/data/tracks";
 
 export default function DownloadDemo() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <section className="bg-gray-900" aria-labelledby="demo-heading">
       <div className="relative isolate overflow-hidden pt-20 pb-20">
-        <img
+        <Image
           src="/fire.jpg"
           alt="Fire background representing the intensity of metal"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-          loading="lazy"
-          width="1920"
-          height="1080"
+          fill
+          sizes="100vw"
+          className="-z-10 object-cover"
         />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -48,23 +28,27 @@ export default function DownloadDemo() {
         <div className="relative isolate" data-aos="fade-up">
           <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div className="mx-auto flex max-w-2xl flex-col gap-16 bg-white/5 px-6 py-16 ring-1 ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:py-20 xl:gap-x-20 xl:px-20">
-              <img
-                className="h-96 w-full flex-none rounded-2xl object-cover shadow-xl lg:aspect-square lg:h-auto lg:max-w-sm"
-                src="/soloTapa.png"
-                alt="HIJOS DEL SOL Demo'98 cover - Debut album of the Argentine metal band"
+              <div
+                className="flex-none lg:max-w-sm"
                 data-aos="zoom-in"
                 data-aos-delay="600"
-                loading="lazy"
-                width="1009"
-                height="988"
-              />
+              >
+                <Image
+                  src="/soloTapa.png"
+                  alt="HIJOS DEL SOL Demo'98 cover - Debut album of the Argentine metal band"
+                  width={1009}
+                  height={988}
+                  sizes="(max-width: 1024px) 100vw, 384px"
+                  className="h-96 w-full rounded-2xl object-cover shadow-xl lg:aspect-square lg:h-auto"
+                />
+              </div>
               <div className="w-full flex-auto">
                 <h2
                   id="demo-heading"
                   className="text-3xl font-bold tracking-tight text-white sm:text-4xl font-['Kaushan_Script']"
                   data-aos="zoom-in"
                 >
-                  Demo'98
+                  Demo&apos;98
                 </h2>
                 <p
                   className="mt-6 text-lg leading-8 text-gray-300"
@@ -72,9 +56,9 @@ export default function DownloadDemo() {
                   data-aos-delay="600"
                 >
                   🤘 Unleash the power of metal with our exclusive demo
-                  "Demo'98." Dive into the raw intensity and resonant melancholy
-                  of our early sounds. Revolutionize your metal experience now!
-                  🎸🔥
+                  &quot;Demo&apos;98.&quot; Dive into the raw intensity and
+                  resonant melancholy of our early sounds. Revolutionize your
+                  metal experience now! 🎸🔥
                 </p>
                 <ul
                   role="list"
@@ -82,13 +66,13 @@ export default function DownloadDemo() {
                   data-aos="zoom-in"
                   data-aos-delay="900"
                 >
-                  {benefits.map((benefit) => (
-                    <li key={benefit} className="flex gap-x-3">
+                  {TRACKS.map((track) => (
+                    <li key={track} className="flex gap-x-3">
                       <CheckCircleIcon
                         className="h-7 w-5 flex-none"
                         aria-hidden="true"
                       />
-                      {benefit}
+                      {track}
                     </li>
                   ))}
                 </ul>

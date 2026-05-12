@@ -1,0 +1,15 @@
+export const TRACKS = [
+  "Loves Comes Tonight",
+  "Cry",
+  "All",
+  "Noise",
+  "My Fault",
+  "Nadie Escucha",
+  "La Primera",
+  "Te Quiero",
+  "Inside Tomorrow",
+  "Don't Tell Me Lies",
+  "Mama",
+  "Never Know",
+  "Excellent",
+];

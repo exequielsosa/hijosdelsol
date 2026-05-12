@@ -1,11 +1,7 @@
-import {
-  faXTwitter,
-  faInstagram,
-  faSquareFacebook,
-  faYoutube,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import Image from "next/image";
+import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import YoutubeFacade from "../../molecules/YoutubeFacade";
 
 export const Youtube = () => {
   return (
@@ -13,13 +9,12 @@ export const Youtube = () => {
       className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32"
       aria-labelledby="youtube-heading"
     >
-      <img
+      <Image
         src="/flames.jpg"
         alt="Flames background representing the energy of HIJOS DEL SOL"
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
-        loading="lazy"
-        width="1920"
-        height="1080"
+        fill
+        sizes="100vw"
+        className="-z-10 object-cover object-right md:object-center"
       />
       <div className="mx-auto w-full px-6 lg:px-8 max-w-[70%] justify-center flex flex-col items-center">
         <h2
@@ -32,16 +27,10 @@ export const Youtube = () => {
       </div>
       <div className="w-full flex justify-center mt-[0px] mb-[0px]">
         <div className="max-w-[800px]" data-aos="zoom-in" data-aos-delay="500">
-          <iframe
-            className="w-[350px] h-[262px] sm:w-[500px] sm:h-[375px] md:w-[600px] md:h-[450px] lg:w-[800px] lg:h-[600px]"
-            src="https://www.youtube.com/embed/u7U0ZQT4py4?si=_99p4zfVSaTybo_k"
+          <YoutubeFacade
+            videoId="u7U0ZQT4py4"
             title="HIJOS DEL SOL - Official music video on YouTube"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
+          />
         </div>
       </div>
       <div

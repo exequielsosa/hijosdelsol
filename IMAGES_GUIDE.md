@@ -37,17 +37,8 @@ Para completar la optimización SEO, necesitas crear las siguientes imágenes:
 - Fondo transparente o del color de la marca
 - Margen de seguridad del 10% en los bordes
 
-### 5. Microsoft Tiles (Windows)
-**Archivos necesarios**:
-- `public/mstile-70x70.png` (70x70 px)
-- `public/mstile-150x150.png` (150x150 px)
-- `public/mstile-310x310.png` (310x310 px)
-- `public/mstile-310x150.png` (310x150 px - horizontal)
-
-**Recomendaciones**:
-- Fondo del color de la marca (#111827 - gris oscuro)
-- Logo en blanco o color contrastante
-- Centrado con margen apropiado
+### 5. Microsoft Tiles (Windows) — ❌ DEPRECATED
+Las Live Tiles de Windows fueron retiradas en Windows 11. El archivo `public/browserconfig.xml` fue eliminado del proyecto el 2026-05-12. Si en el futuro se quisiera restaurar soporte (Windows 10 únicamente), habría que regenerar `browserconfig.xml` + los 4 PNGs (`mstile-70x70`, `mstile-150x150`, `mstile-310x310`, `mstile-310x150`).
 
 ## 📐 Especificaciones Técnicas
 
@@ -106,15 +97,12 @@ Para estos tamaños, usa:
 ## 📋 Checklist de Implementación
 
 ### Creación de Imágenes
-- [ ] favicon-16x16.png
-- [ ] favicon-32x32.png
-- [ ] apple-touch-icon.png (180x180)
-- [ ] android-chrome-192x192.png
-- [ ] android-chrome-512x512.png
-- [ ] mstile-70x70.png
-- [ ] mstile-150x150.png
-- [ ] mstile-310x310.png
-- [ ] mstile-310x150.png
+- [x] favicon-16x16.png ✅
+- [x] favicon-32x32.png ✅
+- [x] apple-touch-icon.png (180x180) ✅
+- [x] android-chrome-192x192.png ✅
+- [x] android-chrome-512x512.png ✅
+- ~~mstile-*.png~~ — Microsoft Tiles deprecadas en Windows 11, soporte eliminado del proyecto
 
 ### Optimización
 - [ ] Comprimir todas las imágenes PNG
@@ -188,4 +176,4 @@ Si quieres crear imágenes específicas para compartir en redes:
 
 ---
 
-**Última actualización**: 21 de diciembre de 2025
+**Última actualización**: 12 de mayo de 2026 (Microsoft Tiles deprecadas y removidas)

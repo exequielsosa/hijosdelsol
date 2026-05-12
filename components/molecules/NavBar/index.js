@@ -1,5 +1,6 @@
 import { Disclosure } from "@headlessui/react";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faXTwitter,
@@ -47,13 +48,14 @@ export default function Example() {
                 } "flex flex-shrink-0 items-center"`}
                 data-aos="zoom-in"
               >
-                <img
-                  className={`h-6 sm:h-8 w-auto`}
+                <Image
                   src="/hijosdelsolWhite.png"
-                  alt="HIJOS DEL SOL - Logo de la banda"
-                  width="1771"
-                  height="249"
+                  alt="HIJOS DEL SOL - Official band logo"
+                  width={1771}
+                  height={249}
+                  sizes="(max-width: 640px) 100px, 150px"
                   loading="eager"
+                  className="h-6 sm:h-8 w-auto"
                 />
               </div>
             </div>

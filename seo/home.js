@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { TRACKS } from "@/data/tracks";
 
 const SeoHome = () => {
   const structuredData = {
@@ -35,6 +36,32 @@ const SeoHome = () => {
           "https://twitter.com/hijosdelsolband",
           "https://www.instagram.com/hijosdelsolmusicband/",
           "https://www.facebook.com/hijosdelsolmusic",
+        ],
+        formerMember: [
+          {
+            "@type": "OrganizationRole",
+            roleName: ["Vocals", "Guitar"],
+            member: {
+              "@type": "Person",
+              name: "Exequiel Sosa",
+            },
+          },
+          {
+            "@type": "OrganizationRole",
+            roleName: "Bass",
+            member: {
+              "@type": "Person",
+              name: "Rodrigo Vieiro",
+            },
+          },
+          {
+            "@type": "OrganizationRole",
+            roleName: ["Drums", "Guitar"],
+            member: {
+              "@type": "Person",
+              name: "Gonzalo Martinez",
+            },
+          },
         ],
       },
       {
@@ -89,6 +116,17 @@ const SeoHome = () => {
         image: "https://www.hijosdelsol.com.ar/soloTapa.png",
         description:
           "Demo'98 by HIJOS DEL SOL - A testament to the evolution of Argentine metal in the 90s",
+        numTracks: TRACKS.length,
+        track: TRACKS.map((title) => ({
+          "@type": "MusicRecording",
+          name: title,
+          byArtist: {
+            "@id": "https://www.hijosdelsol.com.ar/#organization",
+          },
+          inAlbum: {
+            "@id": "https://www.hijosdelsol.com.ar/#demo98",
+          },
+        })),
       },
     ],
   };
@@ -120,11 +158,6 @@ const SeoHome = () => {
       />
       <link
         rel="alternate"
-        hrefLang="es"
-        href="https://www.hijosdelsol.com.ar/es"
-      />
-      <link
-        rel="alternate"
         hrefLang="x-default"
         href="https://www.hijosdelsol.com.ar/"
       />
@@ -132,6 +165,7 @@ const SeoHome = () => {
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="HIJOS DEL SOL" />
+      <meta property="og:locale" content="en_US" />
       <meta
         property="og:title"
         content="HIJOS DEL SOL | Argentine Metal Band | Demo'98"
@@ -153,7 +187,7 @@ const SeoHome = () => {
       <meta property="og:image:height" content="630" />
       <meta
         property="og:image:alt"
-        content="HIJOS DEL SOL - Logo de la banda"
+        content="HIJOS DEL SOL - Argentine metal band logo"
       />
       <meta property="og:image:type" content="image/png" />
 
@@ -175,7 +209,7 @@ const SeoHome = () => {
       />
       <meta
         name="twitter:image:alt"
-        content="HIJOS DEL SOL - Logo de la banda"
+        content="HIJOS DEL SOL - Argentine metal band logo"
       />
 
       {/* Additional Meta Tags */}
@@ -188,18 +222,15 @@ const SeoHome = () => {
         content="HIJOS DEL SOL, hijos del sol, Argentine metal, metal band, Argentina, demo'98, heavy metal, Argentine rock, metal music, 90s metal, Argentine band, Latin metal, hard rock, thrash metal, Argentine music, Argentine metal scene, heavy rock, underground metal"
       />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="language" content="English" />
       <meta name="author" content="HIJOS DEL SOL" />
       <meta name="copyright" content="HIJOS DEL SOL" />
-      <meta name="rating" content="general" />
-      <meta name="distribution" content="global" />
-      <meta name="revisit-after" content="7 days" />
 
       {/* Geographic Tags */}
       <meta name="geo.region" content="AR" />
       <meta name="geo.placename" content="Argentina" />
 
       {/* Mobile App Meta */}
+      <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta
         name="apple-mobile-web-app-status-bar-style"
         content="black-translucent"

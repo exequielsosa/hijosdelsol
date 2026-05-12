@@ -1,40 +1,9 @@
 # robots.txt for https://www.hijosdelsol.com.ar/
 
-# Allow all crawlers
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/static/
 Disallow: /private/
 
-# Googlebot specific
-User-agent: Googlebot
-Allow: /
-Disallow: /api/
-
-# Bingbot specific
-User-agent: Bingbot
-Allow: /
-Disallow: /api/
-
-# Block bad bots
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-# Crawl-delay for all bots
-Crawl-delay: 1
-
-# Sitemap location
 Sitemap: https://www.hijosdelsol.com.ar/sitemap.xml
-
-# Host
-Host: https://www.hijosdelsol.com.ar

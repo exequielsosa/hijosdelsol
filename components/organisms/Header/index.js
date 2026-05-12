@@ -1,14 +1,18 @@
+import Image from "next/image";
+
 export default function Header() {
   return (
     <header className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
-      <img
+      <h1 className="sr-only">
+        HIJOS DEL SOL — Argentine Metal Band — Demo&apos;98
+      </h1>
+      <Image
         src="/flames2.jpg"
         alt="Burning flames background representing the energy of metal"
-        className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
-        loading="eager"
-        fetchPriority="high"
-        width="1920"
-        height="1080"
+        fill
+        sizes="100vw"
+        priority
+        className="-z-10 object-cover object-right md:object-center"
       />
       <div
         className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
@@ -36,14 +40,14 @@ export default function Header() {
       </div>
       <div className="mx-auto w-full px-6 lg:px-8 max-w-[70%] justify-center flex flex-col items-center">
         <div className="mx-auto w-full lg:w-[80%] lg:mx-0" data-aos="fade-down">
-          <img
+          <Image
             src="/hijosdelsol2crop.png"
             alt="HIJOS DEL SOL - Official band logo"
+            width={3560}
+            height={480}
+            priority
+            sizes="(max-width: 1024px) 100vw, 80vw"
             className="w-full h-auto"
-            loading="eager"
-            fetchPriority="high"
-            width="3560"
-            height="480"
           />
         </div>
         <div className="w-full flex justify-center">
@@ -52,14 +56,13 @@ export default function Header() {
             data-aos="zoom-in"
             data-aos-delay="500"
           >
-            <img
+            <Image
               src="/devil.png"
               alt="HIJOS DEL SOL emblematic symbol - Devil figure representing the essence of metal"
+              width={1367}
+              height={1495}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 60vw, (max-width: 1024px) 50vw, 40vw"
               className="w-full h-auto"
-              loading="eager"
-              fetchPriority="high"
-              width="1367"
-              height="1495"
             />
           </div>
         </div>
