@@ -37,7 +37,7 @@ const SeoHome = () => {
           "https://www.instagram.com/hijosdelsolmusicband/",
           "https://www.facebook.com/hijosdelsolmusic",
         ],
-        formerMember: [
+        member: [
           {
             "@type": "OrganizationRole",
             roleName: ["Vocals", "Guitar"],
