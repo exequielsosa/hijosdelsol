@@ -92,6 +92,11 @@ Idioma canónico del sitio: **inglés 100%**. No hay versión `/es`. Los meta ta
 - **`components/molecules/Footer`**: `rel="noopener noreferrer"` en link `custom-xs`.
 - **`public/robots.txt`**: limpieza completa (sin bloqueos Ahrefs/Semrush/DotBot/MJ12bot, sin `Host`, sin `Crawl-delay`).
 
+### Hotfix post-deploy (2026-05-12)
+Después del primer deploy, validator.schema.org reportó 12 errores + 162 derivados. Causa: usé `formerMember` que **no existe en schema.org** (lo confundí con propiedad estándar). Fix aplicado:
+- `formerMember` → `member` en [seo/home.js:39](seo/home.js#L39). La banda figura semánticamente como vigente porque nunca se disolvió formalmente (decisión del usuario — está en hiato indefinido, no hay separación). **No añadir `dissolutionDate` ni revertir a `formerMember`.**
+- `dateModified` en WebPage: pasado de `new Date().toISOString()` a constante `SITE_LAST_MODIFIED` en [seo/home.js:4](seo/home.js#L4). Razón: el validator detectaba dos valores diferentes en el mismo render (probablemente por re-execution). **Actualizar manualmente esa constante cuando cambie contenido significativo.**
+
 ### Fase 3 (completada 2026-05-12)
 - **`data/tracks.js`** (NUEVO): fuente única de los 13 nombres de canciones del Demo'98. Importado desde `seo/home.js` y `components/organisms/DownloadDemo`. Eliminó el duplicado `Nadie Escucha` que había en `DownloadDemo`.
 - **Migración `<img>` → `next/image`** en Header, DownloadDemo, NavBar, Footer, Youtube (8 imágenes). Backgrounds usan `fill`, logos usan `width`/`height` fijos. `priority` solo en LCP candidates.

@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { TRACKS } from "@/data/tracks";
 
+const SITE_LAST_MODIFIED = "2026-05-12T00:00:00+00:00";
+
 const SeoHome = () => {
   const structuredData = {
     "@context": "https://schema.org",
@@ -98,7 +100,7 @@ const SeoHome = () => {
           height: 630,
         },
         datePublished: "1998-01-01T00:00:00+00:00",
-        dateModified: new Date().toISOString(),
+        dateModified: SITE_LAST_MODIFIED,
         description:
           "HIJOS DEL SOL is an Argentine metal band founded in the 90s. Explore the raw energy and powerful sound of their music with Demo'98, a testament to the evolution of Argentine metal.",
         inLanguage: "en-US",
