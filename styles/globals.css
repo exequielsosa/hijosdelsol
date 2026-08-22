@@ -2,70 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
+html,
 body {
-  color: #fff;
-  background: #000;
-  font-family: "Megrim";
+  margin: 0;
+  padding: 0;
+  color: #edeae6;
+  background: #050505;
+  font-family: "Space Grotesk", system-ui, sans-serif;
 }
 
-.bg-color-transition {
-  transition: background-color 1.5s ease;
-}
-
-.cardMini {
-  width: 24px;
-  font-size: 24px;
-  margin-right: 24px;
-  margin-left: 24px;
-  cursor: pointer;
-  color: #fff;
-}
-
-.cardMini:hover {
-  color: yellow;
-}
-
-.cardYT {
-  width: 60px;
-  font-size: 60px;
-  margin-left: 12px;
-  cursor: pointer;
-  color: red;
-}
-
-.cardYT:hover {
-  color: yellow;
-}
-
-.cardNav {
-  width: 20px;
-  font-size: 20px;
-  margin-right: 6px;
-  margin-left: 6px;
-  cursor: pointer;
-  color: #fff;
-  @media (min-width: 640px) {
-    width: 24px;
-    font-size: 24px;
-    margin-right: 8px;
-    margin-left: 8px;
-  }
-}
-
-.cardNav:hover {
-  color: yellow;
+* {
+  box-sizing: border-box;
 }

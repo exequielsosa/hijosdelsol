@@ -1,0 +1,1797 @@
+/* ==========================================================================
+   HIJOS DEL SOL — sistema visual del rediseño 2026
+   Los valores son los del handoff (design_handoff_hijos_del_sol/README.md).
+   Regla de identidad: negro + un solo rojo, geometría sin radios.
+   ========================================================================== */
+
+:root {
+  --ink-black: #050505;
+  --black-red: #0a0000;
+  --disco-wash: #0b0505;
+  --card-black: #0c0606;
+  --album-black: #0e0000;
+  --red: #ff1212;
+  --red-mid: #c51212;
+  --red-deep: #b00e0e;
+  --red-dark: #8e1010;
+  --bone: #edeae6;
+  --gray-1: #9c9691;
+  --gray-2: #8c8681;
+  --gray-3: #7c7671;
+  --gray-4: #5c5651;
+  --gray-5: #4c4641;
+  --hero-ink: #3b1a16;
+  --hero-ink-strong: #1a100e;
+  --hero-navlink: #6e4038;
+
+  --hairline: rgba(237, 234, 230, 0.12);
+  --hairline-soft: rgba(237, 234, 230, 0.09);
+  --red-line: rgba(255, 18, 18, 0.3);
+
+  --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+
+  --shell: 1180px;
+}
+
+/* --------------------------------------------------------------- base --- */
+
+.hds {
+  position: relative;
+  background: var(--ink-black);
+  color: var(--bone);
+  font-family: var(--font-body);
+  /* Neutraliza el line-height:1.5 del preflight de Tailwind: el diseño
+     asume `normal` salvo donde declara un valor explícito. */
+  line-height: normal;
+  overflow-x: hidden;
+}
+
+/* :where() no suma especificidad: cualquier clase de componente le gana,
+   igual que el `a { }` suelto del prototipo. */
+:where(.hds) a {
+  color: var(--red);
+  text-decoration: none;
+}
+
+.hds ::selection {
+  background: var(--red);
+  color: #000;
+}
+
+.hds :focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+.hds-shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+}
+
+.hds-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+}
+
+.hds-h2 {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(44px, 6.5vw, 96px);
+  line-height: 0.88;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hds-p {
+  margin: 22px 0 0;
+  max-width: 620px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--gray-1);
+}
+
+.hds-chip {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gray-3);
+  border: 1px solid rgba(237, 234, 230, 0.18);
+  padding: 7px 12px;
+}
+
+.hds-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Enlace de texto subrayado por una hairline (rojo o gris).
+   Vale para <a> y para <button> (el que abre el modal del arte). */
+.hds-textlink {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-bottom: 6px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.hds-textlink--red {
+  color: var(--red);
+  border-bottom: 1px solid rgba(255, 18, 18, 0.4);
+}
+
+.hds-textlink--gray {
+  color: var(--gray-3);
+  border-bottom: 1px solid rgba(237, 234, 230, 0.2);
+}
+
+.hds-textlink:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.hds-linkrow {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------- animaciones --- */
+
+@keyframes hds-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes hds-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes hds-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 0.55;
+  }
+  96% {
+    opacity: 1;
+  }
+  97% {
+    opacity: 0.7;
+  }
+  98% {
+    opacity: 1;
+  }
+}
+@keyframes hds-pulse-art {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.045);
+  }
+}
+@keyframes hds-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 220px 220px;
+  }
+}
+
+/* Reveal on scroll — lo dispara useScrollReveal sobre [data-reveal] */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ------------------------------------------------------------- grano --- */
+
+.hds-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+  animation: hds-drift 8s linear infinite;
+}
+
+/* ---------------------------------------------------------- header fijo --- */
+
+.hds-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 28px;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 239, 233, 0.9),
+    rgba(244, 239, 233, 0)
+  );
+  backdrop-filter: blur(6px);
+  transition: background 0.4s ease;
+}
+
+.hds-nav[data-theme="dark"] {
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0.94), rgba(5, 5, 5, 0));
+}
+
+.hds-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Marca sol-cruz: círculo rojo con dos barras cruzándolo */
+.hds-mark {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  position: relative;
+  flex: none;
+}
+
+.hds-mark::before,
+.hds-mark::after {
+  content: "";
+  position: absolute;
+  background: var(--red);
+}
+
+.hds-mark::before {
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  height: 2px;
+}
+
+.hds-mark::after {
+  top: -2px;
+  bottom: -2px;
+  left: 50%;
+  width: 2px;
+}
+
+.hds-wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hero-ink-strong);
+  transition: color 0.4s ease;
+}
+
+.hds-nav[data-theme="dark"] .hds-wordmark {
+  color: var(--bone);
+}
+
+.hds-navlinks {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.hds-navlink {
+  color: var(--hero-navlink);
+  transition: color 0.2s ease;
+}
+
+.hds-navlink:hover {
+  color: var(--red-mid);
+}
+
+.hds-nav[data-theme="dark"] .hds-navlink {
+  color: var(--gray-2);
+}
+
+.hds-nav[data-theme="dark"] .hds-navlink:hover {
+  color: var(--red);
+}
+
+.hds-navcta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red-mid);
+  color: #f7f2ec;
+  padding: 9px 16px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hds-navcta:hover {
+  background: var(--hero-ink-strong);
+  color: #f7f2ec;
+}
+
+.hds-nav[data-theme="dark"] .hds-navcta {
+  background: var(--red);
+  color: var(--ink-black);
+}
+
+.hds-nav[data-theme="dark"] .hds-navcta:hover {
+  background: #fff;
+}
+
+/* --------------------------------------------------------------- hero --- */
+
+.hds-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 130px 24px 104px;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    #fff6f2 0%,
+    #f6e4de 34%,
+    #ebc9c2 62%,
+    #d9a9a2 100%
+  );
+}
+
+.hds-hero-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  pointer-events: none;
+  animation: hds-pulse-art 16s ease-in-out infinite;
+}
+
+.hds-hero-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(96vh, 1000px);
+  height: min(96vh, 1000px);
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(140, 26, 26, 0.16);
+  border-radius: 50%;
+  animation: hds-spin 120s linear infinite;
+  pointer-events: none;
+}
+
+/* El corte duro contra el negro del resto del sitio */
+.hds-hero-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 42%;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0),
+    rgba(5, 5, 5, 0.5) 58%,
+    #050505 100%
+  );
+  pointer-events: none;
+}
+
+.hds-hero-veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 26%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 248, 245, 0.92),
+    rgba(255, 248, 245, 0)
+  );
+  pointer-events: none;
+}
+
+/* Sin este scrim la tipografía no se lee sobre la portada */
+.hds-hero-scrim {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  width: min(118%, 1240px);
+  height: min(56vh, 470px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 249, 246, 0.86) 0%,
+    rgba(255, 244, 240, 0.66) 46%,
+    rgba(255, 240, 235, 0.2) 72%,
+    rgba(255, 240, 235, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.hds-hero-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: var(--shell);
+}
+
+.hds-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: var(--red-dark);
+  font-weight: 700;
+}
+
+/* El h1 de la home es el logo: solo envuelve, no aporta caja propia */
+.hds-hero-logo-wrap {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hds-hero-logo {
+  width: min(92%, 980px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 6px 26px rgba(90, 10, 10, 0.35));
+  animation: hds-flicker 9s linear infinite;
+}
+
+.hds-hero-p {
+  max-width: 620px;
+  text-align: center;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--hero-ink);
+  font-weight: 500;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.hds-hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hds-btn {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 15px 30px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hds-btn--solid {
+  background: var(--red-deep);
+  color: #fff6f2;
+}
+
+.hds-btn--solid:hover {
+  background: var(--hero-ink-strong);
+  color: #fff6f2;
+}
+
+.hds-btn--ghost {
+  border: 1px solid rgba(58, 16, 12, 0.4);
+  color: var(--hero-ink);
+}
+
+.hds-btn--ghost:hover {
+  border-color: var(--red-deep);
+  color: var(--red-deep);
+}
+
+.hds-scroll {
+  position: absolute;
+  bottom: 26px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gray-2);
+}
+
+/* ------------------------------------------------------------ marquee --- */
+
+.hds-marquee {
+  border-top: 1px solid rgba(255, 18, 18, 0.35);
+  border-bottom: 1px solid rgba(255, 18, 18, 0.35);
+  background: var(--black-red);
+  overflow: hidden;
+  padding: 16px 0;
+}
+
+.hds-marquee-row {
+  display: flex;
+  width: max-content;
+  animation: hds-marquee 26s linear infinite;
+}
+
+.hds-marquee-row span {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------- disco --- */
+
+.hds-record {
+  position: relative;
+  padding: 130px 24px;
+  background: linear-gradient(180deg, #050505, #0b0505 60%, #050505);
+}
+
+/* Fondo de covers de la seccion del disco: todas las capas apiladas, solo la
+   activa visible. Sin blur: el arte se ve nitido pero virado a gris/sepia y a
+   media opacidad, para que sea atmosfera y no compita con el tracklist. */
+.hds-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hds-backdrop-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+
+.hds-backdrop-layer.is-active {
+  opacity: 1;
+}
+
+.hds-backdrop-layer img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Gris + sepia: el arte se reconoce, pero no mete color propio en una
+     seccion que es negro y un solo rojo */
+  filter: grayscale(1) sepia(0.55) contrast(1.05);
+  opacity: 0.45;
+}
+
+.hds-backdrop-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      #050505 0%,
+      rgba(5, 5, 5, 0.42) 24%,
+      rgba(5, 5, 5, 0.42) 76%,
+      #050505 100%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(5, 5, 5, 0) 0%,
+      rgba(5, 5, 5, 0.4) 72%,
+      rgba(5, 5, 5, 0.8) 100%
+    );
+}
+
+/* El contenido va por encima del fondo */
+.hds-record > .hds-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.hds-2col {
+  display: grid;
+  gap: 72px;
+  align-items: start;
+}
+
+.hds-record-grid {
+  grid-template-columns: minmax(280px, 440px) 1fr;
+}
+
+.hds-album {
+  position: relative;
+  aspect-ratio: 1;
+  background: var(--album-black);
+  border: 1px solid var(--red-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hds-album-wash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(255, 18, 18, 0.22),
+    rgba(5, 5, 5, 0) 68%
+  );
+}
+
+.hds-album-devil {
+  position: relative;
+  width: 96%;
+  height: auto;
+  filter: contrast(1.2) saturate(1.25);
+  mix-blend-mode: screen;
+}
+
+.hds-album-logo {
+  position: absolute;
+  top: 26px;
+  left: 8%;
+  width: 84%;
+  height: auto;
+  opacity: 0.95;
+}
+
+.hds-album-stamp {
+  position: absolute;
+  bottom: 22px;
+  right: 26px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 34px;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.hds-album-chips {
+  margin-top: 16px;
+}
+
+.hds-record-links {
+  margin-top: 34px;
+}
+
+.hds-record-h2 {
+  font-size: clamp(48px, 7vw, 104px);
+  letter-spacing: 0.01em;
+}
+
+.hds-tracks {
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 40px;
+  border-top: 1px solid var(--hairline);
+}
+
+.hds-track {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 13px 4px;
+  border-bottom: 1px solid var(--hairline-soft);
+  transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+a.hds-track:hover {
+  background: rgba(255, 18, 18, 0.09);
+  padding-left: 12px;
+}
+
+.hds-track-n {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--red);
+  min-width: 24px;
+  letter-spacing: 0.08em;
+}
+
+.hds-track-title {
+  font-size: 15px;
+  color: var(--bone);
+  letter-spacing: 0.01em;
+}
+
+.hds-track-label {
+  margin-left: auto;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  /* El handoff pedia --gray-4 (#5C5651), que sobre el negro plano alcanzaba.
+     Con el fondo de covers detras se perdia: sube un escalon de gris y la
+     sombra lo despega de las zonas claras del arte. */
+  color: var(--gray-2);
+  text-shadow: 0 1px 6px rgba(5, 5, 5, 0.9);
+}
+
+/* ------------------------------------------------------- cuaderno letras --- */
+
+.hds-lyricssec {
+  position: relative;
+  padding: 120px 24px 130px;
+  background: var(--ink-black);
+  border-top: 1px solid rgba(237, 234, 230, 0.08);
+  overflow: hidden;
+}
+
+.hds-notebook-grid {
+  grid-template-columns: 1fr minmax(280px, 420px);
+  gap: 64px;
+  align-items: center;
+}
+
+.hds-notebook-p {
+  max-width: 560px;
+}
+
+.hds-notebook-links {
+  margin-top: 32px;
+}
+
+.hds-archive {
+  display: block;
+  position: relative;
+  /* El handoff pedía 620px; bajado a 440 para que el marco no domine la
+     sección frente al bloque de texto (decisión del usuario, 2026-08-22). */
+  height: 440px;
+  overflow: hidden;
+  background: var(--card-black);
+  border: 1px solid var(--red-line);
+  transition: border-color 0.2s ease;
+}
+
+.hds-archive:hover {
+  border-color: var(--red);
+}
+
+/* Invierte el escaneo blanco del 98 en rojo sobre negro */
+.hds-archive img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: invert(1) sepia(0.35) saturate(4) hue-rotate(-24deg) contrast(1.05);
+  opacity: 0.9;
+}
+
+.hds-archive-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0.05) 0%,
+    rgba(5, 5, 5, 0.15) 55%,
+    rgba(5, 5, 5, 0.98) 100%
+  );
+}
+
+.hds-archive-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+
+/* Los gaps de 1px sobre el fondo claro leen como hairlines */
+.hds-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1px;
+  margin-top: 64px;
+  background: rgba(237, 234, 230, 0.1);
+  border: 1px solid rgba(237, 234, 230, 0.1);
+}
+
+.hds-card {
+  position: relative;
+  display: block;
+  background: var(--ink-black);
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.hds-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.62;
+  filter: saturate(1.05);
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.45s ease, filter 0.45s ease;
+}
+
+.hds-card-legibility {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0.35) 0%,
+    rgba(5, 5, 5, 0.55) 45%,
+    rgba(5, 5, 5, 0.95) 100%
+  );
+}
+
+.hds-card-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(255, 18, 18, 0.32),
+    rgba(255, 18, 18, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.hds-card-rule {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: var(--red);
+  transition: width 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hds-card-body {
+  position: relative;
+  height: 100%;
+  padding: 22px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.hds-card-n {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--red);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+.hds-card-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hds-card-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 27px;
+  line-height: 0.98;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+}
+
+.hds-card-cta {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #bdb6b0;
+}
+
+.hds-card-title,
+.hds-card-cta {
+  transition: color 0.35s ease, letter-spacing 0.45s ease;
+}
+
+/* La coreografía del hover es la interacción firma de la sección */
+.hds-card:hover img,
+.hds-card:focus-visible img {
+  transform: scale(1.07);
+  opacity: 0.9;
+  filter: saturate(1.15) contrast(1.05);
+}
+.hds-card:hover .hds-card-flash,
+.hds-card:focus-visible .hds-card-flash {
+  opacity: 1;
+}
+.hds-card:hover .hds-card-rule,
+.hds-card:focus-visible .hds-card-rule {
+  width: 100%;
+}
+.hds-card:hover .hds-card-title,
+.hds-card:focus-visible .hds-card-title {
+  color: #ff3a3a;
+}
+.hds-card:hover .hds-card-cta,
+.hds-card:focus-visible .hds-card-cta {
+  color: #fff;
+  letter-spacing: 0.34em;
+}
+
+/* ------------------------------------------------------------- video --- */
+
+.hds-videosec {
+  position: relative;
+  padding: 120px 24px 130px;
+  background: var(--ink-black);
+  border-top: 1px solid rgba(237, 234, 230, 0.08);
+}
+
+/* Fondo de la seccion del video: luna_de_fuego.jpg con el mismo tratamiento
+   gris/sepia que los covers, para que no meta color propio. */
+.hds-videobg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hds-videobg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) sepia(0.55) contrast(1.05);
+  opacity: 0.38;
+}
+
+.hds-videobg-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      #050505 0%,
+      rgba(5, 5, 5, 0.5) 22%,
+      rgba(5, 5, 5, 0.5) 78%,
+      #050505 100%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(5, 5, 5, 0) 0%,
+      rgba(5, 5, 5, 0.4) 74%,
+      rgba(5, 5, 5, 0.8) 100%
+    );
+}
+
+/* El contenido va por encima del fondo */
+.hds-videoshell {
+  position: relative;
+  z-index: 1;
+}
+
+.hds-videohead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+.hds-videohead p {
+  margin: 0;
+  max-width: 420px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--gray-2);
+}
+
+.hds-video-h2 {
+  font-size: clamp(44px, 6vw, 88px);
+  line-height: 0.9;
+}
+
+.hds-videocard {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0b0000;
+  border: 1px solid var(--red-line);
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.hds-videocard:hover {
+  border-color: var(--red);
+}
+
+.hds-videocard-wash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    rgba(255, 18, 18, 0.35),
+    rgba(5, 5, 5, 0.15) 55%,
+    rgba(5, 5, 5, 0.9) 100%
+  );
+}
+
+.hds-videocard-devil {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 118%;
+  width: auto;
+  transform: translate(-50%, -50%);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  filter: contrast(1.2);
+}
+
+.hds-videocard-logo {
+  position: absolute;
+  top: 11%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46%;
+  height: auto;
+  opacity: 0.95;
+}
+
+.hds-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 60px rgba(255, 18, 18, 0.6);
+}
+
+.hds-play i {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 26px solid var(--ink-black);
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  margin-left: 7px;
+}
+
+.hds-play--sm {
+  width: 72px;
+  height: 72px;
+  box-shadow: 0 0 44px rgba(255, 18, 18, 0.55);
+}
+
+.hds-play--sm i {
+  border-left-width: 20px;
+  border-top-width: 12px;
+  border-bottom-width: 12px;
+  margin-left: 6px;
+}
+
+.hds-videocard-label {
+  position: absolute;
+  bottom: 22px;
+  left: 26px;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+
+.hds-embed {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--red-line);
+  background: #0b0000;
+}
+
+/* El marco del tema es cuadrado: YouTube letterboxea adentro */
+.hds-embed--square {
+  aspect-ratio: 1;
+}
+
+.hds-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ------------------------------------------------------------- canal --- */
+
+.hds-channel {
+  position: relative;
+  padding: 130px 24px;
+  background: var(--black-red);
+  border-top: 1px solid rgba(255, 18, 18, 0.25);
+  overflow: hidden;
+}
+
+/* Fondo de la seccion del canal. Mismo tratamiento gris/sepia que el resto;
+   el velo funde a --black-red (#0A0000), que es el fondo propio de esta
+   seccion, no al #050505 de las demas. */
+.hds-channelbg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Unica seccion a color: sin grayscale ni sepia, al reves que los otros
+   fondos (pedido del usuario). El velo de abajo tambien va mas flojo: con el
+   velo original, subir el color aca no cambiaba nada. */
+.hds-channelbg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.2) contrast(1.05);
+  opacity: 0.7;
+}
+
+.hds-channelbg-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      #0a0000 0%,
+      rgba(10, 0, 0, 0.22) 20%,
+      rgba(10, 0, 0, 0.22) 80%,
+      #0a0000 100%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(10, 0, 0, 0) 0%,
+      rgba(10, 0, 0, 0.2) 76%,
+      rgba(10, 0, 0, 0.6) 100%
+    );
+}
+
+.hds-channel-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 18, 18, 0.2),
+    rgba(5, 5, 5, 0) 68%
+  );
+  pointer-events: none;
+}
+
+.hds-channel-inner {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.hds-channel-h2 {
+  margin: 0;
+  font-size: clamp(46px, 8vw, 120px);
+  line-height: 0.86;
+}
+
+.hds-channel-p {
+  margin: 0;
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--gray-1);
+}
+
+.hds-channel-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--red);
+  color: var(--ink-black);
+  padding: 18px 34px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  transition: background 0.2s ease;
+}
+
+.hds-channel-cta:hover {
+  background: #fff;
+  color: var(--ink-black);
+}
+
+.hds-yt {
+  display: block;
+  width: 26px;
+  height: 18px;
+  background: var(--ink-black);
+  border-radius: 5px;
+  position: relative;
+  flex: none;
+}
+
+.hds-yt::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid var(--red);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  margin-left: 2px;
+}
+
+/* ------------------------------------------------------------ footer --- */
+
+.hds-footer {
+  position: relative;
+  z-index: 1;
+  background: var(--ink-black);
+  border-top: 1px solid rgba(237, 234, 230, 0.1);
+  padding: 56px 24px 40px;
+}
+
+.hds-footer-row {
+  max-width: var(--shell);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.hds-footer-logo {
+  width: 250px;
+  height: auto;
+  opacity: 0.85;
+}
+
+.hds-footer-links {
+  display: flex;
+  gap: 26px;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.hds-footer-links a {
+  color: var(--gray-2);
+  transition: color 0.2s ease;
+}
+
+.hds-footer-links a:hover {
+  color: var(--red);
+}
+
+.hds-copy {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray-5);
+}
+
+/* -------------------------------------------------------- página tema --- */
+
+.hds-track-head {
+  position: relative;
+  padding: 130px 24px 40px;
+  overflow: hidden;
+}
+
+/* Arte del tema de fondo en TODA la pagina. Mismo tratamiento que el fondo de
+   la seccion del disco: gris + sepia, para que el unico color de la pagina
+   sigan siendo la card del cover y el rojo de la marca. */
+.hds-trackpage {
+  position: relative;
+}
+
+/* Fixed al viewport: el arte acompana todo el scroll sin cortarse. Con sticky
+   la capa se despegaba a media pagina y dejaba el resto en negro. El footer
+   (z-index 1) es el que la tapa al final. */
+.hds-trackpage-art {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hds-trackpage-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) sepia(0.55) contrast(1.05);
+  opacity: 0.32;
+}
+
+/* La letra es texto largo sobre el arte: el velo garantiza la lectura */
+.hds-trackpage-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      rgba(5, 5, 5, 0.45) 0%,
+      rgba(5, 5, 5, 0.6) 55%,
+      rgba(5, 5, 5, 0.7) 100%
+    ),
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(5, 5, 5, 0) 0%,
+      rgba(5, 5, 5, 0.35) 70%,
+      rgba(5, 5, 5, 0.72) 100%
+    );
+}
+
+/* Las dos secciones van por encima del arte */
+.hds-track-head,
+.hds-track-body {
+  position: relative;
+  z-index: 1;
+}
+
+.hds-track-glow {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 18, 18, 0.16),
+    rgba(5, 5, 5, 0) 68%
+  );
+  pointer-events: none;
+}
+
+/* Por encima del glow rojo del encabezado */
+.hds-track-headinner {
+  position: relative;
+}
+
+.hds-track-chips {
+  margin-top: 22px;
+}
+
+.hds-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray-2);
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.hds-back:hover {
+  color: var(--red);
+}
+
+.hds-track-headline {
+  display: flex;
+  align-items: flex-end;
+  gap: 26px;
+  margin-top: 26px;
+  flex-wrap: wrap;
+}
+
+.hds-songnum {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(60px, 10vw, 150px);
+  line-height: 0.8;
+  color: rgba(255, 18, 18, 0.9);
+}
+
+.hds-track-h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(44px, 7vw, 104px);
+  line-height: 0.86;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hds-track-body {
+  padding: 40px 24px 110px;
+}
+
+.hds-track-grid {
+  grid-template-columns: 1fr minmax(300px, 440px);
+}
+
+.hds-lyrics {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  border-left: 1px solid rgba(255, 18, 18, 0.35);
+  padding-left: 32px;
+}
+
+.hds-stanza {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hds-lyrics span {
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--bone);
+  letter-spacing: 0.01em;
+}
+
+.hds-prevnext {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 70px;
+  padding-top: 26px;
+  border-top: 1px solid var(--hairline);
+  flex-wrap: wrap;
+}
+
+.hds-prevnext a {
+  max-width: 46%;
+  transition: opacity 0.2s ease;
+}
+
+.hds-prevnext a:hover {
+  opacity: 0.7;
+}
+
+.hds-next {
+  text-align: right;
+}
+
+.hds-prevnext-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin-bottom: 8px;
+}
+
+.hds-prevnext-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+
+.hds-aside {
+  position: sticky;
+  top: 110px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hds-listen {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: #0b0000;
+  border: 1px solid var(--red-line);
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.hds-listen:hover {
+  border-color: var(--red);
+}
+
+.hds-listen img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hds-listen-scrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 38%;
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0), rgba(5, 5, 5, 0.9));
+}
+
+.hds-listen-label {
+  position: absolute;
+  bottom: 16px;
+  left: 18px;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+
+.hds-aside-note {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--gray-3);
+}
+
+.hds-aside .hds-linkrow {
+  align-self: flex-start;
+  gap: 22px;
+}
+
+/* --------------------------------------------------------------- 404 --- */
+
+.hds-404 {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 130px 24px;
+  overflow: hidden;
+}
+
+.hds-404-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 18, 18, 0.16),
+    rgba(5, 5, 5, 0) 68%
+  );
+  pointer-events: none;
+}
+
+.hds-404-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 22px;
+  max-width: 720px;
+}
+
+.hds-404-logo {
+  width: min(80%, 380px);
+  height: auto;
+  opacity: 0.85;
+  margin-bottom: 18px;
+}
+
+/* ------------------------------------------------------ modal del arte --- */
+
+/* z-index 70: por encima del header fijo (50) y del grano (60). Se monta
+   fuera de .hds-track-body a proposito, que crea stacking context. */
+.hds-artmodal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 5, 5, 0.93);
+  animation: hds-modal-in 0.25s ease;
+}
+
+@keyframes hds-modal-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.hds-artmodal-inner {
+  position: relative;
+  display: flex;
+}
+
+.hds-artmodal-img {
+  display: block;
+  max-width: min(92vw, 900px);
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--red-line);
+}
+
+.hds-artmodal-close {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink-black);
+  border: 1px solid var(--red-line);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hds-artmodal-close:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--ink-black);
+}
+
+/* -------------------------------------------------------- responsive --- */
+
+@media (max-width: 900px) {
+  .hds-2col {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  .hds-aside {
+    position: static;
+    top: auto;
+  }
+  .hds-archive {
+    height: 360px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hds-tracks {
+    grid-template-columns: 1fr;
+  }
+  .hds-navlink {
+    display: none;
+  }
+  .hds-nav {
+    padding: 12px 16px;
+  }
+  .hds-navlinks {
+    gap: 0;
+  }
+  .hds section,
+  .hds .hds-footer,
+  .hds-track-head,
+  .hds-track-body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .hds-track-head {
+    padding-top: 96px;
+  }
+  .hds-track-body {
+    padding-bottom: 80px;
+  }
+  .hds-lyrics {
+    padding-left: 20px;
+  }
+  .hds-lyrics span {
+    font-size: 17px;
+  }
+  .hds-songnum {
+    font-size: 56px;
+  }
+}
+
+/* ------------------------------------------------- prefers-reduced-motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .hds-grain,
+  .hds-hero-art,
+  .hds-hero-ring,
+  .hds-hero-logo,
+  .hds-marquee-row {
+    animation: none;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .hds-backdrop-layer {
+    transition: none;
+  }
+  .hds * {
+    transition-duration: 0.01ms !important;
+  }
+}

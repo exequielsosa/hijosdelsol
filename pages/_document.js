@@ -17,7 +17,7 @@ export default function Document() {
 
         {/* Fonts with display swap */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Megrim&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;600;800;900&family=Space+Grotesk:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
 
@@ -41,8 +41,8 @@ export default function Document() {
           href="/apple-touch-icon.png"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#111827" />
-        <meta name="msapplication-TileColor" content="#111827" />
+        <meta name="theme-color" content="#050505" />
+        <meta name="msapplication-TileColor" content="#050505" />
 
         {/* Additional meta tags for better SEO */}
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />

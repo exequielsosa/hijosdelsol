@@ -1,15 +1,11 @@
 import "@/styles/globals.css";
-import "aos/dist/aos.css";
-import Aos from "aos";
+import "@/styles/hds.css";
 import { useEffect } from "react";
 import * as gtag from "../gtag";
 import { useRouter } from "next/router";
 import Script from "next/script";
 
 export default function App({ Component, pageProps }) {
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url) => {

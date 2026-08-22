@@ -1,20 +1,31 @@
-import NavBar from "../../molecules/NavBar";
-import Header from "../../organisms/Header";
-import DownloadDemo from "../../organisms/DownloadDemo";
-import { Youtube } from "@/components/organisms";
-import { Footer } from "@/components/molecules";
+import GrainOverlay from "../../atoms/GrainOverlay";
+import SiteHeader from "../../molecules/SiteHeader";
+import Marquee from "../../molecules/Marquee";
+import SiteFooter from "../../molecules/SiteFooter";
+import Hero from "../../organisms/Hero";
+import Record from "../../organisms/Record";
+import LyricsNotebook from "../../organisms/LyricsNotebook";
+import VideoSection from "../../organisms/VideoSection";
+import Channel from "../../organisms/Channel";
+import useScrollReveal from "@/hooks/useScrollReveal";
 
 export const Home = () => {
+  useScrollReveal();
+
   return (
-    <>
-      <NavBar />
+    <div className="hds">
+      <GrainOverlay />
+      <SiteHeader />
       <main>
-        <Header />
-        <DownloadDemo />
-        <Youtube />
+        <Hero />
+        <Marquee />
+        <Record />
+        <LyricsNotebook />
+        <VideoSection />
+        <Channel />
       </main>
-      <Footer />
-    </>
+      <SiteFooter />
+    </div>
   );
 };
 

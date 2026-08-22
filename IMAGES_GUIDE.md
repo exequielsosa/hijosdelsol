@@ -1,5 +1,30 @@
 # Imágenes Recomendadas para Mejorar SEO
 
+## 🎨 Assets del rediseño 2026 (ya en `public/`)
+
+Vienen del handoff de diseño (`G:/design_handoff_hijos_del_sol/assets/`) y se
+copiaron **sin optimizar**: `next/image` sirve versiones AVIF/WebP del tamaño
+justo, pero los originales pesan.
+
+| Archivo | Tamaño | Dimensiones | Uso |
+|---|---|---|---|
+| `portada2026.png` | 2,0 MB | 1672×941 | Hero a sangre + imagen Open Graph de la home |
+| `logo-red.png` | 15 KB | 1771×306 | Logo del hero (es el `<h1>` de la home) |
+| `logo-white.png` | 15 KB | 1771×249 | Marco del disco, card de video, footer |
+| `devil.png` | 830 KB | 1367×1495 | Arte del disco y del video (`mix-blend-mode: screen`, no aplanar) |
+| `letras-1998.png` | 3,1 MB | 3404×16384 | Solo dentro del marco de archivo, invertido por CSS |
+| `covers/01–12.png` | ~3,2 MB c/u | 1254×1254 | Un cover por tema con letra. Se resuelven por `data/tracks.js`, **nunca por índice** |
+
+Los covers suman ~40 MB en el repo. Si en algún momento molesta el peso del
+clon o del build, convertirlos a WebP ~1254px (con `sharp`) los deja en ~200 KB
+cada uno sin cambiar nada del código: las rutas y los nombres se mantienen.
+
+Imágenes del sitio anterior que quedaron sin uso en `public/`: `fire.jpg`,
+`fireFooter.jpg`, `flames.jpg`, `flames2.jpg`, `fondoHeader.jpg`,
+`marcaFire.jpg`, `soloTapa.png`, `hijosdelsol2crop.png`, `hijosdelsolWhite.png`
+(duplicado de `logo-white.png`). `hijosdelsol.png` sigue referenciado como
+`logo` en el JSON-LD.
+
 ## 🖼️ Favicons y App Icons Faltantes
 
 Para completar la optimización SEO, necesitas crear las siguientes imágenes:
