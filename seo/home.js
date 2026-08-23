@@ -1,8 +1,15 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { ALBUM } from "@/data/tracks";
-import { SITE_URL } from "@/data/site";
+import {
+  SITE_URL,
+  CONTENT_LAST_MODIFIED,
+  VIDEO_ID,
+  SOCIAL_PROFILES,
+} from "@/data/site";
+import { getSeoCopy, localeUrl, alternates } from "@/data/seo-copy";
 
-const SITE_LAST_MODIFIED = "2026-08-22T00:00:00+00:00";
+const SITE_LAST_MODIFIED = `${CONTENT_LAST_MODIFIED}T00:00:00+00:00`;
 
 // La portada 2026 es el hero del sitio: sirve tambien de imagen social
 const OG_IMAGE = `${SITE_URL}/portada2026.png`;
@@ -10,18 +17,22 @@ const OG_IMAGE_W = 1672;
 const OG_IMAGE_H = 941;
 
 const SeoHome = () => {
+  const { locale } = useRouter();
+  const seo = getSeoCopy(locale);
+  const url = localeUrl(locale, "/");
+
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "MusicGroup",
-        "@id": "https://www.hijosdelsol.com.ar/#organization",
+        "@id": `${SITE_URL}/#organization`,
         name: "HIJOS DEL SOL",
         alternateName: "Hijos del Sol",
-        url: "https://www.hijosdelsol.com.ar",
+        url: SITE_URL,
         logo: {
           "@type": "ImageObject",
-          url: "https://www.hijosdelsol.com.ar/hijosdelsol.png",
+          url: `${SITE_URL}/hijosdelsol.png`,
           width: 512,
           height: 512,
         },
@@ -31,74 +42,50 @@ const SeoHome = () => {
           width: OG_IMAGE_W,
           height: OG_IMAGE_H,
         },
-        description:
-          "HIJOS DEL SOL is an Argentine metal band founded in the 90s. Explore the raw energy and powerful sound of their music with Demo'98, a testament to the evolution of Argentine metal.",
+        description: seo.orgDescription,
         genre: ["Heavy Metal", "Metal", "Rock"],
-        foundingDate: "1998",
+        // La banda arranco alrededor de 1993; 1998 es el año del demo, no el
+        // de la formacion (dato del usuario, 2026-08-22)
+        foundingDate: "1993",
         foundingLocation: {
           "@type": "Place",
-          name: "Argentina",
+          name: "Buenos Aires, Argentina",
         },
-        sameAs: [
-          "https://www.youtube.com/@hijosdelsolband",
-          "https://twitter.com/hijosdelsolband",
-          "https://www.instagram.com/hijosdelsolmusicband/",
-          "https://www.facebook.com/hijosdelsolmusic",
-        ],
+        sameAs: SOCIAL_PROFILES,
         member: [
           {
             "@type": "OrganizationRole",
             roleName: ["Vocals", "Guitar"],
-            member: {
-              "@type": "Person",
-              name: "Exequiel Sosa",
-            },
+            member: { "@type": "Person", name: "Exequiel Sosa" },
           },
           {
             "@type": "OrganizationRole",
             roleName: "Bass",
-            member: {
-              "@type": "Person",
-              name: "Rodrigo Vieiro",
-            },
+            member: { "@type": "Person", name: "Rodrigo Vieiro" },
           },
           {
             "@type": "OrganizationRole",
             roleName: ["Drums", "Guitar"],
-            member: {
-              "@type": "Person",
-              name: "Gonzalo Martinez",
-            },
+            member: { "@type": "Person", name: "Gonzalo Martinez" },
           },
         ],
       },
       {
         "@type": "WebSite",
-        "@id": "https://www.hijosdelsol.com.ar/#website",
-        url: "https://www.hijosdelsol.com.ar",
-        name: "HIJOS DEL SOL - Argentine Metal Band",
-        description: "Official website of HIJOS DEL SOL, Argentine metal band",
-        publisher: {
-          "@id": "https://www.hijosdelsol.com.ar/#organization",
-        },
-        inLanguage: "en-US",
-        potentialAction: {
-          "@type": "SearchAction",
-          target: "https://www.hijosdelsol.com.ar/?s={search_term_string}",
-          "query-input": "required name=search_term_string",
-        },
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "HIJOS DEL SOL",
+        description: seo.home.description,
+        publisher: { "@id": `${SITE_URL}/#organization` },
+        inLanguage: ["es-AR", "en-US"],
       },
       {
         "@type": "WebPage",
-        "@id": "https://www.hijosdelsol.com.ar/#webpage",
-        url: "https://www.hijosdelsol.com.ar",
-        name: "HIJOS DEL SOL | Argentine Metal Band | Demo'98",
-        isPartOf: {
-          "@id": "https://www.hijosdelsol.com.ar/#website",
-        },
-        about: {
-          "@id": "https://www.hijosdelsol.com.ar/#organization",
-        },
+        "@id": `${url}#webpage`,
+        url,
+        name: seo.home.title,
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@id": `${SITE_URL}/#organization` },
         primaryImageOfPage: {
           "@type": "ImageObject",
           url: OG_IMAGE,
@@ -107,43 +94,36 @@ const SeoHome = () => {
         },
         datePublished: "1998-01-01T00:00:00+00:00",
         dateModified: SITE_LAST_MODIFIED,
-        description:
-          "HIJOS DEL SOL is an Argentine metal band founded in the 90s. Explore the raw energy and powerful sound of their music with Demo'98, a testament to the evolution of Argentine metal.",
-        inLanguage: "en-US",
+        description: seo.home.description,
+        inLanguage: seo.inLanguage,
       },
       {
         "@type": "MusicAlbum",
-        "@id": "https://www.hijosdelsol.com.ar/#demo98",
+        "@id": `${SITE_URL}/#demo98`,
         name: "Demo'98",
-        byArtist: {
-          "@id": "https://www.hijosdelsol.com.ar/#organization",
-        },
-        albumReleaseType: "http://schema.org/AlbumRelease",
+        byArtist: { "@id": `${SITE_URL}/#organization` },
+        albumProductionType: "https://schema.org/DemoAlbum",
+        albumReleaseType: "https://schema.org/AlbumRelease",
         datePublished: "1998",
         genre: ["Heavy Metal", "Metal"],
-        image: `${SITE_URL}/devil.png`,
-        description:
-          "Demo'98 by HIJOS DEL SOL - A testament to the evolution of Argentine metal in the 90s",
+        image: `${SITE_URL}/soloTapa.png`,
+        description: seo.albumDescription,
         numTracks: ALBUM.length,
         track: ALBUM.map((track) => ({
           "@type": "MusicRecording",
           ...(track.instrumental
             ? {}
-            : { "@id": `${SITE_URL}/lyrics/${track.slug}#recording` }),
+            : { "@id": `${localeUrl(locale, `/lyrics/${track.slug}`)}#recording` }),
           name: track.title,
           position: Number(track.n),
           ...(track.instrumental
             ? {}
             : {
-                url: `${SITE_URL}/lyrics/${track.slug}`,
+                url: localeUrl(locale, `/lyrics/${track.slug}`),
                 image: `${SITE_URL}${track.cover}`,
               }),
-          byArtist: {
-            "@id": "https://www.hijosdelsol.com.ar/#organization",
-          },
-          inAlbum: {
-            "@id": "https://www.hijosdelsol.com.ar/#demo98",
-          },
+          byArtist: { "@id": `${SITE_URL}/#organization` },
+          inAlbum: { "@id": `${SITE_URL}/#demo98` },
         })),
       },
     ],
@@ -151,13 +131,8 @@ const SeoHome = () => {
 
   return (
     <Head>
-      <title>
-        HIJOS DEL SOL | Argentine Metal Band | Demo'98 | hijosdelsol.com.ar
-      </title>
-      <meta
-        name="description"
-        content="HIJOS DEL SOL is an Argentine metal band founded in the 90s. Explore the raw energy and powerful sound of their music with Demo'98, a testament to the evolution of Argentine metal."
-      />
+      <title>{seo.home.title}</title>
+      <meta name="description" content={seo.home.description} />
       <meta
         name="viewport"
         content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -166,73 +141,40 @@ const SeoHome = () => {
         name="robots"
         content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
       />
-      <link rel="canonical" href="https://www.hijosdelsol.com.ar/" />
+      <link rel="canonical" href={url} />
 
-      {/* Alternate Languages */}
-      <link
-        rel="alternate"
-        hrefLang="en"
-        href="https://www.hijosdelsol.com.ar/"
-      />
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href="https://www.hijosdelsol.com.ar/"
-      />
+      {alternates("/").map((alt) => (
+        <link
+          key={alt.hrefLang}
+          rel="alternate"
+          hrefLang={alt.hrefLang}
+          href={alt.href}
+        />
+      ))}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="HIJOS DEL SOL" />
-      <meta property="og:locale" content="en_US" />
-      <meta
-        property="og:title"
-        content="HIJOS DEL SOL | Argentine Metal Band | Demo'98"
-      />
-      <meta
-        property="og:description"
-        content="HIJOS DEL SOL is an Argentine metal band founded in the 90s. Explore the raw energy and powerful sound of their music with Demo'98, a testament to the evolution of Argentine metal."
-      />
-      <meta property="og:url" content="https://www.hijosdelsol.com.ar/" />
+      <meta property="og:locale" content={seo.ogLocale} />
+      <meta property="og:title" content={seo.home.title} />
+      <meta property="og:description" content={seo.home.description} />
+      <meta property="og:url" content={url} />
       <meta property="og:image" content={OG_IMAGE} />
       <meta property="og:image:secure_url" content={OG_IMAGE} />
       <meta property="og:image:width" content={String(OG_IMAGE_W)} />
       <meta property="og:image:height" content={String(OG_IMAGE_H)} />
-      <meta
-        property="og:image:alt"
-        content="HIJOS DEL SOL - Demo'98 artwork"
-      />
+      <meta property="og:image:alt" content="HIJOS DEL SOL — Demo '98" />
       <meta property="og:image:type" content="image/png" />
+      <meta property="og:video" content={`https://www.youtube.com/watch?v=${VIDEO_ID}`} />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@hijosdelsolband" />
-      <meta name="twitter:creator" content="@hijosdelsolband" />
-      <meta
-        name="twitter:title"
-        content="HIJOS DEL SOL | Argentine Metal Band | Demo'98"
-      />
-      <meta
-        name="twitter:description"
-        content="HIJOS DEL SOL is an Argentine metal band founded in the 90s. Explore the raw energy and powerful sound of their music with Demo'98, a testament to the evolution of Argentine metal."
-      />
+      <meta name="twitter:title" content={seo.home.title} />
+      <meta name="twitter:description" content={seo.home.description} />
       <meta name="twitter:image" content={OG_IMAGE} />
-      <meta
-        name="twitter:image:alt"
-        content="HIJOS DEL SOL - Demo'98 artwork"
-      />
+      <meta name="twitter:image:alt" content="HIJOS DEL SOL — Demo '98" />
 
-      {/* Additional Meta Tags */}
-      <meta
-        name="title"
-        content="HIJOS DEL SOL | Argentine Metal Band | Demo'98"
-      />
-      <meta
-        name="keywords"
-        content="HIJOS DEL SOL, hijos del sol, Argentine metal, metal band, Argentina, demo'98, heavy metal, Argentine rock, metal music, 90s metal, Argentine band, Latin metal, hard rock, thrash metal, Argentine music, Argentine metal scene, heavy rock, underground metal"
-      />
-      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="author" content="HIJOS DEL SOL" />
-      <meta name="copyright" content="HIJOS DEL SOL" />
 
       {/* Geographic Tags */}
       <meta name="geo.region" content="AR" />

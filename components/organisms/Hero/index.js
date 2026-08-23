@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HERO_LINE } from "@/data/site";
+import useCopy from "@/hooks/useCopy";
 
 /**
  * La única pantalla clara del sitio. El orden de capas importa:
@@ -7,6 +7,8 @@ import { HERO_LINE } from "@/data/site";
  * legibilidad detrás del texto. Sin el scrim la tipografía no se lee.
  */
 export default function Hero() {
+  const { copy } = useCopy();
+
   return (
     <section id="top" className="hds-hero">
       <Image
@@ -24,31 +26,31 @@ export default function Hero() {
       <div className="hds-hero-fade" aria-hidden="true" />
 
       <div className="hds-hero-inner">
-        <span className="hds-hero-eyebrow">Metal · Argentina · Since 1998</span>
+        <span className="hds-hero-eyebrow">{copy.hero.eyebrow}</span>
         <h1 className="hds-hero-logo-wrap">
           <Image
             src="/logo-red.png"
             alt="HIJOS DEL SOL"
             width={1771}
             height={306}
-            priority
+            loading="eager"
             sizes="(max-width: 1064px) 92vw, 980px"
             className="hds-hero-logo"
           />
         </h1>
-        <p className="hds-hero-p">{HERO_LINE}</p>
+        <p className="hds-hero-p">{copy.hero.line}</p>
         <div className="hds-hero-buttons">
           <a href="#disco" className="hds-btn hds-btn--solid">
-            Listen to the demo
+            {copy.hero.listen}
           </a>
           <a href="#video" className="hds-btn hds-btn--ghost">
-            Watch the video
+            {copy.hero.watch}
           </a>
         </div>
       </div>
 
       <div className="hds-scroll" aria-hidden="true">
-        Scroll
+        {copy.hero.scroll}
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 {
   "name": "HIJOS DEL SOL",
   "short_name": "HIJOS DEL SOL",
-  "description": "Argentine metal band. Explore the raw and powerful energy of HIJOS DEL SOL.",
+  "description": "Hijos del Sol, banda de metal argentina. El Demo '98 completo: 13 temas, letras y videos.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050505",
@@ -42,6 +42,6 @@
     }
   ],
   "categories": ["music", "entertainment"],
-  "lang": "en-US",
+  "lang": "es-AR",
   "dir": "ltr"
 }

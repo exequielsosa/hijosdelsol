@@ -1,10 +1,12 @@
 import Image from "next/image";
 import YoutubeFrame from "../../molecules/YoutubeFrame";
-import { VIDEO_ID } from "@/data/site";
-
-const TITLE = 'HIJOS DEL SOL — "Loves Comes Tonight" (Demo \'98)';
+import useCopy from "@/hooks/useCopy";
+import { VIDEO_ID, VIDEO_TRACK_TITLE } from "@/data/site";
 
 export default function VideoSection() {
+  const { copy } = useCopy();
+  const title = `HIJOS DEL SOL — "${VIDEO_TRACK_TITLE}" (Demo '98)`;
+
   return (
     <section
       id="video"
@@ -26,21 +28,20 @@ export default function VideoSection() {
       <div className="hds-shell hds-videoshell">
         <div className="hds-videohead" data-reveal>
           <div>
-            <span className="hds-eyebrow">04 — The video</span>
+            <span className="hds-eyebrow">{copy.video.eyebrow}</span>
+            {/* El titulo es el nombre del tema: no se traduce */}
             <h2 id="video-heading" className="hds-h2 hds-video-h2">
-              Loves Comes Tonight
+              {VIDEO_TRACK_TITLE}
             </h2>
           </div>
-          <p>
-            Love, desire and contradiction. A song about wanting someone even
-            when everything around you feels a lot less romantic.
-          </p>
+          <p>{copy.video.blurb}</p>
         </div>
 
         <div data-reveal>
           <YoutubeFrame
             videoId={VIDEO_ID}
-            title={TITLE}
+            title={title}
+            playAria={copy.video.playAria(title)}
             frameClassName="hds-videocard"
             embedClassName="hds-embed"
           >
@@ -66,7 +67,9 @@ export default function VideoSection() {
             <span className="hds-play" aria-hidden="true">
               <i />
             </span>
-            <span className="hds-videocard-label">Watch on YouTube</span>
+            <span className="hds-videocard-label">
+              {copy.video.watchOnYoutube}
+            </span>
           </YoutubeFrame>
         </div>
       </div>

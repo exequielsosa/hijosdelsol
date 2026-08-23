@@ -1,22 +1,51 @@
 import Head from "next/head";
-import { SITE_URL, watchTrackUrl } from "@/data/site";
+import { useRouter } from "next/router";
+import { SITE_URL, watchTrackUrl, VIDEOS_UPLOAD_DATE } from "@/data/site";
+import { getSeoCopy, localeUrl, alternates } from "@/data/seo-copy";
 
 /**
  * <head> de una página de tema. La imagen social es el arte propio del tema.
- * La letra va en el JSON-LD como MusicRecording > recordingOf > lyrics.
+ *
+ * `inLanguage` del MusicRecording sale del idioma de LA LETRA (`track.lang`),
+ * no del idioma del sitio: la misma letra se muestra igual en las dos
+ * versiones y no cambia de idioma según quién la mire.
  */
 const SeoTrack = ({ track }) => {
-  const url = `${SITE_URL}/lyrics/${track.slug}`;
+  const { locale } = useRouter();
+  const seo = getSeoCopy(locale);
+
+  const path = `/lyrics/${track.slug}`;
+  const url = localeUrl(locale, path);
   const watchUrl = watchTrackUrl(track);
   const cover = `${SITE_URL}${track.cover}`;
-  const title = `${track.title} — Lyrics | HIJOS DEL SOL | Demo'98`;
-  const description = `Full lyrics of "${track.title}", track ${Number(
-    track.n
-  )} of Demo'98 by HIJOS DEL SOL, Argentine metal band. The original 1998 text, untouched.`;
+  const title = seo.track.title(track);
+  const description = seo.track.description(track);
+  const lyricsLang = track.lang === "ES" ? "es" : "en";
+  const imageAlt = seo.imageAlt(track.title);
+  const blurb = track.blurb?.[locale] ?? track.blurb?.es;
+  const videoName = `HIJOS DEL SOL — ${track.title} (Demo '98)`;
 
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
+      ...(track.video
+        ? [
+            {
+              "@type": "VideoObject",
+              "@id": `${url}#video`,
+              name: videoName,
+              description: blurb ?? description,
+              thumbnailUrl: cover,
+              // Los 12 se subieron el mismo dia; -03:00 es Argentina
+              uploadDate: `${VIDEOS_UPLOAD_DATE}T00:00:00-03:00`,
+              ...(track.duration ? { duration: track.duration } : {}),
+              embedUrl: `https://www.youtube.com/embed/${track.video}`,
+              contentUrl: watchUrl,
+              publisher: { "@id": `${SITE_URL}/#organization` },
+              inLanguage: lyricsLang,
+            },
+          ]
+        : []),
       {
         "@type": "MusicRecording",
         "@id": `${url}#recording`,
@@ -24,7 +53,7 @@ const SeoTrack = ({ track }) => {
         url,
         image: cover,
         position: Number(track.n),
-        inLanguage: track.lang === "ES" ? "es" : "en",
+        inLanguage: lyricsLang,
         byArtist: { "@id": `${SITE_URL}/#organization` },
         inAlbum: { "@id": `${SITE_URL}/#demo98` },
         recordingOf: {
@@ -33,10 +62,11 @@ const SeoTrack = ({ track }) => {
           lyrics: {
             "@type": "CreativeWork",
             text: track.lyrics,
-            inLanguage: track.lang === "ES" ? "es" : "en",
+            inLanguage: lyricsLang,
           },
         },
         sameAs: watchUrl,
+        ...(track.video ? { video: { "@id": `${url}#video` } } : {}),
       },
       {
         "@type": "WebPage",
@@ -52,7 +82,7 @@ const SeoTrack = ({ track }) => {
           width: 1254,
           height: 1254,
         },
-        inLanguage: "en-US",
+        inLanguage: seo.inLanguage,
         breadcrumb: { "@id": `${url}#breadcrumb` },
       },
       {
@@ -62,14 +92,14 @@ const SeoTrack = ({ track }) => {
           {
             "@type": "ListItem",
             position: 1,
-            name: "HIJOS DEL SOL",
-            item: `${SITE_URL}/`,
+            name: "Hijos del Sol",
+            item: localeUrl(locale, "/"),
           },
           {
             "@type": "ListItem",
             position: 2,
-            name: "Demo'98 lyrics",
-            item: `${SITE_URL}/#letras`,
+            name: "Demo '98",
+            item: `${localeUrl(locale, "/")}#letras`,
           },
           { "@type": "ListItem", position: 3, name: track.title },
         ],
@@ -90,12 +120,19 @@ const SeoTrack = ({ track }) => {
         content="index, follow, max-image-preview:large, max-snippet:-1"
       />
       <link rel="canonical" href={url} />
-      <link rel="alternate" hrefLang="en" href={url} />
-      <link rel="alternate" hrefLang="x-default" href={url} />
+
+      {alternates(path).map((alt) => (
+        <link
+          key={alt.hrefLang}
+          rel="alternate"
+          hrefLang={alt.hrefLang}
+          href={alt.href}
+        />
+      ))}
 
       <meta property="og:type" content="music.song" />
       <meta property="og:site_name" content="HIJOS DEL SOL" />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={seo.ogLocale} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
@@ -103,23 +140,16 @@ const SeoTrack = ({ track }) => {
       <meta property="og:image:secure_url" content={cover} />
       <meta property="og:image:width" content="1254" />
       <meta property="og:image:height" content="1254" />
-      <meta
-        property="og:image:alt"
-        content={`${track.title} — Demo'98 cover art`}
-      />
+      <meta property="og:image:alt" content={imageAlt} />
       <meta property="og:image:type" content="image/png" />
       <meta property="music:album" content={`${SITE_URL}/#demo98`} />
       <meta property="music:musician" content={SITE_URL} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@hijosdelsolband" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={cover} />
-      <meta
-        name="twitter:image:alt"
-        content={`${track.title} — Demo'98 cover art`}
-      />
+      <meta name="twitter:image:alt" content={imageAlt} />
 
       <meta name="author" content="HIJOS DEL SOL" />
       <meta name="geo.region" content="AR" />

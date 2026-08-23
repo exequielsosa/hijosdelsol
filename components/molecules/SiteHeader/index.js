@@ -1,13 +1,8 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { YOUTUBE_URL } from "@/data/site";
-
-const SECTIONS = [
-  { href: "#disco", label: "The record" },
-  { href: "#letras", label: "Lyrics" },
-  { href: "#video", label: "Video" },
-  { href: "#canal", label: "Channel" },
-];
+import useCopy from "@/hooks/useCopy";
 
 /**
  * Header fijo con dos temas: claro mientras se ve el hero (la única pantalla
@@ -16,6 +11,8 @@ const SECTIONS = [
  */
 export default function SiteHeader({ forceDark = false }) {
   const [dark, setDark] = useState(forceDark);
+  const { locale, copy } = useCopy();
+  const router = useRouter();
 
   useEffect(() => {
     if (forceDark) {
@@ -40,8 +37,17 @@ export default function SiteHeader({ forceDark = false }) {
     };
   }, [forceDark]);
 
-  // Desde una página de tema los anclas vuelven a la home
+  // Desde una página interna los anclas vuelven a la home
   const anchor = (hash) => (forceDark ? `/${hash}` : hash);
+
+  const sections = [
+    { href: anchor("#disco"), label: copy.nav.record },
+    { href: anchor("#letras"), label: copy.nav.lyrics },
+    { href: anchor("#video"), label: copy.nav.video },
+    { href: anchor("#canal"), label: copy.nav.channel },
+    // Página propia, no un ancla
+    { href: "/history", label: copy.nav.history },
+  ];
 
   return (
     <header className="hds-nav" data-theme={dark ? "dark" : "light"}>
@@ -49,24 +55,47 @@ export default function SiteHeader({ forceDark = false }) {
         <span className="hds-mark" aria-hidden="true" />
         <span className="hds-wordmark">Hijos del Sol</span>
       </Link>
-      <nav className="hds-navlinks" aria-label="Main">
-        {SECTIONS.map((section) => (
+      <nav className="hds-navlinks" aria-label={copy.nav.main}>
+        {sections.map((section) => (
           <Link
             key={section.href}
-            href={anchor(section.href)}
+            href={section.href}
             className="hds-navlink"
           >
             {section.label}
           </Link>
         ))}
+
+        {/* Mantiene la misma página al cambiar de idioma */}
+        <span className="hds-lang">
+          <Link
+            href={router.asPath}
+            locale="es"
+            className="hds-lang-option"
+            aria-current={locale === "es" ? "true" : undefined}
+            hrefLang="es"
+          >
+            ES
+          </Link>
+          <Link
+            href={router.asPath}
+            locale="en"
+            className="hds-lang-option"
+            aria-current={locale === "en" ? "true" : undefined}
+            hrefLang="en"
+          >
+            EN
+          </Link>
+        </span>
+
         <a
           href={YOUTUBE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="hds-navcta"
-          aria-label="Subscribe to the HIJOS DEL SOL YouTube channel"
+          aria-label={copy.nav.subscribeAria}
         >
-          Subscribe
+          {copy.nav.subscribe}
         </a>
       </nav>
     </header>

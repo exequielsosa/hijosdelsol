@@ -1,8 +1,16 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { DEFAULT_LOCALE } from "@/data/copy";
 
-export default function Document() {
+/**
+ * El `lang` del <html> sale del locale de la request, no de una constante:
+ * hardcodeado en "en" declaraba como inglesas todas las páginas castellanas.
+ * En _document no hay router, así que el locale se lee de __NEXT_DATA__.
+ */
+export default function Document(props) {
+  const locale = props.__NEXT_DATA__?.locale ?? DEFAULT_LOCALE;
+
   return (
-    <Html lang="en">
+    <Html lang={locale}>
       <Head>
         {/* Preconnect to external domains - Max 4 for optimal performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,8 +52,6 @@ export default function Document() {
         <meta name="theme-color" content="#050505" />
         <meta name="msapplication-TileColor" content="#050505" />
 
-        {/* Additional meta tags for better SEO */}
-        <meta httpEquiv="x-ua-compatible" content="IE=edge" />
         <meta name="format-detection" content="telephone=no" />
       </Head>
       <body>

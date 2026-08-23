@@ -1,5 +1,7 @@
 import { LYRIC_TRACKS } from "@/data/tracks";
-import { SITE_URL } from "@/data/site";
+import { SITE_URL, CONTENT_LAST_MODIFIED } from "@/data/site";
+import { localeUrl } from "@/data/seo-copy";
+import { LOCALES } from "@/data/copy";
 
 const escape = (value) =>
   value
@@ -9,45 +11,79 @@ const escape = (value) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&apos;");
 
-function buildSitemap() {
-  const lastmod = new Date().toISOString().split("T")[0];
+/**
+ * Bloque <xhtml:link> que declara todas las variantes de idioma de una ruta.
+ * Va dentro de CADA <url>, incluida la de la propia página: es la forma que
+ * pide Google para hreflang en sitemap.
+ */
+const alternateLinks = (path) =>
+  [
+    ...LOCALES.map(
+      (loc) =>
+        `    <xhtml:link rel="alternate" hreflang="${loc}" href="${localeUrl(
+          loc,
+          path
+        )}"/>`
+    ),
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${localeUrl(
+      "es",
+      path
+    )}"/>`,
+  ].join("\n");
 
-  const home = `  <url>
-    <loc>${SITE_URL}/</loc>
-    <lastmod>${lastmod}</lastmod>
-    <priority>1.0</priority>
-    <image:image>
+const homeImages = `    <image:image>
       <image:loc>${SITE_URL}/portada2026.png</image:loc>
-      <image:title>HIJOS DEL SOL - Demo&apos;98 artwork</image:title>
-      <image:caption>Cover artwork of Demo&apos;98 by Argentine metal band HIJOS DEL SOL</image:caption>
+      <image:title>HIJOS DEL SOL - Demo&apos;98</image:title>
+      <image:caption>Arte del Demo&apos;98 de HIJOS DEL SOL, banda de metal argentina</image:caption>
     </image:image>
     <image:image>
-      <image:loc>${SITE_URL}/devil.png</image:loc>
-      <image:title>HIJOS DEL SOL - Band artwork</image:title>
+      <image:loc>${SITE_URL}/soloTapa.png</image:loc>
+      <image:title>HIJOS DEL SOL - Tapa del Demo&apos;98</image:title>
     </image:image>
     <image:image>
-      <image:loc>${SITE_URL}/letras-1998.png</image:loc>
-      <image:title>HIJOS DEL SOL - Original 1998 lyrics document</image:title>
-    </image:image>
-  </url>`;
+      <image:loc>${SITE_URL}/letras-1998.jpg</image:loc>
+      <image:title>HIJOS DEL SOL - Documento original de letras, 1998</image:title>
+    </image:image>`;
 
-  const tracks = LYRIC_TRACKS.map(
-    (track) => `  <url>
-    <loc>${SITE_URL}/lyrics/${track.slug}</loc>
-    <lastmod>${lastmod}</lastmod>
+function buildSitemap() {
+  const urls = [];
+
+  for (const locale of LOCALES) {
+    urls.push(`  <url>
+    <loc>${localeUrl(locale, "/")}</loc>
+    <lastmod>${CONTENT_LAST_MODIFIED}</lastmod>
+    <priority>1.0</priority>
+${alternateLinks("/")}
+${homeImages}
+  </url>`);
+
+    urls.push(`  <url>
+    <loc>${localeUrl(locale, "/history")}</loc>
+    <lastmod>${CONTENT_LAST_MODIFIED}</lastmod>
+    <priority>0.9</priority>
+${alternateLinks("/history")}
+  </url>`);
+
+    for (const track of LYRIC_TRACKS) {
+      const path = `/lyrics/${track.slug}`;
+      urls.push(`  <url>
+    <loc>${localeUrl(locale, path)}</loc>
+    <lastmod>${CONTENT_LAST_MODIFIED}</lastmod>
     <priority>0.8</priority>
+${alternateLinks(path)}
     <image:image>
       <image:loc>${SITE_URL}${track.cover}</image:loc>
-      <image:title>${escape(track.title)} - Demo&apos;98 cover art</image:title>
+      <image:title>${escape(track.title)} - Demo&apos;98</image:title>
     </image:image>
-  </url>`
-  ).join("\n");
+  </url>`);
+    }
+  }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${home}
-${tracks}
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urls.join("\n")}
 </urlset>`;
 }
 

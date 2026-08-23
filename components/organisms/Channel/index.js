@@ -1,7 +1,10 @@
 import Image from "next/image";
+import useCopy from "@/hooks/useCopy";
 import { YOUTUBE_URL } from "@/data/site";
 
 export default function Channel() {
+  const { copy } = useCopy();
+
   return (
     <section id="canal" className="hds-channel" aria-labelledby="channel-heading">
       <div className="hds-channelbg" aria-hidden="true">
@@ -17,16 +20,13 @@ export default function Channel() {
       </div>
       <div className="hds-channel-glow" aria-hidden="true" />
       <div className="hds-channel-inner" data-reveal>
-        <span className="hds-eyebrow">05 — The channel</span>
+        <span className="hds-eyebrow">{copy.channel.eyebrow}</span>
         <h2 id="channel-heading" className="hds-h2 hds-channel-h2">
-          The whole archive
+          {copy.channel.titleLine1}
           <br />
-          lives on YouTube
+          {copy.channel.titleLine2}
         </h2>
-        <p className="hds-channel-p">
-          Tracks, rehearsals and period material. Subscribe and hit the bell —
-          everything that turns up from the vault goes there first.
-        </p>
+        <p className="hds-channel-p">{copy.channel.blurb}</p>
         <a
           href={YOUTUBE_URL}
           target="_blank"
@@ -34,7 +34,7 @@ export default function Channel() {
           className="hds-channel-cta"
         >
           <span className="hds-yt" aria-hidden="true" />
-          Go to the channel
+          {copy.channel.cta}
         </a>
       </div>
     </section>

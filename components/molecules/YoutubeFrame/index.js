@@ -8,6 +8,7 @@ import { useState } from "react";
 export default function YoutubeFrame({
   videoId,
   title,
+  playAria,
   frameClassName,
   embedClassName,
   children,
@@ -33,7 +34,7 @@ export default function YoutubeFrame({
       type="button"
       className={frameClassName}
       onClick={() => setPlaying(true)}
-      aria-label={`Play video: ${title}`}
+      aria-label={playAria ?? title}
     >
       {children}
     </button>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import useCopy from "@/hooks/useCopy";
 
 /**
  * Muestra el arte del tema a tamaño completo y a color: es el único lugar
@@ -9,6 +10,7 @@ import { useEffect, useRef } from "react";
  * scroll del fondo y al cerrar devuelve el foco a donde estaba.
  */
 export default function ArtworkModal({ track, onClose }) {
+  const { copy } = useCopy();
   const closeRef = useRef(null);
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export default function ArtworkModal({ track, onClose }) {
       >
         <Image
           src={track.cover}
-          alt={`${track.title} — Demo '98 cover art`}
+          alt={copy.track.coverAlt(track.title)}
           width={1254}
           height={1254}
           sizes="(max-width: 900px) 92vw, 900px"
@@ -55,7 +57,7 @@ export default function ArtworkModal({ track, onClose }) {
           ref={closeRef}
           className="hds-artmodal-close"
           onClick={onClose}
-          aria-label="Close artwork"
+          aria-label={copy.track.closeArtwork}
         >
           ×
         </button>

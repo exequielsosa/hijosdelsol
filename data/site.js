@@ -2,12 +2,33 @@
 
 export const SITE_URL = "https://www.hijosdelsol.com.ar";
 
+/**
+ * Fecha de ultima modificacion real del contenido (YYYY-MM-DD).
+ * Alimenta el <lastmod> del sitemap y el dateModified del JSON-LD.
+ * ACTUALIZAR A MANO cuando cambie contenido de verdad: si sale la fecha del
+ * request, todas las URLs figuran modificadas todos los dias y Google termina
+ * ignorando el lastmod del sitio entero.
+ */
+export const CONTENT_LAST_MODIFIED = "2026-08-22";
+
 export const YOUTUBE_URL = "https://www.youtube.com/@hijosdelsolband";
 export const VIDEO_ID = "FGoVHU16uAk";
-export const TWITTER_URL = "https://twitter.com/hijosdelsolband";
-export const INSTAGRAM_URL = "https://www.instagram.com/hijosdelsolmusicband/";
-export const FACEBOOK_URL = "https://www.facebook.com/hijosdelsolmusic";
+/** Tema al que corresponde VIDEO_ID. Es el <h2> de la seccion "El video":
+    si cambia el id, cambiar tambien esto o el titulo deja de coincidir. */
+export const VIDEO_TRACK_TITLE = "Loves Comes Tonight";
+
+/** Fecha en que se subieron los 12 videos a YouTube (todos el mismo dia).
+    Es campo obligatorio del VideoObject de schema.org. */
+export const VIDEOS_UPLOAD_DATE = "2026-08-22";
+export const FACEBOOK_URL =
+  "https://www.facebook.com/profile.php?id=61593492067967";
 export const CONTACT_EMAIL = "hijosdelsolmusicband@gmail.com";
+
+/** Perfiles oficiales. Alimenta el `sameAs` del JSON-LD, que es la señal con
+    la que Google confirma que la entidad "Hijos del Sol" es esta banda.
+    Solo perfiles que existen de verdad: uno inexistente es una señal falsa.
+    (No hay Twitter/X ni Instagram — 2026-08-22.) */
+export const SOCIAL_PROFILES = [YOUTUBE_URL, FACEBOOK_URL];
 
 export const DOWNLOAD_RECORD_URL = "https://files.catbox.moe/y8r65l.rar";
 export const DOWNLOAD_ARTWORK_URL = "https://files.catbox.moe/z8ale0.rar";
@@ -23,9 +44,3 @@ export const watchTrackUrl = (track) => {
     ? `https://www.youtube.com/shorts/${track.video}`
     : `https://www.youtube.com/watch?v=${track.video}`;
 };
-
-export const HERO_LINE =
-  "Thirteen tracks cut to tape, buried for twenty-five years and dug up whole. This is what it sounded like.";
-
-export const ALBUM_BLURB =
-  "The band's full record: raw, direct, no production in the way. Thirteen tracks between fury and melancholy, straight out of the room.";

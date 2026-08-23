@@ -2,26 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import CoverBackdrop from "../../molecules/CoverBackdrop";
 import useCoverRotation from "@/hooks/useCoverRotation";
+import useCopy from "@/hooks/useCopy";
 import { ALBUM, LYRIC_TRACKS } from "@/data/tracks";
-import {
-  ALBUM_BLURB,
-  DOWNLOAD_ARTWORK_URL,
-  DOWNLOAD_RECORD_URL,
-} from "@/data/site";
-
-const CHIPS = ["13 tracks", "Recorded in 1998", "Free download"];
+import { DOWNLOAD_ARTWORK_URL, DOWNLOAD_RECORD_URL } from "@/data/site";
 
 /** slug → posición en el fondo de covers (Noise no tiene, queda fuera). */
 const COVER_INDEX = new Map(LYRIC_TRACKS.map((track, i) => [track.slug, i]));
 
 /** Una fila del tracklist. "Noise" es instrumental: no tiene página ni link. */
-function TrackRow({ track, onEnter, onLeave }) {
+function TrackRow({ track, copy, onEnter, onLeave }) {
   const content = (
     <>
       <span className="hds-track-n">{track.n}</span>
       <span className="hds-track-title">{track.title}</span>
       <span className="hds-track-label">
-        {track.instrumental ? "Instrumental" : "Lyrics"}
+        {track.instrumental ? copy.labelInstrumental : copy.labelLyrics}
       </span>
     </>
   );
@@ -53,6 +48,7 @@ function TrackRow({ track, onEnter, onLeave }) {
 }
 
 export default function Record() {
+  const { copy } = useCopy();
   const { sectionRef, activeIndex, pin, unpin } = useCoverRotation(
     LYRIC_TRACKS.length,
   );
@@ -72,7 +68,7 @@ export default function Record() {
             <div className="hds-album-wash" aria-hidden="true" />
             <Image
               src="/soloTapa.png"
-              alt="Demo '98 artwork"
+              alt={copy.record.artworkAlt}
               width={1367}
               height={1495}
               sizes="(max-width: 900px) 90vw, 440px"
@@ -90,7 +86,7 @@ export default function Record() {
             {/* <span className="hds-album-stamp">Demo &apos;98</span> */}
           </div>
           <div className="hds-chips hds-album-chips">
-            {CHIPS.map((chip) => (
+            {copy.record.chips.map((chip) => (
               <span key={chip} className="hds-chip">
                 {chip}
               </span>
@@ -99,17 +95,18 @@ export default function Record() {
         </div>
 
         <div data-reveal>
-          <span className="hds-eyebrow">01 — The record</span>
+          <span className="hds-eyebrow">{copy.record.eyebrow}</span>
           <h2 id="record-heading" className="hds-h2 hds-record-h2">
             Demo &apos;98
           </h2>
-          <p className="hds-p">{ALBUM_BLURB}</p>
+          <p className="hds-p">{copy.record.blurb}</p>
 
           <ol className="hds-tracks">
             {ALBUM.map((track) => (
               <TrackRow
                 key={track.slug}
                 track={track}
+                copy={copy.record}
                 onEnter={pin}
                 onLeave={unpin}
               />
@@ -122,18 +119,18 @@ export default function Record() {
               target="_blank"
               rel="noopener noreferrer"
               className="hds-textlink hds-textlink--red"
-              aria-label="Download HIJOS DEL SOL Demo '98"
+              aria-label={copy.record.downloadRecordAria}
             >
-              Download the record →
+              {copy.record.downloadRecord}
             </a>
             <a
               href={DOWNLOAD_ARTWORK_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="hds-textlink hds-textlink--gray"
-              aria-label="Download the Demo '98 artwork"
+              aria-label={copy.record.downloadArtworkAria}
             >
-              Download the artwork →
+              {copy.record.downloadArtwork}
             </a>
           </div>
         </div>

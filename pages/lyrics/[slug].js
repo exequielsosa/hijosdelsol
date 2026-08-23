@@ -11,9 +11,17 @@ export default function TrackRoute({ track }) {
   );
 }
 
-export function getStaticPaths() {
+/**
+ * Con i18n, Next NO replica solo los paths dinámicos a los demás idiomas:
+ * hay que devolver una entrada por cada combinación de slug e idioma, con su
+ * campo `locale`. Sin eso, `fallback: false` deja en 404 todo lo que no sea el
+ * idioma por defecto.
+ */
+export function getStaticPaths({ locales }) {
   return {
-    paths: LYRIC_TRACKS.map((track) => ({ params: { slug: track.slug } })),
+    paths: locales.flatMap((locale) =>
+      LYRIC_TRACKS.map((track) => ({ params: { slug: track.slug }, locale }))
+    ),
     fallback: false,
   };
 }

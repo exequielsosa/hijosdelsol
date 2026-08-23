@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import useCopy from "@/hooks/useCopy";
 import { LYRIC_TRACKS } from "@/data/tracks";
 
 export default function LyricsNotebook() {
+  const { copy } = useCopy();
+
   return (
     <section
       id="letras"
@@ -12,49 +15,47 @@ export default function LyricsNotebook() {
       <div className="hds-shell">
         <div className="hds-2col hds-notebook-grid">
           <div data-reveal>
-            <span className="hds-eyebrow">03 — Lyrics</span>
+            <span className="hds-eyebrow">{copy.notebook.eyebrow}</span>
             <h2 id="lyrics-heading" className="hds-h2">
-              The lyrics
+              {copy.notebook.titleLine1}
               <br />
-              notebook
+              {copy.notebook.titleLine2}
             </h2>
-            <p className="hds-p hds-notebook-p">
-              Every track has its own page: the full lyrics and the frame to
-              play it. Next to it, the original 1998 document — raw, exactly as
-              it was typed.
-            </p>
+            <p className="hds-p hds-notebook-p">{copy.notebook.blurb}</p>
             <div className="hds-linkrow hds-notebook-links">
               <a
-                href="/letras-1998.png"
+                href="/letras-1998.jpg"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hds-textlink hds-textlink--red"
               >
-                Open the full document →
+                {copy.notebook.openDocument}
               </a>
               <a href="#disco" className="hds-textlink hds-textlink--gray">
-                See the tracklist →
+                {copy.notebook.seeTracklist}
               </a>
             </div>
           </div>
 
           <a
-            href="/letras-1998.png"
+            href="/letras-1998.jpg"
             target="_blank"
             rel="noopener noreferrer"
             className="hds-archive"
             data-reveal
           >
             <Image
-              src="/letras-1998.png"
-              alt="Original lyrics page, 1998"
-              width={3404}
-              height={16384}
+              src="/letras-1998.jpg"
+              alt={copy.notebook.archiveAlt}
+              width={1200}
+              height={5776}
               sizes="(max-width: 900px) 100vw, 420px"
               loading="lazy"
             />
             <div className="hds-archive-fade" aria-hidden="true" />
-            <span className="hds-archive-caption">Original archive · 1998</span>
+            <span className="hds-archive-caption">
+              {copy.notebook.archiveCaption}
+            </span>
           </a>
         </div>
 
@@ -64,7 +65,7 @@ export default function LyricsNotebook() {
               key={track.slug}
               href={`/lyrics/${track.slug}`}
               className="hds-card"
-              aria-label={`Read the lyrics of ${track.title}`}
+              aria-label={copy.notebook.readLyricsAria(track.title)}
             >
               <Image
                 src={track.cover}
@@ -81,7 +82,9 @@ export default function LyricsNotebook() {
                 <span className="hds-card-n">{track.n}</span>
                 <div className="hds-card-foot">
                   <span className="hds-card-title">{track.title}</span>
-                  <span className="hds-card-cta">Read the lyrics →</span>
+                  <span className="hds-card-cta">
+                    {copy.notebook.readLyrics}
+                  </span>
                 </div>
               </div>
             </Link>

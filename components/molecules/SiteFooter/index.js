@@ -1,39 +1,38 @@
 import Image from "next/image";
-import {
-  CONTACT_EMAIL,
-  FACEBOOK_URL,
-  INSTAGRAM_URL,
-  YOUTUBE_URL,
-} from "@/data/site";
-
-const LINKS = [
-  {
-    href: YOUTUBE_URL,
-    label: "YouTube",
-    title: "HIJOS DEL SOL on YouTube",
-    external: true,
-  },
-  {
-    href: INSTAGRAM_URL,
-    label: "Instagram",
-    title: "HIJOS DEL SOL on Instagram",
-    external: true,
-  },
-  {
-    href: FACEBOOK_URL,
-    label: "Facebook",
-    title: "HIJOS DEL SOL on Facebook",
-    external: true,
-  },
-  {
-    href: `mailto:${CONTACT_EMAIL}`,
-    label: "Contact",
-    title: "Email HIJOS DEL SOL",
-    external: false,
-  },
-];
+import Link from "next/link";
+import useCopy from "@/hooks/useCopy";
+import { CONTACT_EMAIL, FACEBOOK_URL, YOUTUBE_URL } from "@/data/site";
 
 export default function SiteFooter() {
+  const { copy } = useCopy();
+
+  const links = [
+    {
+      href: "/history",
+      label: copy.nav.history,
+      title: copy.history.metaTitle,
+      internal: true,
+    },
+    {
+      href: YOUTUBE_URL,
+      label: "YouTube",
+      title: copy.footer.onNetwork("YouTube"),
+      external: true,
+    },
+    {
+      href: FACEBOOK_URL,
+      label: "Facebook",
+      title: copy.footer.onNetwork("Facebook"),
+      external: true,
+    },
+    {
+      href: `mailto:${CONTACT_EMAIL}`,
+      label: copy.footer.contact,
+      title: copy.footer.contactAria,
+      external: false,
+    },
+  ];
+
   return (
     <footer className="hds-footer">
       <div className="hds-footer-row" data-reveal>
@@ -46,20 +45,26 @@ export default function SiteFooter() {
           className="hds-footer-logo"
         />
         <div className="hds-footer-links">
-          {LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              {...(link.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              aria-label={link.title}
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) =>
+            link.internal ? (
+              <Link key={link.label} href={link.href} aria-label={link.title}>
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                {...(link.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                aria-label={link.title}
+              >
+                {link.label}
+              </a>
+            )
+          )}
         </div>
-        <span className="hds-copy">© 1998–2026 Hijos del Sol</span>
+        <span className="hds-copy">{copy.footer.copyright}</span>
       </div>
     </footer>
   );

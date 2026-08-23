@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Espanol en la raiz, ingles bajo /en.
+  // localeDetection en false a proposito: la redireccion automatica por
+  // Accept-Language genera 307 que ensucian la indexacion, y el sitio ya
+  // arrastra redirecciones sin resolver en Search Console.
+  i18n: {
+    locales: ["es", "en"],
+    defaultLocale: "es",
+    localeDetection: false,
+  },
   poweredByHeader: false,
   compress: true,
   swcMinify: true,
@@ -14,6 +23,9 @@ const nextConfig = {
     return [
       {
         source: "/sitemap.xml",
+        // Sin locale:false, Next prefija el source con el idioma y el
+        // Content-Type puede no aplicarse a /sitemap.xml
+        locale: false,
         headers: [
           {
             key: "Content-Type",
@@ -27,6 +39,7 @@ const nextConfig = {
       },
       {
         source: "/robots.txt",
+        locale: false,
         headers: [
           {
             key: "Content-Type",
@@ -61,10 +74,6 @@ const nextConfig = {
           {
             key: "X-Content-Type-Options",
             value: "nosniff",
-          },
-          {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
           },
           {
             key: "Referrer-Policy",
