@@ -19,28 +19,6 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
   },
-  async redirects() {
-    return [
-      // El castellano vive en la raiz, asi que Next devuelve 404 para /es.
-      // Google ya conoce esa URL (aparece como "no encontrada" en Search
-      // Console), y sin esto cualquier /es/... queda roto.
-      // locale:false para que el source matchee literal y no se le prefije
-      // el idioma.
-      {
-        source: "/es",
-        destination: "/",
-        permanent: true,
-        locale: false,
-      },
-      {
-        source: "/es/:path*",
-        destination: "/:path*",
-        permanent: true,
-        locale: false,
-      },
-    ];
-  },
-
   async headers() {
     return [
       {
