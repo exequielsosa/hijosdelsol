@@ -1501,42 +1501,6 @@ a.hds-track:hover {
   z-index: 1;
 }
 
-/* Columna de lectura de la historia: medida corta, respiracion entre parrafos */
-.hds-history {
-  max-width: 720px;
-}
-
-.hds-history p {
-  margin: 0 0 28px;
-  font-size: 18px;
-  line-height: 1.8;
-  color: var(--bone);
-  text-wrap: pretty;
-}
-
-.hds-history strong {
-  color: #fff;
-  font-weight: 700;
-}
-
-.hds-history-cta {
-  display: inline-block;
-  margin-top: 14px;
-}
-
-/* El encabezado de la historia es mas corto que el de un tema, asi que el
-   glow rojo llegaba al borde del overflow y se cortaba en una linea dura.
-   Con mas padding abajo, el corte cae donde el glow ya se apago. */
-.hds-history-head {
-  padding-bottom: 90px;
-}
-
-.hds-history-eyebrow {
-  display: block;
-  margin-top: 30px;
-  margin-bottom: 12px;
-}
-
 .hds-track-blurb {
   margin: 24px 0 0;
   max-width: 620px;
@@ -1861,7 +1825,689 @@ a.hds-track:hover {
 
 /* -------------------------------------------------------- responsive --- */
 
+/* ---------------------------------------------------- historia (/history) --
+
+   Cuatro movimientos, no una columna de texto:
+     1. apertura   texto + ilustracion grupal sangrando a la derecha
+     2. la banda   los tres retratos como portadas de fanzine
+     3. el demo    ficha de archivo con la etiqueta de la cinta
+     4. el cierre  aire creciente y remate con halo rojo
+
+   Las tres ultimas van sobre el fondo fijo sepia de la pagina, asi que sus
+   fondos son semitransparentes: si fueran opacos el arte desaparece.
+   ------------------------------------------------------------------------- */
+
+/* --- 1. apertura ---------------------------------------------------------- */
+
+/* El bleed de la ilustracion necesita el borde derecho libre: el padding
+   lateral lo pone .hds-history-open, no la seccion. */
+.hds-history-head {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: clamp(44px, 5.5vw, 76px);
+}
+
+.hds-history-open {
+  display: grid;
+  grid-template-columns: minmax(300px, 440px) minmax(0, 1fr);
+  gap: clamp(32px, 4.5vw, 72px);
+  align-items: center;
+  /* El 100% es el ancho del <section> (sin barra de scroll), asi que el
+     texto arranca exactamente donde arranca .hds-shell en el resto del
+     sitio. Con 100vw quedaba corrido los pixeles de la barra. */
+  padding-left: max(24px, calc((100% - var(--shell)) / 2));
+}
+
+.hds-history-eyebrow {
+  display: block;
+  margin-top: 26px;
+}
+
+.hds-history-h1 {
+  margin: 16px 0 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(40px, 4.6vw, 72px);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hds-history-h1 span {
+  display: block;
+}
+
+/* Ante-título: la marca en cuerpo chico sobre las dos líneas grandes.
+   Se distingue del eyebrow de arriba por tamaño y color — ese es rojo y
+   de 11px, este es gris y de 20. */
+.hds-history-h1-brand {
+  margin-bottom: clamp(12px, 1.4vw, 18px);
+  font-size: clamp(16px, 1.7vw, 21px);
+  line-height: 1;
+  letter-spacing: 0.22em;
+  color: var(--gray-2);
+}
+
+.hds-history-h1 span:last-child {
+  color: var(--red);
+}
+
+.hds-history-lead {
+  margin-top: 30px;
+  max-width: 460px;
+}
+
+.hds-history-lead p {
+  margin: 0 0 18px;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--gray-1);
+  text-wrap: pretty;
+}
+
+.hds-history-lead p:last-child {
+  margin-bottom: 0;
+}
+
+.hds-history-lead strong {
+  color: var(--bone);
+  font-weight: 700;
+}
+
+.hds-history-figure {
+  margin: 0;
+}
+
+/* Sin borde derecho: la caja no se cierra, la imagen se va de la pantalla */
+.hds-history-figure-frame {
+  position: relative;
+  border: 1px solid var(--hairline);
+  border-right: 0;
+  background: var(--card-black);
+  overflow: hidden;
+}
+
+.hds-history-figure-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Filo de tinta roja sobre el canto izquierdo, como una marca de imprenta */
+.hds-history-figure-frame::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--red);
+  opacity: 0.55;
+}
+
+.hds-history-figure figcaption {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray-2);
+}
+
+/* --- 2. la banda ---------------------------------------------------------- */
+
+.hds-band {
+  position: relative;
+  z-index: 1;
+  padding: clamp(64px, 8vw, 104px) 24px;
+  /* Negro calido que se abre y se cierra: la seccion se apoya sobre el
+     fondo fijo sin taparlo del todo */
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0) 0%,
+    rgba(10, 4, 4, 0.88) 15%,
+    rgba(10, 4, 4, 0.92) 85%,
+    rgba(5, 5, 5, 0) 100%
+  );
+}
+
+.hds-band-head {
+  max-width: 720px;
+}
+
+.hds-band-line {
+  margin: 20px 0 0;
+  max-width: 560px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(19px, 2.2vw, 26px);
+  line-height: 1.25;
+  color: var(--bone);
+  text-wrap: pretty;
+}
+
+.hds-band-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 4vw, 54px);
+  margin-top: clamp(36px, 4.5vw, 60px);
+}
+
+.hds-member {
+  position: relative;
+}
+
+/* El halo rojo vive detras de la pieza y crece en hover. Glow, no sombra. */
+.hds-member::before {
+  content: "";
+  position: absolute;
+  inset: -7% -6% 14%;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    rgba(255, 18, 18, 0.2),
+    rgba(255, 18, 18, 0) 70%
+  );
+  opacity: 0.3;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.hds-member:hover::before {
+  opacity: 0.72;
+}
+
+.hds-member-art {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--card-black);
+}
+
+.hds-member-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0.92) contrast(1.04);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.45s ease;
+}
+
+.hds-member:hover .hds-member-art img {
+  transform: scale(1.03);
+  filter: saturate(1) contrast(1.08);
+}
+
+/* Trama de fotocopia sobre la ilustracion: en hover se corre unos pixeles,
+   que es todo el movimiento que pide la pieza. */
+.hds-member-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(5, 5, 5, 0.055) 0 1px,
+    rgba(5, 5, 5, 0) 1px 3px
+  );
+  background-position: 0 0;
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  transition: background-position 0.6s ease, opacity 0.45s ease;
+}
+
+.hds-member:hover .hds-member-art::after {
+  background-position: 0 3px;
+  opacity: 1;
+}
+
+/* Cinta de papel pegando la ilustracion a la pagina. Va dentro del marco
+   (que recorta) asi que se apoya sobre la esquina, no la desborda. */
+.hds-member-tape {
+  position: absolute;
+  top: 12px;
+  left: -14px;
+  z-index: 2;
+  width: 82px;
+  height: 24px;
+  transform: rotate(-6deg);
+  background: rgba(237, 234, 230, 0.42);
+  border-top: 1px solid rgba(237, 234, 230, 0.55);
+  border-bottom: 1px solid rgba(5, 5, 5, 0.12);
+}
+
+/* Sello de archivo. Solido y no en tinta translucida: las ilustraciones
+   tienen zonas oscuras (el platillo, la guitarra) donde un numero al 26%
+   directamente desaparece. */
+.hds-member-num {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 34px;
+  background: rgba(5, 5, 5, 0.82);
+  border-top: 1px solid var(--hairline);
+  border-left: 1px solid var(--hairline);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 19px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--gray-1);
+}
+
+.hds-member-name {
+  margin: 22px 0 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(26px, 2.7vw, 38px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hds-member-role {
+  margin: 12px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.hds-member-line {
+  margin: 14px 0 0;
+  max-width: 32ch;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--gray-1);
+  text-wrap: pretty;
+}
+
+/* --- 3. el demo ----------------------------------------------------------- */
+
+.hds-history-demo {
+  position: relative;
+  z-index: 1;
+  /* Mas alto que las otras secciones: la mascara del fondo necesita
+     lugar arriba y abajo para desvanecerse sin comerse el texto. */
+  padding: clamp(78px, 10vw, 140px) 24px;
+}
+
+/* El fondo cubre el padding box, o sea de borde a borde de la pantalla */
+.hds-history-demo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 14%,
+    #000 86%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 14%,
+    #000 86%,
+    transparent 100%
+  );
+}
+
+/* Mismo tratamiento que los otros fondos del sitio: gris + sepia, sin
+   blur. El unico color de la zona sigue siendo el rojo de la marca. */
+.hds-history-demo-bg img {
+  object-fit: cover;
+  filter: grayscale(1) sepia(0.45) contrast(1.06);
+  opacity: 0.5;
+}
+
+/* La pared es clara en el centro y el texto es hueso: sin velo no se lee */
+.hds-history-demo-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      rgba(5, 5, 5, 0.86) 0%,
+      rgba(5, 5, 5, 0.66) 30%,
+      rgba(5, 5, 5, 0.66) 70%,
+      rgba(5, 5, 5, 0.86) 100%
+    ),
+    radial-gradient(
+      ellipse at 30% 50%,
+      rgba(5, 5, 5, 0.6) 0%,
+      rgba(5, 5, 5, 0.28) 55%,
+      rgba(5, 5, 5, 0) 100%
+    );
+}
+
+/* Sin max-width propio: con el margin auto del shell el bloque quedaba
+   centrado a 820px y desalineado del resto del sitio. El ancho de
+   lectura lo limita cada pieza por separado. */
+.hds-history-demo-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.hds-history-demo-intro {
+  margin: 0;
+  max-width: 620px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.2;
+  color: var(--gray-1);
+}
+
+/* La caja abierta: casete, arte, lista de temas y el recibo. Reemplaza a
+   la etiqueta que estaba dibujada en CSS — sobre la pared del fondo, dos
+   papeles claros se empastaban, y la ilustracion dice mucho mas. */
+.hds-box {
+  position: relative;
+  max-width: 760px;
+  margin: clamp(30px, 4vw, 48px) 0;
+}
+
+/* Un halo apenas la despega del fondo, igual que el resto del sitio */
+.hds-box::before {
+  content: "";
+  position: absolute;
+  inset: -30px -24px 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(255, 18, 18, 0.16),
+    rgba(255, 18, 18, 0) 70%
+  );
+}
+
+.hds-box-frame {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  background: var(--card-black);
+}
+
+.hds-box-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Mismo filo de tinta que la ilustracion grupal de la apertura */
+.hds-box-frame::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--red);
+  opacity: 0.55;
+}
+
+.hds-box figcaption {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray-2);
+}
+
+.hds-history-demo-body {
+  margin: 0;
+  max-width: 720px;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--bone);
+  text-wrap: pretty;
+}
+
+.hds-history-demo-body strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+/* --- 4. el cierre --------------------------------------------------------- */
+
+/* Centrado a proposito: todo el sitio alinea a la izquierda, asi que el
+   cambio de eje marca que la historia termino. */
+.hds-history-end {
+  position: relative;
+  z-index: 1;
+  padding: clamp(62px, 9vw, 120px) 24px clamp(78px, 11vw, 150px);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Crece hacia abajo y empalma con el rojo de la seccion del disco */
+.hds-history-end-glow {
+  position: absolute;
+  left: 50%;
+  bottom: -300px;
+  width: min(1200px, 160%);
+  height: 900px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 60%,
+    rgba(255, 18, 18, 0.3) 0%,
+    rgba(255, 18, 18, 0.1) 40%,
+    rgba(255, 18, 18, 0) 70%
+  );
+}
+
+.hds-history-end > .hds-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.hds-history-end-first {
+  margin: 0 0 clamp(30px, 4vw, 52px);
+  text-shadow: 0 2px 26px rgba(5, 5, 5, 0.92), 0 0 10px rgba(5, 5, 5, 0.8);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(32px, 4.4vw, 60px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* El hilo del tiempo: los dos extremos y la espera entre medio. Sin hitos
+   inventados en el camino — la banda estuvo en silencio, no en actividad.
+
+   Los margenes negativos la sacan del padding de la seccion para que el
+   fondo llegue al borde de la pantalla. Solo esta franja lo lleva: las dos
+   frases grandes van sobre el negro. */
+.hds-history-wait {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 -24px clamp(46px, 6.5vw, 92px);
+  padding: clamp(60px, 7vw, 96px) 24px;
+}
+
+.hds-history-wait-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 10%,
+    #000 90%,
+    transparent 100%
+  );
+}
+
+/* La pared tiene rosa, azul y amarillo: sin desaturar rompe la regla de
+   negro + un solo rojo. Mismo tratamiento que el resto de los fondos. */
+.hds-history-wait-bg img {
+  object-fit: cover;
+  filter: grayscale(1) sepia(0.45) contrast(1.06);
+  opacity: 0.46;
+}
+
+/* La pared esta cargada de texto y encima va la frase de la espera */
+.hds-history-wait-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      rgba(5, 5, 5, 0.8) 0%,
+      rgba(5, 5, 5, 0.58) 35%,
+      rgba(5, 5, 5, 0.58) 65%,
+      rgba(5, 5, 5, 0.8) 100%
+    ),
+    radial-gradient(
+      ellipse 48% 72% at 50% 50%,
+      rgba(5, 5, 5, 0.8) 0%,
+      rgba(5, 5, 5, 0.44) 58%,
+      rgba(5, 5, 5, 0) 100%
+    );
+}
+
+/* El contenido va sobre el fondo, con el mismo apilado vertical */
+.hds-history-wait-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hds-history-year {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(38px, 5.2vw, 62px);
+  line-height: 1;
+  letter-spacing: 0.14em;
+  /* compensa el espaciado del ultimo caracter para que quede centrado */
+  text-indent: 0.14em;
+  color: var(--bone);
+  /* La pared de atras tiene tanto contraste como el texto. El mismo
+     recurso que salva el label LYRICS del tracklist sobre los covers. */
+  text-shadow: 0 2px 26px rgba(5, 5, 5, 0.92), 0 0 10px rgba(5, 5, 5, 0.8);
+}
+
+.hds-history-year--now {
+  color: var(--red);
+}
+
+.hds-history-thread {
+  position: relative;
+  width: 1px;
+  height: clamp(70px, 10vw, 130px);
+  margin: clamp(16px, 2vw, 24px) 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 18, 18, 0.8),
+    rgba(255, 18, 18, 0.3)
+  );
+}
+
+/* Marcas de regla cruzando el hilo: es lo que lo hace leer como una
+   linea de tiempo y no como un separador cualquiera. Sin anos encima —
+   en el medio no paso nada y no vamos a inventar hitos. */
+.hds-history-thread::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  right: -7px;
+  top: 6px;
+  bottom: 6px;
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgba(237, 234, 230, 0.38) 0 1px,
+    rgba(237, 234, 230, 0) 1px 26px
+  );
+}
+
+.hds-history-end-mid {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(24px, 3.4vw, 40px);
+  line-height: 1.15;
+  color: #fff;
+  text-shadow: 0 2px 26px rgba(5, 5, 5, 0.92), 0 0 10px rgba(5, 5, 5, 0.8);
+}
+
+.hds-history-end-last {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(38px, 6.6vw, 100px);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hds-history-end-last span {
+  display: block;
+}
+
+.hds-history-end-last span:last-child {
+  color: var(--red);
+}
+
+.hds-history-cta {
+  display: inline-block;
+  margin-top: clamp(34px, 4.5vw, 58px);
+}
+
 @media (max-width: 900px) {
+  /* La ilustracion grupal deja de sangrar: pasa a columna con padding normal */
+  .hds-history-head {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .hds-history-open {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-left: 0;
+  }
+  .hds-history-figure-frame {
+    border-right: 1px solid var(--hairline);
+  }
+  .hds-history-lead {
+    max-width: 620px;
+  }
+  /* Tres retratos no entran en fila a este ancho: carrusel con snap.
+     Sin margenes negativos — sacaban la grilla fuera del padding de la
+     seccion y la primera ficha quedaba pegada al borde de la pantalla,
+     desalineada del titulo. */
+  .hds-band-grid {
+    grid-template-columns: repeat(3, minmax(230px, 72vw));
+    gap: 18px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .hds-member {
+    scroll-snap-align: start;
+  }
+
   .hds-2col {
     grid-template-columns: 1fr;
     gap: 44px;
@@ -1876,6 +2522,27 @@ a.hds-track:hover {
 }
 
 @media (max-width: 700px) {
+
+  .hds-history-wait {
+    margin-left: -18px;
+    margin-right: -18px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .hds-history-head {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .hds-band-grid {
+    grid-template-columns: repeat(3, minmax(220px, 78vw));
+  }
+  .hds-box figcaption {
+    letter-spacing: 0.2em;
+  }
+  .hds-history-lead p {
+    font-size: 15px;
+  }
+
   .hds-tracks {
     grid-template-columns: 1fr;
   }

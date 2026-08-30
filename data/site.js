@@ -11,6 +11,13 @@ export const SITE_URL = "https://www.hijosdelsol.com.ar";
  */
 export const CONTENT_LAST_MODIFIED = "2026-08-22";
 
+/**
+ * `/history` tiene su propia fecha: se reescribió entera el 2026-08-30 y el
+ * resto del contenido no se tocó. Marcar todas las URLs como modificadas
+ * cuando cambió una sola es la forma de que el lastmod deje de valer.
+ */
+export const HISTORY_LAST_MODIFIED = "2026-08-30";
+
 export const YOUTUBE_URL = "https://www.youtube.com/@hijosdelsolband";
 export const VIDEO_ID = "FGoVHU16uAk";
 /** Tema al que corresponde VIDEO_ID. Es el <h2> de la seccion "El video":

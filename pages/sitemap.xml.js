@@ -1,5 +1,9 @@
 import { LYRIC_TRACKS } from "@/data/tracks";
-import { SITE_URL, CONTENT_LAST_MODIFIED } from "@/data/site";
+import {
+  SITE_URL,
+  CONTENT_LAST_MODIFIED,
+  HISTORY_LAST_MODIFIED,
+} from "@/data/site";
 import { localeUrl } from "@/data/seo-copy";
 import { LOCALES } from "@/data/copy";
 
@@ -45,6 +49,16 @@ const homeImages = `    <image:image>
       <image:title>HIJOS DEL SOL - Documento original de letras, 1998</image:title>
     </image:image>`;
 
+const historyImages = `    <image:image>
+      <image:loc>${SITE_URL}/bandFull.jpg</image:loc>
+      <image:title>HIJOS DEL SOL - Buenos Aires, principios de los 90</image:title>
+      <image:caption>Ilustración de HIJOS DEL SOL basada en una fotografía original de los años 90</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>${SITE_URL}/perdido.jpg</image:loc>
+      <image:title>HIJOS DEL SOL - La caja del Demo&apos;98</image:title>
+    </image:image>`;
+
 function buildSitemap() {
   const urls = [];
 
@@ -59,9 +73,10 @@ ${homeImages}
 
     urls.push(`  <url>
     <loc>${localeUrl(locale, "/history")}</loc>
-    <lastmod>${CONTENT_LAST_MODIFIED}</lastmod>
+    <lastmod>${HISTORY_LAST_MODIFIED}</lastmod>
     <priority>0.9</priority>
 ${alternateLinks("/history")}
+${historyImages}
   </url>`);
 
     for (const track of LYRIC_TRACKS) {

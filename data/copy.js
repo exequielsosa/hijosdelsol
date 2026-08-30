@@ -92,13 +92,21 @@ export const COPY = {
       coverAlt: (title) => `${title} — arte del Demo '98`,
     },
     history: {
-      eyebrow: "La banda",
+      eyebrow: "La historia",
       title: "Historia",
+      lineupEyebrow: "La formación original",
+      lineupTitle: "La banda",
+      archiveLabel: "Archivo · 1998",
+      boxCaption: "Buenos Aires · 1998 · 13 temas",
+      boxAlt:
+        "La caja del Demo '98 abierta: el casete, el arte, la lista de los trece temas, letras manuscritas y el recibo de la grabación",
+      fullAlt:
+        "Hijos del Sol en Buenos Aires a principios de los 90, ilustración basada en la foto original",
       backToRecord: "Escuchá el Demo '98 →",
       metaTitle:
         "Historia de Hijos del Sol — Banda de metal argentino de los 90",
       metaDescription:
-        "Cómo nació Hijos del Sol en Buenos Aires a comienzos de los 90, los cambios de formación y el camino hasta el Demo '98, guardado durante más de tres décadas.",
+        "Cómo nació Hijos del Sol en Buenos Aires a comienzos de los 90: Exequiel Sosa, Rodrigo Vieiro y Gonzalo Martinez, y el camino hasta el Demo '98.",
     },
     notFound: {
       title: "Perdido en las llamas",
@@ -189,12 +197,20 @@ export const COPY = {
       coverAlt: (title) => `${title} — Demo '98 cover art`,
     },
     history: {
-      eyebrow: "The band",
+      eyebrow: "The story",
       title: "History",
+      lineupEyebrow: "The original lineup",
+      lineupTitle: "The band",
+      archiveLabel: "Archive · 1998",
+      boxCaption: "Buenos Aires · 1998 · 13 tracks",
+      boxAlt:
+        "The Demo '98 box, open: the cassette, the artwork, the thirteen-track listing, handwritten lyrics and the studio receipt",
+      fullAlt:
+        "Hijos del Sol in Buenos Aires in the early 1990s, illustration based on the original photograph",
       backToRecord: "Listen to Demo '98 →",
       metaTitle: "The story of Hijos del Sol — 90s Argentine metal band",
       metaDescription:
-        "How Hijos del Sol started in Buenos Aires in the early 90s, the lineup changes and the road to Demo '98, kept in a box for more than three decades.",
+        "How Hijos del Sol started in Buenos Aires in the early 90s: Exequiel Sosa, Rodrigo Vieiro and Gonzalo Martinez, and the road to Demo '98.",
     },
     notFound: {
       title: "Lost in the flames",

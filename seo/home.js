@@ -60,12 +60,12 @@ const SeoHome = () => {
           },
           {
             "@type": "OrganizationRole",
-            roleName: "Bass",
+            roleName: ["Bass", "Backing vocals"],
             member: { "@type": "Person", name: "Rodrigo Vieiro" },
           },
           {
             "@type": "OrganizationRole",
-            roleName: ["Drums", "Guitar"],
+            roleName: ["Guitar", "Backing vocals", "Drums"],
             member: { "@type": "Person", name: "Gonzalo Martinez" },
           },
         ],
