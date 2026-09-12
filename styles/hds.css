@@ -1941,23 +1941,33 @@ a.hds-track:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 16px;
   overflow: hidden;
   background: rgba(5, 5, 5, 0.93);
   animation: hds-modal-in 0.25s ease;
 }
 
-/* Ancho/alto NO se limitan al viewport: el tamaño natural (800x600 + chrome)
-   se mide en JS y se reduce entero con transform: scale si no entra en
-   pantalla (celular), en vez de recortarlo con max-width/max-height. */
+/* El "hueco": ya mide el tamaño FINAL (natural x escala), calculado en JS.
+   Como el flex padre centra según este tamaño ya reducido, no hace falta
+   que recorte nada — evita depender de que overflow+transform+centrado en
+   flex se lleven bien en todos los navegadores (en mobile no siempre pasa:
+   el frame quedaba centrado y recortado según su tamaño SIN escalar). */
+.hds-retrowin-scaler {
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* El frame mantiene su tamaño natural (800x600 + chrome) y se escala hacia
+   adentro desde la esquina superior izquierda: como el "hueco" que lo
+   contiene ya mide natural x escala, encaja exacto sin desbordar. */
 .hds-retrowin-frame {
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
+  width: max-content;
   background: var(--ink-black);
   border: 1px solid var(--red-line);
   box-shadow: 0 0 60px rgba(255, 18, 18, 0.35);
-  transform-origin: center center;
+  transform-origin: top left;
 }
 
 .hds-retrowin-titlebar {

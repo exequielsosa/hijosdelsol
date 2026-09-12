@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import useCopy from "@/hooks/useCopy";
 
-const OVERLAY_PADDING = 48;
+const OVERLAY_PADDING = 32;
 
 /**
  * Una página vieja del sitio, servida tal cual desde /public/retro* y
@@ -18,23 +18,29 @@ export default function RetroWindow({ site, onClose }) {
   const { copy } = useCopy();
   const closeRef = useRef(null);
   const frameRef = useRef(null);
-  const [scale, setScale] = useState(1);
+  // null hasta la primera medición: el frame se renderiza a tamaño natural
+  // (sin transform) para poder medirlo, y useLayoutEffect corre antes del
+  // paint, así que no llega a verse sin escalar.
+  const [box, setBox] = useState(null);
 
   useLayoutEffect(() => {
-    const updateScale = () => {
+    const updateBox = () => {
       const el = frameRef.current;
       if (!el) return;
       const naturalWidth = el.offsetWidth;
       const naturalHeight = el.offsetHeight;
       const availableWidth = window.innerWidth - OVERLAY_PADDING;
       const availableHeight = window.innerHeight - OVERLAY_PADDING;
-      setScale(
-        Math.min(1, availableWidth / naturalWidth, availableHeight / naturalHeight)
+      const scale = Math.min(
+        1,
+        availableWidth / naturalWidth,
+        availableHeight / naturalHeight
       );
+      setBox({ width: naturalWidth * scale, height: naturalHeight * scale, scale });
     };
-    updateScale();
-    window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
+    updateBox();
+    window.addEventListener("resize", updateBox);
+    return () => window.removeEventListener("resize", updateBox);
   }, []);
 
   useEffect(() => {
@@ -65,41 +71,46 @@ export default function RetroWindow({ site, onClose }) {
       onClick={onClose}
     >
       <div
-        ref={frameRef}
-        className="hds-retrowin-frame"
-        style={scale < 1 ? { transform: `scale(${scale})` } : undefined}
-        onClick={(event) => event.stopPropagation()}
+        className="hds-retrowin-scaler"
+        style={box ? { width: box.width, height: box.height } : undefined}
       >
-        <div className="hds-retrowin-titlebar">
-          <span className="hds-retrowin-titletext">{site.windowTitle}</span>
-          <div className="hds-retrowin-buttons">
-            <span className="hds-retrowin-btn" aria-hidden="true">
-              _
-            </span>
-            <span className="hds-retrowin-btn" aria-hidden="true">
-              □
-            </span>
-            <button
-              type="button"
-              ref={closeRef}
-              className="hds-retrowin-btn hds-retrowin-btn--close"
-              onClick={onClose}
-              aria-label={copy.retro.closeAria}
-            >
-              ×
-            </button>
+        <div
+          ref={frameRef}
+          className="hds-retrowin-frame"
+          style={box && box.scale < 1 ? { transform: `scale(${box.scale})` } : undefined}
+          onClick={(event) => event.stopPropagation()}
+        >
+          <div className="hds-retrowin-titlebar">
+            <span className="hds-retrowin-titletext">{site.windowTitle}</span>
+            <div className="hds-retrowin-buttons">
+              <span className="hds-retrowin-btn" aria-hidden="true">
+                _
+              </span>
+              <span className="hds-retrowin-btn" aria-hidden="true">
+                □
+              </span>
+              <button
+                type="button"
+                ref={closeRef}
+                className="hds-retrowin-btn hds-retrowin-btn--close"
+                onClick={onClose}
+                aria-label={copy.retro.closeAria}
+              >
+                ×
+              </button>
+            </div>
           </div>
+          <div className="hds-retrowin-viewport">
+            <iframe
+              src={site.src}
+              title={site.windowTitle}
+              width={800}
+              height={600}
+              className="hds-retrowin-iframe"
+            />
+          </div>
+          <div className="hds-retrowin-statusbar">{copy.retro.resolutionNote}</div>
         </div>
-        <div className="hds-retrowin-viewport">
-          <iframe
-            src={site.src}
-            title={site.windowTitle}
-            width={800}
-            height={600}
-            className="hds-retrowin-iframe"
-          />
-        </div>
-        <div className="hds-retrowin-statusbar">{copy.retro.resolutionNote}</div>
       </div>
     </div>
   );
