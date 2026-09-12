@@ -57,6 +57,21 @@ const nextConfig = {
         ],
       },
       {
+        // Las paginas viejas (public/retro, public/retro90) ya tienen
+        // Disallow en robots.txt, pero eso solo evita el rastreo — no
+        // garantiza que Google no indexe la URL si alguna vez la linkean
+        // desde afuera. El header sí lo garantiza, y a diferencia del
+        // Content-Type, este no lo pisa el manejador de archivos estáticos.
+        source: "/retro:variant(90)?/:path*",
+        locale: false,
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
+          },
+        ],
+      },
+      {
         source: "/:path*",
         headers: [
           {

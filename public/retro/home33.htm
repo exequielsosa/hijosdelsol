@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv="author" content="Exequiel Sosa">
+<meta http-equiv="description" content="Oficial Site. All about the Argentine band, free Mp3 songs, 
+photos, lyrics, data and more...">
+<meta http-equiv="keywords" content="HIJOS, DEL, SOL, Mp3, Grupos, Argentinos, Bandas, Argentinas, Rock, music, Heavy, Metal, español, latinoamericano,">
+<title>H I J O S  D E L  S O L - Pagina Oficial</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+<SCRIPT LANGUAGE="javascript">
+<!--
+
+var repeat = true;       
+                         
+                         
+                         
+var numLines = 10;        
+
+var phrase = new Array(numLines);
+phrase[1] = "Bienvenido a la Pagina Oficial de HIJOS DEL SOL";
+phrase[2] = "Fijate en la sección FECHAS para enterarte de nuestros proximos recitales";
+phrase[3] = "No te olvides de escuchar nuestra HIJOS DE SOL Radio.";
+phrase[4] = "Baja nuestros temas en la sección MP3";
+phrase[5] = "Deja tus comentarios sobre el grupo o la pagina en la sección CONTACTOS";
+phrase[6] = "Visita la sección PRENSA es ¡imperdible!";
+phrase[7] = "Enterate de tu futuro en la sección HOROSCOPO";
+phrase[8] = "Disfruta de las chicas mas lindas en la sección LOBA";
+phrase[9] = "Participa del sensacional CONCURSO";
+phrase[10] = "Acercate a dios entra a la sección RELIGION";
+
+var n=1;                 
+var i=phrase[n].length;  
+var slideDirection = -1; 
+
+function slide() {
+  var pause=100;
+  if (n<=numLines) {
+    i += slideDirection;
+    window.status=phrase[n].substring(i,phrase[n].length);
+    if (i==0 || i==phrase[n].length) {
+      slideDirection = -slideDirection;
+      if (i==0) {
+        pause=phrase[n].length*100;
+      }
+      if (i==phrase[n].length) {
+        n++;
+        if (n>numLines) {
+           i=0;
+           pause=100;
+        }
+        else {
+           i=phrase[n].length;
+           pause=1000;
+        }
+      }
+    }
+    setTimeout("slide()",pause);
+  }
+  else {
+    if (repeat) {
+      n=1;
+      i=phrase[n].length;
+      setTimeout("slide()",1000);
+    }
+  }
+}
+
+//-->
+
+</SCRIPT>
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+<script language=javascript> 
+function ventanaSecundaria (URL){ 
+   window.open(URL,"ventana1","width=500,height=350,scrollbars=NO") 
+} 
+
+ventanaSecundaria("ventana.htm");
+</script> 
+
+
+
+
+
+
+
+
+<frameset cols="147,636*" frameborder="NO" border="0" framespacing="0" rows="*" OnLoad="slide()"> 
+  <frame name="left_wnd" scrolling="NO" noresize src="menu.htm">
+  <frame name="main_wnd" src="ini.htm">
+</frameset>
+<noframes><body bgcolor="#FFFFFF">
+<a href="index.htm">index</a>
+</body></noframes>
+</html>

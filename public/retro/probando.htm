@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+
+<TITLE>Static Slide Menu</TITLE>
+
+<SCRIPT language="JavaScript">
+<!--
+
+/*
+Copyright © MaXimuS 1999-2000, All Rights Reserved.
+Site: http://www.absolutegb.com/maximus
+E-mail: maximus@nsimail.com
+*/
+
+IE=document.all;
+NS=document.layers;
+
+/*
+Configure menu styles below
+NOTE: To edit the link colors, go to the STYLE tags and edit the ssm2Items colors
+*/
+hdrFontFamily="Verdana";
+hdrFontSize="2";
+hdrFontColor="white";
+hdrBGColor="#666666";
+linkFontFamily="Verdana";
+linkFontSize="1";
+linkBGColor="white";
+linkOverBGColor="#CCCCCC";
+linkTarget="_top";
+YOffset=20;
+staticYOffset=20;
+menuBGColor="black";
+menuIsStatic="yes";
+menuHeader="Gamarod.com.ar"
+menuWidth=150; // Must be a multiple of 5!
+staticMode="smooth"
+barBGColor="#333333";
+barFontFamily="Verdana";
+barFontSize="2";
+barFontColor="white";
+barText="Gamarod JavaScript";
+
+
+</SCRIPT>
+<STYLE>
+A.ssm2Items:link	{color:black;text-decoration:none;}
+A.ssm2Items:hover	{color:black;text-decoration:none;}
+A.ssm2Items:active	{color:black;text-decoration:none;}
+A.ssm2Items:visited	{color:black;text-decoration:none;}
+</STYLE>
+</HEAD>
+
+<BODY bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<script language="JavaScript1.2">
+if (IE) {document.write('<DIV ID="ssm2" style="visibility:hidden;Position : Absolute ;Left : 0px ;Top : '+YOffset+'px ;Z-Index : 20;width:1px" onmouseover="moveOut()" onmouseout="moveBack()">')}
+if (NS) {document.write('<LAYER visibility="hide" top="'+YOffset+'" name="ssm2" bgcolor="'+menuBGColor+'" left="0" onmouseover="moveOut()" onmouseout="moveBack()">')}
+tempBar=""
+for (i=0;i<barText.length;i++) {
+tempBar+=barText.substring(i, i+1)+"<BR>"}
+document.write('<table border="0" cellpadding="0" cellspacing="1" width="'+(menuWidth+16+2)+'" bgcolor="'+menuBGColor+'"><tr><td bgcolor="'+hdrBGColor+'" WIDTH="'+menuWidth+'">&nbsp;<font face="'+hdrFontFamily+'" Size="'+hdrFontSize+'" COLOR="'+hdrFontColor+'"><b>'+menuHeader+'</b></font></td><td align="center" rowspan="100" width="16" bgcolor="'+barBGColor+'"><p align="center"><font face="'+barFontFamily+'" Size="'+barFontSize+'" COLOR="'+barFontColor+'"><B>'+tempBar+'</B></font></p></TD></tr>')
+function addItem(text, link, target) {
+if (!target) {target=linkTarget}
+document.write('<TR><TD BGCOLOR="'+linkBGColor+'" onmouseover="bgColor=\''+linkOverBGColor+'\'" onmouseout="bgColor=\''+linkBGColor+'\'"><ILAYER><LAYER onmouseover="bgColor=\''+linkOverBGColor+'\'" onmouseout="bgColor=\''+linkBGColor+'\'" WIDTH="100%"><FONT face="'+linkFontFamily+'" Size="'+linkFontSize+'">&nbsp;<A HREF="'+link+'" target="'+target+'" CLASS="ssm2Items">'+text+'</LAYER></ILAYER></TD></TR>')}
+function addHdr(text) {
+document.write('<tr><td bgcolor="'+hdrBGColor+'" WIDTH="140">&nbsp;<font face="'+hdrFontFamily+'" Size="'+hdrFontSize+'" COLOR="'+hdrFontColor+'"><b>'+text+'</b></font></td></tr>')}
+
+//Only edit the script between HERE
+
+addItem('Buscador de Rutinas', 'http://server2046.virtualave.net/gamarod/buscar.htm', '');
+addItem('Foros de Discusión', 'http://www.melodysoft.com/foros/gamarodjs', '');
+addItem('Lista de Correo', 'http://server2046.virtualave.net/gamarod/lista.htm', '');
+addItem('Comentarios', 'http://server2046.virtualave.net/gamarod/comentarios.htm', '');
+addItem('Contribución', 'http://server2046.virtualave.net/gamarod/contribuir.htm', '');
+addItem('Firmar el Libro', 'http://server2046.virtualave.net/gamarod/firmar.htm', '');
+addItem('Enlaces', 'http://server2046.virtualave.net/gamarod/enlaces.htm', '');
+addItem('Agregar URL', 'http://server2046.virtualave.net/gamarod/agregar.htm', '');
+addHdr('Todos los Script');
+addItem('Alertas', 'http://server2046.virtualave.net/gamarod/rutinas/alertas.htm', '');
+addItem('Banner', 'http://server2046.virtualave.net/gamarod/rutinas/banner.htm', '');
+addItem('Cookies', 'http://server2046.virtualave.net/gamarod/rutinas/cookies.htm', '');
+addItem('Dhtml', 'http://server2046.virtualave.net/gamarod/rutinas/dhtml.htm', '');
+addItem('Enlaces', 'http://server2046.virtualave.net/gamarod/rutinas/enlaces.htm', '');
+addItem('Fecha', 'http://server2046.virtualave.net/gamarod/rutinas/fecha.htm', '');
+addItem('Imagen', 'http://server2046.virtualave.net/gamarod/rutinas/imagen.htm', '');
+addItem('Juegos', 'http://server2046.virtualave.net/gamarod/rutinas/juegos.htm', '');
+addItem('Midis', 'http://server2046.virtualave.net/gamarod/rutinas/midis.htm', '');
+addItem('Otras', 'http://server2046.virtualave.net/gamarod/rutinas/otras.htm', '');
+addItem('Prompt', 'http://server2046.virtualave.net/gamarod/rutinas/prompt.htm', '');
+addItem('Reloj', 'http://server2046.virtualave.net/gamarod/rutinas/reloj.htm', '');
+addItem('Seguridad', 'http://server2046.virtualave.net/gamarod/rutinas/seguridad.htm', '');
+addItem('Texto', 'http://server2046.virtualave.net/gamarod/rutinas/texto.htm', '');
+addItem('Ventana', 'http://server2046.virtualave.net/gamarod/rutinas/ventana.htm', '');
+
+// and HERE! No more!
+
+document.write('<tr><td bgcolor="'+hdrBGColor+'"><font size="0" face="Arial">&nbsp;</font></td></TR></table>')
+if (IE) {document.write('</DIV>')}
+if (NS) {document.write('</LAYER>')}
+if ((IE||NS) && (menuIsStatic=="yes"&&staticMode)) {makeStatic(staticMode);}
+</script>
+
+</BODY>
+</HTML>

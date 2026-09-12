@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
  * más. Como el montaje depende de matchMedia, no se renderiza en SSR — no
  * importa, no hay nada que indexar acá.
  */
-export default function CoverBackdrop({ covers, activeIndex }) {
+export default function CoverBackdrop({ covers, activeIndex, getSrc = (t) => t.cover }) {
   const [enabled, setEnabled] = useState(false);
   const [ready, setReady] = useState(false);
 
@@ -35,7 +35,7 @@ export default function CoverBackdrop({ covers, activeIndex }) {
           }
         >
           <Image
-            src={track.cover}
+            src={getSrc(track)}
             alt=""
             fill
             quality={35}

@@ -9,7 +9,7 @@ export const SITE_URL = "https://www.hijosdelsol.com.ar";
  * request, todas las URLs figuran modificadas todos los dias y Google termina
  * ignorando el lastmod del sitio entero.
  */
-export const CONTENT_LAST_MODIFIED = "2026-08-22";
+export const CONTENT_LAST_MODIFIED = "2026-09-12";
 
 /**
  * `/history` tiene su propia fecha: se reescribió entera el 2026-08-30 y el

@@ -48,12 +48,8 @@ export const COPY = {
       eyebrow: "03 — Letras",
       titleLine1: "El cuaderno",
       titleLine2: "de letras",
-      blurb:
-        "Cada tema tiene su página: la letra completa y el marco para escucharlo. Al lado, el documento original de 1998 — crudo, tal cual se tipeó.",
-      openDocument: "Abrí el documento completo →",
+      blurb: "Cada tema tiene su página: la letra completa y el marco para escucharlo.",
       seeTracklist: "Mirá la lista de temas →",
-      archiveCaption: "Archivo original · 1998",
-      archiveAlt: "Hoja de letras original, 1998",
       readLyrics: "Leé la letra →",
       readLyricsAria: (title) => `Leé la letra de ${title}`,
     },
@@ -71,6 +67,37 @@ export const COPY = {
       blurb:
         "Temas, ensayos y material de época. Suscribite y activá la campanita — todo lo que aparece del baúl va ahí primero.",
       cta: "Ir al canal",
+    },
+    retro: {
+      eyebrow: "Cápsula del tiempo",
+      titleLine1: "Las páginas",
+      titleLine2: "de antes",
+      intro:
+        "Antes de este sitio hubo otros: frames, contadores de visitas y una resolución ideal de 800×600. Los dejamos intactos, tal como los subimos.",
+      closeAria: "Cerrar la ventana retro",
+      resolutionNote: "Se ve mejor en 800×600.",
+      sites: [
+        {
+          year: "1999",
+          title: "La página de 1999",
+          blurb:
+            "La primera versión del sitio: optimizada para Netscape Navigator, todavía en pie de guerra con Internet Explorer.",
+          cta: "Abrir la página de 1999",
+          ctaAria: "Abrir la página de HIJOS DEL SOL de 1999 en una ventana",
+          windowTitle: "hijosdelsol.com.ar - Netscape Navigator",
+          src: "/retro90/home.htm",
+        },
+        {
+          year: "2002",
+          title: "La página de 2002",
+          blurb:
+            "La segunda versión: Internet Explorer ya había ganado la guerra de los navegadores, y acá se nota.",
+          cta: "Abrir la página de 2002",
+          ctaAria: "Abrir la página de HIJOS DEL SOL de 2002 en una ventana",
+          windowTitle: "hijosdelsol.com.ar - Microsoft Internet Explorer",
+          src: "/retro/home33.htm",
+        },
+      ],
     },
     footer: {
       contact: "Contacto",
@@ -153,12 +180,8 @@ export const COPY = {
       eyebrow: "03 — Lyrics",
       titleLine1: "The lyrics",
       titleLine2: "notebook",
-      blurb:
-        "Every track has its own page: the full lyrics and the frame to play it. Next to it, the original 1998 document — raw, exactly as it was typed.",
-      openDocument: "Open the full document →",
+      blurb: "Every track has its own page: the full lyrics and the frame to play it.",
       seeTracklist: "See the tracklist →",
-      archiveCaption: "Original archive · 1998",
-      archiveAlt: "Original lyrics page, 1998",
       readLyrics: "Read the lyrics →",
       readLyricsAria: (title) => `Read the lyrics of ${title}`,
     },
@@ -176,6 +199,37 @@ export const COPY = {
       blurb:
         "Tracks, rehearsals and period material. Subscribe and hit the bell — everything that turns up from the vault goes there first.",
       cta: "Go to the channel",
+    },
+    retro: {
+      eyebrow: "Time capsule",
+      titleLine1: "The old",
+      titleLine2: "websites",
+      intro:
+        "Before this site there were others: frames, hit counters and an ideal resolution of 800×600. We left them untouched, exactly as we uploaded them.",
+      closeAria: "Close the retro window",
+      resolutionNote: "Best viewed at 800×600.",
+      sites: [
+        {
+          year: "1999",
+          title: "The 1999 website",
+          blurb:
+            "The site's first version: built for Netscape Navigator, still slugging it out with Internet Explorer.",
+          cta: "Open the 1999 website",
+          ctaAria: "Open the 1999 HIJOS DEL SOL website in a window",
+          windowTitle: "hijosdelsol.com.ar - Netscape Navigator",
+          src: "/retro90/home.htm",
+        },
+        {
+          year: "2002",
+          title: "The 2002 website",
+          blurb:
+            "The second version: by then Internet Explorer had won the browser wars, and it shows.",
+          cta: "Open the 2002 website",
+          ctaAria: "Open the 2002 HIJOS DEL SOL website in a window",
+          windowTitle: "hijosdelsol.com.ar - Microsoft Internet Explorer",
+          src: "/retro/home33.htm",
+        },
+      ],
     },
     footer: {
       contact: "Contact",

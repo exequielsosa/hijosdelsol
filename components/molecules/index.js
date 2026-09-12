@@ -4,3 +4,4 @@ export { default as CoverBackdrop } from "./CoverBackdrop";
 export { default as SiteFooter } from "./SiteFooter";
 export { default as YoutubeFrame } from "./YoutubeFrame";
 export { default as ArtworkModal } from "./ArtworkModal";
+export { default as RetroWindow } from "./RetroWindow";

@@ -7,6 +7,7 @@ import Record from "../../organisms/Record";
 import LyricsNotebook from "../../organisms/LyricsNotebook";
 import VideoSection from "../../organisms/VideoSection";
 import Channel from "../../organisms/Channel";
+import Retro from "../../organisms/Retro";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
 export const Home = () => {
@@ -23,6 +24,7 @@ export const Home = () => {
         <LyricsNotebook />
         <VideoSection />
         <Channel />
+        <Retro />
       </main>
       <SiteFooter />
     </div>

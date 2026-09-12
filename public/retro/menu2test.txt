@@ -1,0 +1,504 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<meta name="WebMaster" content="Leandro" />
+
+<meta name="resource-type" content="document" />
+<meta name="classification" content="Recreational" />
+<meta name="description" content="En ReflexionesOnLine encontraras historias, reflexiones, pensamientos y otros textos para pasar un rato agradable..." />
+<meta name="MSSmartTagsPreventParsing" content="TRUE" />
+<meta name="keywords" content="reflex, reflexion, textos, pensamientos, historias, poemas, txt, online, reflexiones, moraleja, moralejas" />
+<meta name="robots" content="ALL" />
+<meta name="distribution" content="Global" />
+<meta name="rating" content="Safe For Kids" />
+<meta name="copyright" content="2002 ReflexionesOnLine.com.ar" />
+<meta name="author" content="Leandro Montedoro" />
+<meta http-equiv="reply-to" content="leandro@reflexionesonline.com.ar" />
+<meta name="language" content="Spanish" />
+<meta name="doc-class" content="Completed" />
+
+<title>ReflexionesOnLine.com.ar</title>
+
+<link   type="text/css"        rel="stylesheet"      href="css/common.css" />
+<script type="text/javascript" language="JavaScript" src="scripts/common.js"></script>
+<script type="text/javascript" language="JavaScript" src="scripts/search.js"></script>
+
+</head>
+
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%" summary="">
+
+
+<!-- I: Celda con Logo -->
+<tr>
+ <td colspan="3" width="1030" height="81" valign="top" align="left">
+  <img border="0" src="img/logo03.jpg" alt="ReflexionesOnLine.com.ar" width="500" height="100" />
+  <hr />
+ </td>
+</tr>
+<!-- F: Celda con Logo -->
+
+
+<!-- I: Celda con Form buscar y menus -->
+<tr>
+ <td class="menutop" colspan="3" height="27" align="right" width="1030">
+
+  <form name="search" onsubmit="return findInPage(this.string.value);" action="">
+
+  <a class="menutop" href="index.html" target="_self"
+           onmouseover="moveover('Volver a la página de inicio');return true;">
+     <img border="0" src="img/icohome.gif" alt="Home" width="20" height="20" />
+     Home&nbsp;
+  </a>
+
+  <a class="menutop" href="mailto:inforeflex@reflexionesonline.com.ar"  
+          onmouseover="moveover('Enviar Mail');return true;">
+     <img border="0" src="img/icomail.gif" alt="Mail" width="20" height="20" />
+  Enviar Mail&nbsp;
+  </a>
+  
+  <img border="0" src="img/icobusca.gif" alt="Buscar" width="20" height="20" />
+  Buscar&nbsp;
+
+  <input class="boton" name="string" type="text" size="21" onchange="n = 0;"
+         onmouseover="moveover('Ingrese el texto a buscar');return true;" />
+
+  <input class="boton" type="submit" name="ok" value="Ok"  onmouseover="moveover('Buscar');return true;" />
+  &nbsp;&nbsp;
+  <hr />
+  </form>
+
+</td>
+</tr>
+<!-- F: Celda con Form buscar y menus -->
+
+<!-- I: Celda con la tabla del Menu de la izquierda -->
+<tr>
+<td width="121" height="490" valign="top" align="left">
+      
+<!-- -I: Tabla con Menu de la izquierda -->
+<table class="tablegris" cellspacing="0" cellpadding="0" width="121" summary="">
+
+<tr>
+<td class="bordeosc" width="21"  valign="top" align="left"></td>
+<td class="bordeosc" width="131" valign="top" align="left"></td>
+<td class="bordeosc" width="1"   valign="top" align="left" rowspan="28"><img height="1" width="1" src="" alt="" /></td>
+</tr>
+
+<tr>
+<td width="21"  bgcolor="#C0C0C0">&nbsp;</td>
+<td width="131" bgcolor="#C0C0C0"><b>REFLEXIONES</b></td>
+</tr>
+
+<tr>
+<td class="bordeosc" width="21" ></td>
+<td class="bordeosc" width="131"></td>
+</tr>
+
+<tr>
+<td width="21" rowspan="17">&nbsp;</td>
+<td width="131"><a class="left" href="nuevas.html"  
+    onmouseover="moveover('Ultimas Reflexiones');return true;">Nuevas</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131"><a class="left" href="recomendadas.html"  
+    onmouseover="moveover('Reflexiones Recomendadas');return true;">Recomendadas</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131"><a class="left" href="amistad.html"  
+    onmouseover="moveover('Amistad');return true;">Amistad</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131"><a class="left" href="amor.html" 
+    onmouseover="moveover('Amor');return true;">Amor</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131"><a class="left" href="esperanza.html" 
+    onmouseover="moveover('Esperanza');return true;">Esperanza</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131"><a class="left" href="felicidad.html" 
+    onmouseover="moveover('Felicidad');return true;">Felicidad</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131"><a class="left" href="tu.html" 
+    onmouseover="moveover('Tu');return true;">Tu</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131"><a class="left" href="vivir.html" 
+    onmouseover="moveover('Vivir');return true;">Vivir</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131">
+  <a class="left" href="mailto:reflexion@reflexionesonline.com.ar"
+     onmouseover="moveover('Enviar Mail');return true;">
+    Enviar Reflexi&#243;n
+  </a>
+</td>
+</tr>
+
+<tr>
+<td class="bordeosc" width="21" ></td>
+<td class="bordeosc" width="131"></td>
+</tr>
+
+<tr>
+<td width="21" bgcolor="#C0C0C0">&nbsp;</td>
+<td width="131" bgcolor="#C0C0C0"><b>NOSOTROS</b></td>
+</tr>
+
+<tr>
+<td class="bordeosc" width="21" ></td>
+<td class="bordeosc" width="131"></td>
+</tr>
+<tr>
+<td width="21" rowspan="3">&nbsp;</td>
+<td width="131"><a class="left" href="mailto:inforeflex@reflexionesonline.com.ar"  
+    onmouseover="moveover('Enviar Mail');return true;">Cont&#225;ctenos</a></td>
+</tr>
+
+<tr><td class="bordeclaro" width="131"></td></tr>
+
+<tr>
+<td width="131"><a class="left" href="http://www.reflexionline.com.ar/cgi-bin/axs/ax-admin.pl" target="_blank" 
+    onmouseover="moveover('Ver estadísticas del sitio');return true;">Estad&#237;sticas</a></td>
+</tr>
+
+<tr>
+<td class="bordeosc" width="21" ></td>
+<td class="bordeosc" width="131"></td>
+</tr>
+</table>
+<!-- -F: Tabla con Menu de la izquierda -->
+
+  <!-- Por los chicos -->
+  <p align="center">
+    <a href="http://reflexionline.com.ar/cgi-bin/axs/ax.pl?http://www.porloschicos.com" target="_blank">
+     <img src="imgcamp/chicos.gif" alt="Por los chicos: dona comida gratis" height="60" width="120" border="0" />
+    </a>
+  </p>
+  <!-- Por los chicos -->
+
+  <!-- Logo W3C -->
+  <p align="center">
+    <a href="http://validator.w3.org/check/referer" target="_blank">
+     <img src="imgcamp/w3c-xhtml.gif" alt="Valid XHTML 1.0!" height="31" width="88" border="0" />
+    </a>
+  </p>
+
+  <p align="center">
+    <a href="http://jigsaw.w3.org/css-validator/validator?uri=http://www.reflexionesonline.web1000.com/index.html" target="_blank">
+     <img style="border:0;width:88px;height:31px" 
+          src="imgcamp/w3c-css.gif" alt="Valid CSS!" />
+    </a>
+  </p>
+  <!-- Logo W3C -->
+
+  <img src="http://www.reflexionline.com.ar/cgi-bin/axs/ax.pl?trans.gif" 
+            alt="" height="1" width="1" />
+
+
+</td>
+<!-- F: Celda con la tabla del Menu de la izquierda -->
+
+<td width="795" height="490" valign="top">
+      
+<!-- I: Cuerpo -->
+<table align="left" width="100%" cellspacing="0" cellpadding="0" summary="">
+
+<tr>
+ <td width="45" height="25"></td>
+
+ <!-- Tabla con el cuerpo - Inicio -->
+ <td width="796" height="25">
+
+ <table width="100%" cellspacing="0" cellpadding="0" summary="">
+
+ <tr>
+  <td width="45"  height="40">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  <td width="796" height="40">
+
+   <p>
+   Bienvenido a <b> Reflexiones <i>OnLine</i></b>, 
+   en este sitio encontrar&#225; textos en su mayor&#237;a para reflexionar, 
+   pensar y pasar un rato agradable.
+   </p>
+  </td>
+ </tr>
+
+ <tr>
+  <td width="45"  height="13"></td>
+  <td width="796" height="13"></td>
+ </tr>
+
+ <tr>
+  <td width="45" height="13"></td>
+  <td width="796" height="13">
+   <hr />
+  </td>
+ </tr>
+
+ <tr>
+ <td width="45" height="16"></td>
+ <td width="796" height="16">
+    <!-- I:Tabla con NOTICIAS -->
+    <table border="0" width="518" cellspacing="0" cellpadding="0">
+ 
+    <tr>
+      <td width="425" height="21" colspan="2">
+        <font size="2" color="#808080"><b>NOVEDADES</b></font>
+      </td>
+    </tr>
+ 
+    <tr>
+      <td width="55" height="63" rowspan="3">
+        <img border="0" src="img/clip.gif" alt="" width="40" height="40" />
+      </td>
+ 
+      <td width="370" height="21">15/05/2002&nbsp;&nbsp;&nbsp;Inauguramos el sitio oficialmente.</td>
+    </tr>
+ 
+    <tr>
+      <td width="425" height="21"></td>
+    </tr>
+ 
+    <tr>
+      <td width="425" height="21"></td>
+    </tr>
+ 
+    <tr>
+      <td width="55"  height="21"></td>
+      <td width="370" height="21"></td>
+    </tr>
+    </table>
+    <!-- F:Tabla con NOTICIAS -->
+ </td>
+ </tr>
+
+ <tr>
+  <td width="45" height="13"></td>
+  <td width="796" height="13">
+   <hr />
+  </td>
+ </tr>
+
+ <tr>
+  <td width="45"  height="13"></td>
+  <td width="796" height="13"></td>
+ </tr>
+
+ <tr>
+  <td width="45" height="104"></td>
+  <td width="796" height="104">
+   <p>
+   Cabe destacar que los textos aqu&#237; expuestos no han sido 
+   escritos por mi, sin&#243; que es una recopilaci&#243;n de cosas 
+   que me han enviado o le&#237; y me gustaron y las quiero compartir.
+   </p>
+
+   <p>
+   Si ten&#233;s alg&#250;n texto, ya sea escrito por vos o no, y 
+   quer&#233;s que lo agreguemos a la p&#225;gina, lo pod&#233;s 
+   enviar
+   <a href="mailto:envios@reflexionesonline.com.ar">
+    <b>aqu&#237;</b></a>.</p>  
+
+   <p>   
+   Si sos el autor de uno de los expuestos y quer&#233;s que lo saquemos 
+   de la p&#225;gina o se incluya tu nombre junto al mismo, contactate 
+   con nosotros y lo haremos lo antes posible.
+   </p>  
+
+   <!--
+   <p>
+     Los escritos se encuentran catalogados seg&#250;n mi gusto, lo que 
+     no implica que coincida con el de la persona que los est&#225; leyendo 
+     ni con la calidad del mismo. Es simplemente una mera gu&#237;a para 
+     el lector.
+   </p>
+   -->
+  
+   <p>
+     Si te parece que alguno esta mal catalogado... o ten&#233;s cualquier
+     comentario, cr&#237;tica y/o sugerencia para compartir no dudes en
+     hacerlo.
+   </p>
+
+   <p>
+   Espero les guste el sitio y lo disfruten tanto como yo..<a href="todas.html">.</a>
+   </p>
+
+  </td>
+ </tr>
+
+ <tr>
+  <td width="45"  height="20"></td>
+  <td width="796" height="20"></td>
+ </tr>
+
+ <tr>
+  <td width="45" height="13"></td>
+  <td width="796" height="13" align="right">
+   <a href="mailto:leandro@reflexionesonline.com.ar"
+           onmouseover="moveover('Enviar Mail');return true;">
+      Leandro
+   </a>
+   &nbsp;&nbsp;
+  </td>
+ </tr>
+ 
+ <tr>
+  <td width="45"  height="20"></td>
+  <td width="796" height="20"></td>
+ </tr>
+
+ <tr>
+  <td width="45"  height="20"></td>
+  <td width="796" height="20"></td>
+ </tr>
+
+ <tr>
+  <td width="45"  height="20"></td>
+  <td width="796" height="20"></td>
+ </tr>
+
+ 
+ <tr>
+  <td width="45"  height="25"></td>
+  <td width="796" height="25"></td>
+ </tr>
+
+
+ <tr>
+  <td width="45" height="11"></td>
+  <td width="796" height="11">
+    <p align="center">
+
+      <!-- Any Browser 
+      <a href="http://www.anybrowser.org/campaign/" target="_blank">
+         <img src="imgcamp/any01.gif" width="88" height="31" 
+              alt="Viewable With Any Browser" border="0" />
+      </a>
+      Any Browser -->
+
+      <!-- Oro y Plata -->
+       <a href="http://reflexionline.com.ar/cgi-bin/axs/ax.pl?http://www.oroplata.com/votopor.php3?id=12941" 
+          target="_blank">
+          <img src="imgcamp/oroyplata.gif"
+          height="31" width="88" alt="Vota por nuestro sitio" border="0" />
+       </a>
+      <!-- Oro Y Plata -->
+
+      <!-- No Frames campaign -->
+       <a href="http://reflexionline.com.ar/cgi-bin/axs/ax.pl?http://www.webring.org/cgi-bin/webring?ring=noframes;home" 
+          target="_blank">
+          <img src="imgcamp/noframe.gif"
+          height="31" width="88" alt="Frames Free! Ribbon" border="0" />
+       </a>
+      <!-- No Frames campaign -->
+
+      <!-- Notepad -->
+      <a href="http://reflexionline.com.ar/cgi-bin/axs/ax.pl?http://www.jdrn.com/notepad/" target="_blank">
+         <img src="imgcamp/notepadch.gif" alt="Made with Notepad" height="31" width="88" border="0" />
+      </a>
+      <!-- Notepad -->    
+
+      <!-- AXS -->
+      <a href="http://reflexionline.com.ar/cgi-bin/axs/ax.pl?http://www.xav.com/scripts/axs/" target="_blank">
+         <img src="imgcamp/axslogo.gif" height="30" width="90" alt="Tracked by AXS" border="0" />
+      </a>
+      <!-- AXS -->
+
+    </p>
+  </td>
+ </tr>
+
+ 
+ </table>
+
+ </td>
+ <!-- Tabla con el cuerpo - Fin -->
+</tr>
+
+<tr>
+<td width="45" height="25"></td>
+<td width="796" height="25"></td>
+</tr>
+
+</table>
+<!-- I: Cuerpo -->
+</td>
+
+<td valign="bottom" width="110" height="490">
+
+<!-- I: Tabla Barra Derecha -->
+<table cellspacing="0" cellpadding="0" width="100%" summary="">
+<tr>
+ <td height="11">	</td>
+</tr>
+
+<tr>
+<td height="160">	</td>
+</tr>
+
+<tr>
+<td height="24">
+ <p align="right">
+  <a href="#top"><img border="0" src="img/icoarrupbn.gif" alt="Up" width="20" height="20" /></a>
+ </p>
+ </td>
+</tr>
+</table>
+<!-- F: Tabla Barra Derecha -->
+</td>
+</tr>
+
+<tr>
+<td class="tdgris" width="121" height="27"></td>
+
+<td class="tdgris" align="right" colspan="2" width="907" height="27">
+
+<font color="#808080" face="Verdana" size="1">Copyright &#169; 2002 Reflexiones OnLine - Powered by</font>
+<b>
+ <a href="http://mrsoft.com.ar" target="_blank">
+  <font face="Verdana" size="1">MRS</font><font face="Verdana" size="1" color="#FFCC00">o</font><font face="Verdana" size="1">ft.com.ar</font>
+ </a>
+ &nbsp;&nbsp;&nbsp;
+</b>
+</td>
+</tr>
+
+</table>
+
+</body>
+
+</html>

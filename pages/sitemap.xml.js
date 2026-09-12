@@ -43,10 +43,6 @@ const homeImages = `    <image:image>
     <image:image>
       <image:loc>${SITE_URL}/soloTapa.png</image:loc>
       <image:title>HIJOS DEL SOL - Tapa del Demo&apos;98</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>${SITE_URL}/letras-1998.jpg</image:loc>
-      <image:title>HIJOS DEL SOL - Documento original de letras, 1998</image:title>
     </image:image>`;
 
 const historyImages = `    <image:image>

@@ -3,5 +3,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /retro/
+Disallow: /retro90/
 
 Sitemap: https://www.hijosdelsol.com.ar/sitemap.xml

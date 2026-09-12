@@ -857,10 +857,13 @@ a.hds-track:hover {
   overflow: hidden;
 }
 
-.hds-notebook-grid {
-  grid-template-columns: 1fr minmax(280px, 420px);
-  gap: 64px;
-  align-items: center;
+.hds-lyricssec > .hds-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.hds-notebook-intro {
+  max-width: 640px;
 }
 
 .hds-notebook-p {
@@ -869,52 +872,6 @@ a.hds-track:hover {
 
 .hds-notebook-links {
   margin-top: 32px;
-}
-
-.hds-archive {
-  display: block;
-  position: relative;
-  /* El handoff pedía 620px; bajado a 440 para que el marco no domine la
-     sección frente al bloque de texto (decisión del usuario, 2026-08-22). */
-  height: 440px;
-  overflow: hidden;
-  background: var(--card-black);
-  border: 1px solid var(--red-line);
-  transition: border-color 0.2s ease;
-}
-
-.hds-archive:hover {
-  border-color: var(--red);
-}
-
-/* Invierte el escaneo blanco del 98 en rojo sobre negro */
-.hds-archive img {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: invert(1) sepia(0.35) saturate(4) hue-rotate(-24deg) contrast(1.05);
-  opacity: 0.9;
-}
-
-.hds-archive-fade {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(5, 5, 5, 0.05) 0%,
-    rgba(5, 5, 5, 0.15) 55%,
-    rgba(5, 5, 5, 0.98) 100%
-  );
-}
-
-.hds-archive-caption {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  font-size: 11px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--bone);
 }
 
 /* Los gaps de 1px sobre el fondo claro leen como hairlines */
@@ -1823,6 +1780,251 @@ a.hds-track:hover {
   color: var(--ink-black);
 }
 
+/* ---------------------------------------------------------- retro --- */
+
+.hds-retro {
+  position: relative;
+  padding: 130px 24px;
+  background: var(--ink-black);
+  border-top: 1px solid var(--hairline);
+  overflow: hidden;
+}
+
+.hds-retrobg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mismo tratamiento que el resto de los fondos de archivo del sitio:
+   grayscale + sepia, sin blur (con blur se ven como manchas grises). */
+.hds-retrobg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) sepia(0.55) contrast(1.05);
+}
+
+.hds-retrobg-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    var(--ink-black) 0%,
+    rgba(5, 5, 5, 0.6) 20%,
+    rgba(5, 5, 5, 0.6) 80%,
+    var(--ink-black) 100%
+  );
+}
+
+.hds-retro-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 18, 18, 0.14),
+    rgba(5, 5, 5, 0) 68%
+  );
+  pointer-events: none;
+}
+
+.hds-retro-inner {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.hds-retro-h2 {
+  margin: 0;
+  font-size: clamp(40px, 7vw, 92px);
+  line-height: 0.86;
+}
+
+.hds-retro-p {
+  margin: 0;
+  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--gray-1);
+}
+
+.hds-retro-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.hds-retro-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 34px 24px;
+  background: rgba(5, 5, 5, 0.55);
+  border: 1px solid var(--hairline);
+}
+
+/* Ancla el boton al pie de la tarjeta: el grid ya estira ambas tarjetas a
+   la misma altura, pero sin esto el boton queda a la altura del texto,
+   que varia de una tarjeta a otra segun cuantas lineas ocupe el blurb. */
+.hds-retro-card .hds-retro-cta {
+  margin-top: auto;
+}
+
+.hds-retro-card-year {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 0.3em;
+  color: var(--red);
+}
+
+.hds-retro-card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1;
+}
+
+.hds-retro-card-p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--gray-1);
+}
+
+.hds-retro-cta {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: transparent;
+  border: 1px solid var(--red-line);
+  color: var(--bone);
+  padding: 18px 34px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.04em;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hds-retro-cta:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--ink-black);
+}
+
+/* Ventana simulada: chrome propio en negro + rojo, no gris de Windows —
+   la paleta del sitio no admite un tercer color por fidelidad retro. */
+.hds-retrowin {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+  background: rgba(5, 5, 5, 0.93);
+  animation: hds-modal-in 0.25s ease;
+}
+
+/* Ancho/alto NO se limitan al viewport: el tamaño natural (800x600 + chrome)
+   se mide en JS y se reduce entero con transform: scale si no entra en
+   pantalla (celular), en vez de recortarlo con max-width/max-height. */
+.hds-retrowin-frame {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background: var(--ink-black);
+  border: 1px solid var(--red-line);
+  box-shadow: 0 0 60px rgba(255, 18, 18, 0.35);
+  transform-origin: center center;
+}
+
+.hds-retrowin-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  background: var(--card-black);
+  border-bottom: 1px solid var(--red-line);
+}
+
+.hds-retrowin-titletext {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hds-retrowin-buttons {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.hds-retrowin-btn {
+  appearance: none;
+  cursor: pointer;
+  width: 22px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--red-line);
+  color: var(--gray-1);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.hds-retrowin-btn--close:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--ink-black);
+}
+
+.hds-retrowin-viewport {
+  overflow: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.hds-retrowin-iframe {
+  display: block;
+  border: 0;
+}
+
+.hds-retrowin-statusbar {
+  padding: 5px 10px;
+  font-size: 11px;
+  color: var(--gray-3);
+  border-top: 1px solid var(--hairline);
+}
+
 /* -------------------------------------------------------- responsive --- */
 
 /* ---------------------------------------------------- historia (/history) --
@@ -2516,9 +2718,6 @@ a.hds-track:hover {
     position: static;
     top: auto;
   }
-  .hds-archive {
-    height: 360px;
-  }
 }
 
 @media (max-width: 700px) {
@@ -2615,6 +2814,12 @@ a.hds-track:hover {
 }
 
 /* ------------------------------------------------- prefers-reduced-motion */
+
+@media (max-width: 700px) {
+  .hds-retro-grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .hds-grain,
