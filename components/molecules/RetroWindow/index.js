@@ -102,6 +102,7 @@ export default function RetroWindow({ site, onClose }) {
           </div>
           <div className="hds-retrowin-viewport">
             <iframe
+              name="hds-retrowin-viewport"
               src={site.src}
               title={site.windowTitle}
               width={800}

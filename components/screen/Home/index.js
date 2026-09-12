@@ -2,6 +2,7 @@ import GrainOverlay from "../../atoms/GrainOverlay";
 import SiteHeader from "../../molecules/SiteHeader";
 import Marquee from "../../molecules/Marquee";
 import SiteFooter from "../../molecules/SiteFooter";
+import BackToTop from "../../molecules/BackToTop";
 import Hero from "../../organisms/Hero";
 import Record from "../../organisms/Record";
 import LyricsNotebook from "../../organisms/LyricsNotebook";
@@ -27,6 +28,7 @@ export const Home = () => {
         <Retro />
       </main>
       <SiteFooter />
+      <BackToTop />
     </div>
   );
 };

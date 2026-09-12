@@ -1,6 +1,7 @@
 import GrainOverlay from "../../atoms/GrainOverlay";
 import SiteHeader from "../../molecules/SiteHeader";
 import SiteFooter from "../../molecules/SiteFooter";
+import BackToTop from "../../molecules/BackToTop";
 import TrackPage from "../../organisms/TrackPage";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
@@ -19,6 +20,7 @@ export const Track = ({ track }) => {
         <TrackPage key={track.slug} track={track} />
       </main>
       <SiteFooter />
+      <BackToTop />
     </div>
   );
 };

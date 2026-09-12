@@ -1,4 +1,5 @@
 export { default as SiteHeader } from "./SiteHeader";
+export { default as BackToTop } from "./BackToTop";
 export { default as Marquee } from "./Marquee";
 export { default as CoverBackdrop } from "./CoverBackdrop";
 export { default as SiteFooter } from "./SiteFooter";

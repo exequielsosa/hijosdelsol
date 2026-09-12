@@ -2823,6 +2823,67 @@ a.hds-track:hover {
   }
 }
 
+/* ---------------------------------------------------------- volver arriba */
+
+.hds-totop {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 65;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--red);
+  background: var(--ink-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease, background 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.hds-totop[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  box-shadow: 0 0 22px rgba(255, 18, 18, 0.22);
+}
+
+.hds-totop:hover,
+.hds-totop:focus-visible {
+  background: var(--red);
+  box-shadow: 0 0 32px rgba(255, 18, 18, 0.5);
+}
+
+.hds-totop-arrow {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-style: solid;
+  border-color: var(--red);
+  border-width: 0 3px 3px 0;
+  transform: rotate(-135deg);
+  transition: border-color 0.2s ease;
+}
+
+.hds-totop:hover .hds-totop-arrow,
+.hds-totop:focus-visible .hds-totop-arrow {
+  border-color: var(--ink-black);
+}
+
+@media (max-width: 700px) {
+  .hds-totop {
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
 /* ------------------------------------------------- prefers-reduced-motion */
 
 @media (max-width: 700px) {

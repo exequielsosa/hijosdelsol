@@ -105,6 +105,9 @@ export const COPY = {
       onNetwork: (network) => `HIJOS DEL SOL en ${network}`,
       copyright: "© 1993–2026 Hijos del Sol",
     },
+    backToTop: {
+      aria: "Volver arriba",
+    },
     track: {
       back: "← Volver al disco",
       langEN: "Letra en inglés",
@@ -236,6 +239,9 @@ export const COPY = {
       contactAria: "Email HIJOS DEL SOL",
       onNetwork: (network) => `HIJOS DEL SOL on ${network}`,
       copyright: "© 1993–2026 Hijos del Sol",
+    },
+    backToTop: {
+      aria: "Back to top",
     },
     track: {
       back: "← Back to the record",

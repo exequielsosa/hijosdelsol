@@ -1,6 +1,7 @@
 import GrainOverlay from "../../atoms/GrainOverlay";
 import SiteHeader from "../../molecules/SiteHeader";
 import SiteFooter from "../../molecules/SiteFooter";
+import BackToTop from "../../molecules/BackToTop";
 import HistoryPage from "../../organisms/HistoryPage";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
@@ -16,6 +17,7 @@ export const History = () => {
         <HistoryPage />
       </main>
       <SiteFooter />
+      <BackToTop />
     </div>
   );
 };
