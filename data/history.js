@@ -3,11 +3,12 @@
  * contenido que desambigua la marca frente a los otros "hijos del sol".
  *
  * Desde el rediseño de la sección (2026-08-30) no es una lista de párrafos
- * sino cuatro movimientos, que el componente monta como bloques distintos:
+ * sino varios movimientos, que el componente monta como bloques distintos:
  *
- *   opening → la banda y de dónde salió   (texto + ilustración grupal)
- *   demo    → el Demo '98                  (ficha de archivo)
- *   closing → el paso del tiempo           (aire creciente + remate)
+ *   opening  → la banda y de dónde salió   (texto + ilustración grupal)
+ *   disaster → el primer intento fallido   (texto + video, 2026-09-14)
+ *   demo     → el Demo '98                  (ficha de archivo)
+ *   closing  → el paso del tiempo           (aire creciente + remate)
  *
  * Los títulos vienen partidos en líneas porque el display los quiebra a mano:
  * dejarlos al azar del ancho rompía la composición.
@@ -26,6 +27,17 @@ export const HISTORY = {
     caption: "Buenos Aires · Principios de los 90",
     band: {
       line: "Tres amigos, demasiadas canciones y muchísima menos plata de la que costaba la sala.",
+    },
+    disaster: {
+      title: "El primer desastre",
+      lead: "Antes de Demo ’98 hubo un primer intento. Y salió mal.",
+      body: [
+        "Grabamos una primera versión de **“Love Comes Tonight”** en estudio cuando todavía no teníamos demasiada idea de cómo funcionaba todo eso.",
+        "Las guitarras casi no se escuchan, las voces quedaron absurdamente fuertes y la voz principal con los coros se grabaron juntos, en la misma pista y en una sola toma.",
+        "El resultado fue, siendo generosos, bastante desastroso.",
+        "La cinta sobrevivió durante décadas, apareció de nuevo y la digitalizamos. Hoy la subimos a YouTube no porque suene bien, sino porque también forma parte de la historia.",
+        "Algunas grabaciones se remasterizan. Otras se conservan como prueba.",
+      ],
     },
     demo: {
       intro:
@@ -50,6 +62,17 @@ export const HISTORY = {
     caption: "Buenos Aires · Early 1990s",
     band: {
       line: "Three friends, too many songs and nowhere near enough rehearsal-room money.",
+    },
+    disaster: {
+      title: "The first disaster",
+      lead: "Before Demo ’98, there was a first attempt. It went badly.",
+      body: [
+        "We recorded an early studio version of **“Love Comes Tonight”** back when we didn’t really know how any of this worked yet.",
+        "The guitars are almost inaudible, the vocals came out absurdly loud, and the lead vocal and backing vocals were recorded together, on the same track, in a single take.",
+        "The result was, to put it kindly, pretty disastrous.",
+        "The tape survived for decades, turned up again, and we digitized it. We’re putting it on YouTube now not because it sounds good, but because it’s part of the story too.",
+        "Some recordings get remastered. Others get kept as evidence.",
+      ],
     },
     demo: {
       intro:

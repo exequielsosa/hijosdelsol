@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import YoutubeFrame from "../../molecules/YoutubeFrame";
 import useCopy from "@/hooks/useCopy";
 import { getHistory } from "@/data/history";
 import { getLineup } from "@/data/lineup";
+import { DISASTER_VIDEO_ID } from "@/data/site";
 
 /**
  * Convierte `**texto**` en <strong>. Tres usos en todo el sitio no justifican
@@ -122,7 +124,66 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------- 3. el demo del 98 */}
+      {/* ------------------------------------------ 3. el primer desastre */}
+      <section className="hds-history-disaster">
+        {/* Mismo tratamiento que el fondo del demo: pared propia, de punta
+            a punta, con mascara arriba y abajo para fundirse con lo que
+            viene antes y despues. */}
+        <div className="hds-history-disaster-bg" aria-hidden="true">
+          <Image
+            src="/backLOVEESTAFA.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            quality={55}
+          />
+          <div className="hds-history-disaster-veil" />
+        </div>
+
+        <div className="hds-shell hds-history-disaster-inner">
+          <h2 className="hds-history-disaster-title" data-reveal>
+            {history.disaster.title}
+          </h2>
+          <p className="hds-history-disaster-lead" data-reveal>
+            {history.disaster.lead}
+          </p>
+
+          {history.disaster.body.map((text, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <p key={i} className="hds-history-disaster-body" data-reveal>
+              {renderEmphasis(text)}
+            </p>
+          ))}
+
+          <div className="hds-history-disaster-video" data-reveal>
+            <YoutubeFrame
+              videoId={DISASTER_VIDEO_ID}
+              title={copy.history.disasterVideoTitle("Love Comes Tonight")}
+              playAria={copy.video.playAria(
+                copy.history.disasterVideoTitle("Love Comes Tonight")
+              )}
+              frameClassName="hds-history-disaster-frame"
+              embedClassName="hds-embed"
+            >
+              <Image
+                src="/LOVEESTAFA.jpg"
+                alt={copy.history.disasterAlt}
+                fill
+                sizes="(max-width: 900px) 100vw, 760px"
+              />
+              <span className="hds-listen-scrim" aria-hidden="true" />
+              <span className="hds-play hds-play--sm" aria-hidden="true">
+                <i />
+              </span>
+              <span className="hds-listen-label">
+                {copy.video.watchOnYoutube}
+              </span>
+            </YoutubeFrame>
+          </div>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------- 4. el demo del 98 */}
       <section className="hds-history-demo">
         {/* Fondo propio del bloque, de punta a punta. Se funde arriba y
             abajo con una mascara: no hay corte con lo que viene antes
@@ -168,7 +229,7 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------ 4. el cierre */}
+      {/* ------------------------------------------------------ 5. el cierre */}
       <section className="hds-history-end">
         {/* El halo crece detrás del remate y engancha con la sección del disco */}
         <div className="hds-history-end-glow" aria-hidden="true" />

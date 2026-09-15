@@ -16,13 +16,18 @@ export const CONTENT_LAST_MODIFIED = "2026-09-12";
  * resto del contenido no se tocó. Marcar todas las URLs como modificadas
  * cuando cambió una sola es la forma de que el lastmod deje de valer.
  */
-export const HISTORY_LAST_MODIFIED = "2026-08-30";
+export const HISTORY_LAST_MODIFIED = "2026-09-14";
 
 export const YOUTUBE_URL = "https://www.youtube.com/@hijosdelsolband";
 export const VIDEO_ID = "FGoVHU16uAk";
 /** Tema al que corresponde VIDEO_ID. Es el <h2> de la seccion "El video":
     si cambia el id, cambiar tambien esto o el titulo deja de coincidir. */
 export const VIDEO_TRACK_TITLE = "Loves Comes Tonight";
+
+/** Primera version, fallida, de "Love Comes Tonight" grabada antes del
+    Demo '98. Se muestra en /history como parte de la historia, no como
+    material oficial: no tiene nada que ver con VIDEO_ID de arriba. */
+export const DISASTER_VIDEO_ID = "bEjUqCy2iWY";
 
 /** Fecha en que se subieron los 12 videos a YouTube (todos el mismo dia).
     Es campo obligatorio del VideoObject de schema.org. */
