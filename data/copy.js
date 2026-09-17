@@ -17,6 +17,7 @@ export const COPY = {
     nav: {
       record: "El disco",
       lyrics: "Letras",
+      ensayos: "Ensayos",
       video: "Video",
       channel: "Canal",
       history: "Historia",
@@ -142,6 +143,31 @@ export const COPY = {
       metaDescription:
         "Cómo nació Hijos del Sol en Buenos Aires a comienzos de los 90: Exequiel Sosa, Rodrigo Vieiro y Gonzalo Martinez, y el camino hasta el Demo '98.",
     },
+    ensayos: {
+      title: "Ensayos",
+      intro: [
+        "No todo terminó en un demo.",
+        "Durante años quedaron cintas, grabaciones de sala, pruebas, errores y canciones en proceso. Algunas suenan mejor que otras. Todas cuentan algo.",
+        "Temas en construcción, ruido, repeticiones y momentos que sobrevivieron al tiempo. No están producidos ni corregidos. Son exactamente eso: ensayos.",
+      ],
+      backHome: "← Volver al inicio",
+      tapeTitle: "Un ensayo más — 1998",
+      tapeBody: [
+        "Una cinta de sala rescatada casi tres décadas después.",
+        "Ruido, repeticiones, temas que todavía estaban cambiando y una banda tocando sin pensar demasiado en que alguien iba a escuchar esto en 2026.",
+      ],
+      readLyrics: "Leé la letra →",
+      readLyricsAria: (title) => `Leé la letra de ${title}`,
+      back: "← Volver a Ensayos",
+      chip: "Ensayo",
+      seeAll: "Ver todos los ensayos →",
+      coverAlt: (title) => `${title} — arte de Un ensayo más (1998)`,
+      trackDescription: (title) =>
+        `${title}, de "Un ensayo más": una cinta de sala de HIJOS DEL SOL grabada en 1998. Letra completa y video.`,
+      metaTitle: "Ensayos — Un ensayo más (1998) | HIJOS DEL SOL",
+      metaDescription:
+        "Cintas de sala de HIJOS DEL SOL rescatadas casi treinta años después: temas sin producir, en construcción, grabados en 1998.",
+    },
     notFound: {
       title: "Perdido en las llamas",
       blurb: "La página que buscás no existe.",
@@ -156,6 +182,7 @@ export const COPY = {
     nav: {
       record: "The record",
       lyrics: "Lyrics",
+      ensayos: "Rehearsals",
       video: "Video",
       channel: "Channel",
       history: "History",
@@ -279,6 +306,31 @@ export const COPY = {
       metaTitle: "The story of Hijos del Sol — 90s Argentine metal band",
       metaDescription:
         "How Hijos del Sol started in Buenos Aires in the early 90s: Exequiel Sosa, Rodrigo Vieiro and Gonzalo Martinez, and the road to Demo '98.",
+    },
+    ensayos: {
+      title: "Rehearsals",
+      intro: [
+        "Not everything ended up on a demo.",
+        "For years there were leftover tapes: rehearsal room recordings, tests, mistakes and songs still taking shape. Some sound better than others. All of them say something.",
+        "Tracks still under construction, noise, repetition and moments that survived the years. They're not produced or corrected. They're exactly that: rehearsals.",
+      ],
+      backHome: "← Back home",
+      tapeTitle: "One More Rehearsal — 1998",
+      tapeBody: [
+        "A rehearsal room tape rescued almost three decades later.",
+        "Noise, repetition, songs that were still changing, and a band playing without giving much thought to someone listening to this in 2026.",
+      ],
+      readLyrics: "Read the lyrics →",
+      readLyricsAria: (title) => `Read the lyrics of ${title}`,
+      back: "← Back to Rehearsals",
+      chip: "Rehearsal",
+      seeAll: "See all rehearsals →",
+      coverAlt: (title) => `${title} — artwork from One More Rehearsal (1998)`,
+      trackDescription: (title) =>
+        `${title}, from "One More Rehearsal": a HIJOS DEL SOL rehearsal room tape recorded in 1998. Full lyrics and video.`,
+      metaTitle: "Rehearsals — One More Rehearsal (1998) | HIJOS DEL SOL",
+      metaDescription:
+        "Rescued rehearsal room tapes from HIJOS DEL SOL, found almost thirty years later: unproduced, in-progress tracks recorded in 1998.",
     },
     notFound: {
       title: "Lost in the flames",

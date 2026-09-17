@@ -6,3 +6,5 @@ export { default as Channel } from "./Channel";
 export { default as Retro } from "./Retro";
 export { default as TrackPage } from "./TrackPage";
 export { default as HistoryPage } from "./HistoryPage";
+export { default as EnsayosPage } from "./EnsayosPage";
+export { default as EnsayoTrackPage } from "./EnsayoTrackPage";

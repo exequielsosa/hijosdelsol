@@ -1,8 +1,10 @@
 import { LYRIC_TRACKS } from "@/data/tracks";
+import { ENSAYOS } from "@/data/ensayos";
 import {
   SITE_URL,
   CONTENT_LAST_MODIFIED,
   HISTORY_LAST_MODIFIED,
+  ENSAYOS_LAST_MODIFIED,
 } from "@/data/site";
 import { localeUrl } from "@/data/seo-copy";
 import { LOCALES } from "@/data/copy";
@@ -59,6 +61,16 @@ const historyImages = `    <image:image>
       <image:title>HIJOS DEL SOL - La primera grabación de &quot;Love Comes Tonight&quot;</image:title>
     </image:image>`;
 
+const ensayosImages = `    <image:image>
+      <image:loc>${SITE_URL}/ensayos/backheaderensatos.jpg</image:loc>
+      <image:title>HIJOS DEL SOL - Sala de ensayo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>${SITE_URL}/ensayos/unensayo.jpg</image:loc>
+      <image:title>HIJOS DEL SOL - Un ensayo más (1998)</image:title>
+      <image:caption>Tapa de la cinta de sala &quot;Un ensayo más&quot; de HIJOS DEL SOL, 1998</image:caption>
+    </image:image>`;
+
 function buildSitemap() {
   const urls = [];
 
@@ -89,6 +101,28 @@ ${alternateLinks(path)}
     <image:image>
       <image:loc>${SITE_URL}${track.cover}</image:loc>
       <image:title>${escape(track.title)} - Demo&apos;98</image:title>
+    </image:image>
+  </url>`);
+    }
+
+    urls.push(`  <url>
+    <loc>${localeUrl(locale, "/ensayos")}</loc>
+    <lastmod>${ENSAYOS_LAST_MODIFIED}</lastmod>
+    <priority>0.7</priority>
+${alternateLinks("/ensayos")}
+${ensayosImages}
+  </url>`);
+
+    for (const track of ENSAYOS) {
+      const path = `/ensayos/${track.slug}`;
+      urls.push(`  <url>
+    <loc>${localeUrl(locale, path)}</loc>
+    <lastmod>${ENSAYOS_LAST_MODIFIED}</lastmod>
+    <priority>0.6</priority>
+${alternateLinks(path)}
+    <image:image>
+      <image:loc>${SITE_URL}${track.cover}</image:loc>
+      <image:title>${escape(track.title)} - Un ensayo más (1998)</image:title>
     </image:image>
   </url>`);
     }

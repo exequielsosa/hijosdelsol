@@ -43,6 +43,8 @@ export default function SiteHeader({ forceDark = false }) {
   const sections = [
     { href: anchor("#disco"), label: copy.nav.record },
     { href: anchor("#letras"), label: copy.nav.lyrics },
+    // Página propia, no un ancla — igual que /history
+    { href: "/ensayos", label: copy.nav.ensayos },
     { href: anchor("#video"), label: copy.nav.video },
     { href: anchor("#canal"), label: copy.nav.channel },
     // Página propia, no un ancla

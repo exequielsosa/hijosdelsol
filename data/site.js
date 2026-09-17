@@ -18,6 +18,12 @@ export const CONTENT_LAST_MODIFIED = "2026-09-12";
  */
 export const HISTORY_LAST_MODIFIED = "2026-09-14";
 
+/**
+ * `/ensayos` tiene su propia fecha, igual que HISTORY_LAST_MODIFIED: se creo
+ * el 2026-09-16 y el resto del contenido no se toco.
+ */
+export const ENSAYOS_LAST_MODIFIED = "2026-09-16";
+
 export const YOUTUBE_URL = "https://www.youtube.com/@hijosdelsolband";
 export const VIDEO_ID = "FGoVHU16uAk";
 /** Tema al que corresponde VIDEO_ID. Es el <h2> de la seccion "El video":

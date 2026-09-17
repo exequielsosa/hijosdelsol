@@ -9,9 +9,10 @@ import useCopy from "@/hooks/useCopy";
  * Cierra con Escape, con el botón o clickeando fuera. Al abrir bloquea el
  * scroll del fondo y al cerrar devuelve el foco a donde estaba.
  */
-export default function ArtworkModal({ track, onClose }) {
+export default function ArtworkModal({ track, onClose, alt }) {
   const { copy } = useCopy();
   const closeRef = useRef(null);
+  const imageAlt = alt ?? copy.track.coverAlt(track.title);
 
   useEffect(() => {
     const previouslyFocused = document.activeElement;
@@ -46,7 +47,7 @@ export default function ArtworkModal({ track, onClose }) {
       >
         <Image
           src={track.cover}
-          alt={copy.track.coverAlt(track.title)}
+          alt={imageAlt}
           width={1254}
           height={1254}
           sizes="(max-width: 900px) 92vw, 900px"

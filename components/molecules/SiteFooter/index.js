@@ -8,6 +8,12 @@ export default function SiteFooter() {
 
   const links = [
     {
+      href: "/ensayos",
+      label: copy.nav.ensayos,
+      title: copy.ensayos.metaTitle,
+      internal: true,
+    },
+    {
       href: "/history",
       label: copy.nav.history,
       title: copy.history.metaTitle,
