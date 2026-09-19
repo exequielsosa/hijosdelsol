@@ -141,6 +141,9 @@ export default function HistoryPage() {
         </div>
 
         <div className="hds-shell hds-history-disaster-inner">
+          <span className="hds-eyebrow" data-reveal>
+            {copy.history.disasterEyebrow}
+          </span>
           <h2 className="hds-history-disaster-title" data-reveal>
             {history.disaster.title}
           </h2>
@@ -169,7 +172,7 @@ export default function HistoryPage() {
                 src="/LOVEESTAFA.jpg"
                 alt={copy.history.disasterAlt}
                 fill
-                sizes="(max-width: 900px) 100vw, 760px"
+                sizes="(max-width: 900px) 100vw, 960px"
               />
               <span className="hds-listen-scrim" aria-hidden="true" />
               <span className="hds-play hds-play--sm" aria-hidden="true">
@@ -183,7 +186,57 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------- 4. el demo del 98 */}
+      {/* --------------------------------------------- 4. la máquina del sótano */}
+      <section className="hds-history-tascam">
+        {/* Mismo tratamiento de pared que el desastre y el demo: fondo propio
+            de punta a punta, con mascara arriba y abajo. */}
+        <div className="hds-history-tascam-bg" aria-hidden="true">
+          <Image
+            src="/backtascam.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            quality={55}
+          />
+          <div className="hds-history-tascam-veil" />
+        </div>
+
+        <div className="hds-shell hds-history-tascam-inner">
+          <span className="hds-eyebrow" data-reveal>
+            {copy.history.tascamEyebrow}
+          </span>
+          <h2 className="hds-history-tascam-title" data-reveal>
+            {history.tascam.title}
+          </h2>
+
+          <div className="hds-history-tascam-grid">
+            <div className="hds-history-tascam-text">
+              {history.tascam.body.map((text, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <p key={i} className="hds-history-tascam-body" data-reveal>
+                  {renderEmphasis(text)}
+                </p>
+              ))}
+            </div>
+
+            <figure className="hds-history-tascam-figure" data-reveal>
+              <Image
+                src="/headtascam.jpg"
+                alt={copy.history.tascamAlt}
+                width={1448}
+                height={1086}
+                sizes="(max-width: 900px) 100vw, 560px"
+              />
+            </figure>
+          </div>
+
+          <p className="hds-history-tascam-slogan" data-reveal>
+            {history.tascam.slogan}
+          </p>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------- 5. el demo del 98 */}
       <section className="hds-history-demo">
         {/* Fondo propio del bloque, de punta a punta. Se funde arriba y
             abajo con una mascara: no hay corte con lo que viene antes
@@ -214,7 +267,7 @@ export default function HistoryPage() {
                 alt={copy.history.boxAlt}
                 width={1672}
                 height={941}
-                sizes="(max-width: 900px) 100vw, 760px"
+                sizes="(max-width: 900px) 100vw, 960px"
               />
             </div>
             <figcaption>
@@ -229,7 +282,7 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------ 5. el cierre */}
+      {/* ------------------------------------------------------ 6. el cierre */}
       <section className="hds-history-end">
         {/* El halo crece detrás del remate y engancha con la sección del disco */}
         <div className="hds-history-end-glow" aria-hidden="true" />
@@ -270,12 +323,14 @@ export default function HistoryPage() {
             <span>{history.closing.last[1]}</span>
           </h2>
 
-          <Link
-            href="/#disco"
-            className="hds-textlink hds-textlink--red hds-history-cta"
-          >
-            {copy.history.backToRecord}
-          </Link>
+          <div className="hds-linkrow hds-history-cta">
+            <Link href="/#disco" className="hds-textlink hds-textlink--red">
+              {copy.history.backToRecord}
+            </Link>
+            <Link href="/ensayos" className="hds-textlink hds-textlink--gray">
+              {copy.history.seeArchive}
+            </Link>
+          </div>
         </div>
       </section>
     </div>

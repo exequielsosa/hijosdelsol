@@ -16,7 +16,7 @@ export const CONTENT_LAST_MODIFIED = "2026-09-12";
  * resto del contenido no se tocó. Marcar todas las URLs como modificadas
  * cuando cambió una sola es la forma de que el lastmod deje de valer.
  */
-export const HISTORY_LAST_MODIFIED = "2026-09-14";
+export const HISTORY_LAST_MODIFIED = "2026-09-19";
 
 /**
  * `/ensayos` tiene su propia fecha, igual que HISTORY_LAST_MODIFIED: se creo

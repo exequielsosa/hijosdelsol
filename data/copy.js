@@ -131,13 +131,18 @@ export const COPY = {
       boxCaption: "Buenos Aires · 1998 · 13 temas",
       boxAlt:
         "La caja del Demo '98 abierta: el casete, el arte, la lista de los trece temas, letras manuscritas y el recibo de la grabación",
+      disasterEyebrow: "1994 / Primer estudio",
       disasterAlt:
         "Placeholder del video de la primera grabación, fallida, de \"Love Comes Tonight\"",
       disasterVideoTitle: (track) =>
         `HIJOS DEL SOL — "${track}" (primera grabación)`,
+      tascamEyebrow: "Grabar sin estudio",
+      tascamAlt:
+        "La Tascam Porta 07 en primer plano, con la banda ensayando en el sótano de fondo y cintas apiladas alrededor",
       fullAlt:
         "Hijos del Sol en Buenos Aires a principios de los 90, ilustración basada en la foto original",
       backToRecord: "Escuchá el Demo '98 →",
+      seeArchive: "Ver el archivo →",
       metaTitle:
         "Historia de Hijos del Sol — Banda de metal argentino de los 90",
       metaDescription:
@@ -296,13 +301,18 @@ export const COPY = {
       boxCaption: "Buenos Aires · 1998 · 13 tracks",
       boxAlt:
         "The Demo '98 box, open: the cassette, the artwork, the thirteen-track listing, handwritten lyrics and the studio receipt",
+      disasterEyebrow: "1994 / First studio session",
       disasterAlt:
         "Placeholder for the video of the first, failed recording of \"Love Comes Tonight\"",
       disasterVideoTitle: (track) =>
         `HIJOS DEL SOL — "${track}" (early recording)`,
+      tascamEyebrow: "Recording without a studio",
+      tascamAlt:
+        "The Tascam Porta 07 in the foreground, with the band rehearsing in the basement behind it and cassette tapes stacked around",
       fullAlt:
         "Hijos del Sol in Buenos Aires in the early 1990s, illustration based on the original photograph",
       backToRecord: "Listen to Demo '98 →",
+      seeArchive: "See the archive →",
       metaTitle: "The story of Hijos del Sol — 90s Argentine metal band",
       metaDescription:
         "How Hijos del Sol started in Buenos Aires in the early 90s: Exequiel Sosa, Rodrigo Vieiro and Gonzalo Martinez, and the road to Demo '98.",

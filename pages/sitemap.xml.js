@@ -59,6 +59,10 @@ const historyImages = `    <image:image>
     <image:image>
       <image:loc>${SITE_URL}/LOVEESTAFA.jpg</image:loc>
       <image:title>HIJOS DEL SOL - La primera grabación de &quot;Love Comes Tonight&quot;</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>${SITE_URL}/headtascam.jpg</image:loc>
+      <image:title>HIJOS DEL SOL - La Tascam Porta 07 del sótano</image:title>
     </image:image>`;
 
 const ensayosImages = `    <image:image>
