@@ -385,16 +385,11 @@ export default function HistoryPage() {
             <p className="hds-history-end-first">{history.closing.first}</p>
 
             <div className="hds-shell hds-history-crono">
-              <Image
-                src={
-                  isEnglish ? "/crono_desktop_EN.jpg" : "/crono_desktop_ES.jpg"
-                }
-                alt={copy.history.cronoAlt}
-                width={2172}
-                height={724}
-                sizes="(max-width: 900px) 0px, 1180px"
-                className="hds-history-crono-img hds-history-crono-img--desktop"
-              />
+              {/* PRUEBA 2026-09-19: la imagen mobile a todo ancho tambien en
+                  desktop, a ver si se lee mejor que la desktop (que dejaba
+                  todo muy chico). Revertir a las dos <Image> de antes
+                  (desktop 2172x724 + mobile 941x1672, cada una con su
+                  display via CSS) si no funciona. */}
               <Image
                 src={
                   isEnglish ? "/crono_mobile_EN.jpg" : "/crono_mobile_ES.jpg"
@@ -402,7 +397,7 @@ export default function HistoryPage() {
                 alt={copy.history.cronoAlt}
                 width={941}
                 height={1672}
-                sizes="(max-width: 900px) 100vw, 0px"
+                sizes="100vw"
                 className="hds-history-crono-img hds-history-crono-img--mobile"
               />
             </div>

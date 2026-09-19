@@ -8,15 +8,17 @@ import { ENSAYOS } from "@/data/ensayos";
 /**
  * /ensayos: header de apertura (la idea general) y despues la seccion de
  * temas, que trae su propio titulo ("Un ensayo más — 1998") igual que
- * LyricsNotebook trae "El cuaderno de letras" antes de sus cards. Un fondo
- * propio para ese titulo (con la tapa unensayo.jpg) quedaba mal: muy
- * filtrado, no se reconocia. Mismo patrón de fondo con cover + hover que
- * useCoverRotation ya resuelve para la sección de Letras del home.
+ * LyricsNotebook trae "El cuaderno de letras" antes de sus cards. Mismo
+ * fondo con cover + hover que usa la sección de Letras del home, pero sin
+ * el carrusel automático: acá el fondo por defecto es siempre
+ * unensayo.jpg, y el hover sobre una tapa lo reemplaza por su back — no
+ * hay rotación sola entre las tres tapas.
  */
 export default function EnsayosPage() {
   const { copy } = useCopy();
   const { sectionRef, activeIndex, pin, unpin } = useCoverRotation(
     ENSAYOS.length,
+    { autoRotate: false },
   );
 
   return (
@@ -62,6 +64,7 @@ export default function EnsayosPage() {
           covers={ENSAYOS}
           activeIndex={activeIndex}
           getSrc={(t) => t.backCover}
+          defaultSrc="/ensayos/ensayoun.jpg"
         />
         <div className="hds-shell">
           <div className="hds-notebook-intro hds-ensayos-tape-intro" data-reveal>

@@ -3298,29 +3298,46 @@ a.hds-track:hover {
   align-items: stretch;
 }
 
-/* La cronologia ilustrada: una imagen por idioma y por ancho de pantalla.
-   Las cuatro se renderizan siempre — la que no corresponde queda en
-   display:none, así que ni el lazy-loading nativo llega a pedirla. */
+/* La cronologia ilustrada: una imagen por idioma.
+   PRUEBA 2026-09-19: se usa la version mobile a todo ancho (ver el JSX)
+   para probar si se lee mejor que la desktop. Si se revierte el JSX,
+   revertir tambien esto al display:none/block por breakpoint de antes. */
 .hds-history-crono {
   width: 100%;
 }
 
 .hds-history-crono-img {
-  display: none;
+  display: block;
   width: 100%;
   height: auto;
 }
 
-.hds-history-crono-img--desktop {
-  display: block;
-}
-
-@media (max-width: 900px) {
-  .hds-history-crono-img--desktop {
-    display: none;
-  }
-  .hds-history-crono-img--mobile {
-    display: block;
+/* Solo en desktop: fundido de cada borde por separado (no una elipse: la
+   imagen es un rectangulo bien alto y angosto, y una elipse centrada le
+   arma un "domo" redondo arriba en vez de un marco parejo). Dos capas de
+   mascara, una por eje, superpuestas con mask-composite: intersect — solo
+   queda visible donde las dos son opacas a la vez, que es el centro; cerca
+   de cualquier borde, una de las dos se funde a transparente. */
+@media (min-width: 901px) {
+  .hds-history-crono-img {
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 4%,
+        #000 96%,
+        transparent
+      ),
+      linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        #000 4%,
+        #000 96%,
+        transparent
+      ),
+      linear-gradient(to bottom, transparent, #000 4%, #000 96%, transparent);
+    mask-composite: intersect;
   }
 }
 

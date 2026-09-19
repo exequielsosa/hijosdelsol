@@ -8,8 +8,17 @@ import { useEffect, useState } from "react";
  * Solo se monta en desktop: en mobile no aporta y evita bajar 12 imágenes de
  * más. Como el montaje depende de matchMedia, no se renderiza en SSR — no
  * importa, no hay nada que indexar acá.
+ *
+ * `defaultSrc` (ensayos): una capa mas, activa cuando `activeIndex` es
+ * `null` (sin hover, con `useCoverRotation({ autoRotate: false })`). Sin
+ * `defaultSrc` el comportamiento es el de siempre (letras): rotan solos.
  */
-export default function CoverBackdrop({ covers, activeIndex, getSrc = (t) => t.cover }) {
+export default function CoverBackdrop({
+  covers,
+  activeIndex,
+  getSrc = (t) => t.cover,
+  defaultSrc,
+}) {
   const [enabled, setEnabled] = useState(false);
   const [ready, setReady] = useState(false);
 
@@ -25,6 +34,17 @@ export default function CoverBackdrop({ covers, activeIndex, getSrc = (t) => t.c
 
   return (
     <div className="hds-backdrop" aria-hidden="true">
+      {defaultSrc && (
+        <div
+          className={
+            ready && activeIndex == null
+              ? "hds-backdrop-layer is-active"
+              : "hds-backdrop-layer"
+          }
+        >
+          <Image src={defaultSrc} alt="" fill quality={35} sizes="1400px" />
+        </div>
+      )}
       {covers.map((track, i) => (
         <div
           key={track.slug}

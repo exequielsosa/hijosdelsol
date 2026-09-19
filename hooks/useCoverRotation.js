@@ -11,8 +11,12 @@ const INTERVAL = 6000;
  *   pausa la rotación hasta que el puntero se va.
  * - Con `prefers-reduced-motion` no rota sola; el hover sigue funcionando
  *   porque es una respuesta a la acción del usuario, no movimiento automático.
+ *
+ * Con `autoRotate: false` (ensayos) no hay carrusel: sin hover, `activeIndex`
+ * es `null` (el llamador muestra ahi su propio fondo por defecto) y el hover
+ * solo fija y suelta, nunca arranca un intervalo.
  */
-export default function useCoverRotation(count) {
+export default function useCoverRotation(count, { autoRotate = true } = {}) {
   const sectionRef = useRef(null);
   const [auto, setAuto] = useState(0);
   const [pinned, setPinned] = useState(null);
@@ -33,18 +37,18 @@ export default function useCoverRotation(count) {
   }, []);
 
   useEffect(() => {
-    if (!visible || pinned !== null || count < 2) return;
+    if (!autoRotate || !visible || pinned !== null || count < 2) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = window.setInterval(
       () => setAuto((i) => (i + 1) % count),
       INTERVAL
     );
     return () => window.clearInterval(id);
-  }, [visible, pinned, count]);
+  }, [autoRotate, visible, pinned, count]);
 
   return {
     sectionRef,
-    activeIndex: pinned ?? auto,
+    activeIndex: autoRotate ? pinned ?? auto : pinned,
     pin: setPinned,
     unpin: () => setPinned(null),
   };
