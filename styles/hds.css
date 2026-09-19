@@ -1204,6 +1204,114 @@ a.hds-track:hover {
   border: 0;
 }
 
+/* --------------------------------------------------- teaser de ensayos --- */
+
+.hds-ensayosteaser {
+  position: relative;
+  padding: 120px 24px 130px;
+  background: var(--ink-black);
+  border-top: 1px solid rgba(237, 234, 230, 0.08);
+  overflow: hidden;
+}
+
+/* Mismo tratamiento gris/sepia que el resto de los fondos (video, covers).
+   El canal es la unica seccion a color — esta no lo es. */
+.hds-ensayosteaserbg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hds-ensayosteaserbg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) sepia(0.55) contrast(1.05);
+  opacity: 0.26;
+}
+
+.hds-ensayosteaserbg-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      #050505 0%,
+      rgba(5, 5, 5, 0.5) 22%,
+      rgba(5, 5, 5, 0.5) 78%,
+      #050505 100%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(5, 5, 5, 0) 0%,
+      rgba(5, 5, 5, 0.4) 74%,
+      rgba(5, 5, 5, 0.8) 100%
+    );
+}
+
+.hds-ensayosteaser-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 18, 18, 0.2),
+    rgba(5, 5, 5, 0) 68%
+  );
+  pointer-events: none;
+}
+
+.hds-ensayosteaser-inner {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.hds-ensayosteaser-h2 {
+  margin: 0;
+  font-size: clamp(46px, 8vw, 120px);
+  line-height: 0.86;
+}
+
+.hds-ensayosteaser-p {
+  margin: 0;
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--gray-1);
+}
+
+.hds-ensayosteaser-cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--red);
+  color: var(--ink-black);
+  padding: 18px 34px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 19px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  transition: background 0.2s ease;
+}
+
+.hds-ensayosteaser-cta:hover {
+  background: #fff;
+  color: var(--ink-black);
+}
+
 /* ------------------------------------------------------------- canal --- */
 
 .hds-channel {
@@ -2161,7 +2269,7 @@ a.hds-track:hover {
 .hds-history-head {
   padding-left: 0;
   padding-right: 0;
-  padding-bottom: clamp(44px, 5.5vw, 76px);
+  padding-bottom: clamp(18px, 2.2vw, 30px);
 }
 
 .hds-history-open {
@@ -2275,7 +2383,7 @@ a.hds-track:hover {
 .hds-band {
   position: relative;
   z-index: 1;
-  padding: clamp(64px, 8vw, 104px) 24px;
+  padding: clamp(26px, 3.2vw, 42px) 24px;
   /* Negro calido que se abre y se cierra: la seccion se apoya sobre el
      fondo fijo sin taparlo del todo */
   background: linear-gradient(
@@ -2450,7 +2558,7 @@ a.hds-track:hover {
 .hds-history-disaster {
   position: relative;
   z-index: 1;
-  padding: clamp(78px, 10vw, 140px) 24px;
+  padding: clamp(31px, 4vw, 56px) 24px;
 }
 
 .hds-history-disaster-bg {
@@ -2588,7 +2696,7 @@ a.hds-track:hover {
 .hds-history-tascam {
   position: relative;
   z-index: 1;
-  padding: clamp(78px, 10vw, 140px) 24px;
+  padding: clamp(31px, 4vw, 56px) 24px;
 }
 
 .hds-history-tascam-bg {
@@ -2715,14 +2823,150 @@ a.hds-track:hover {
   color: var(--red);
 }
 
-/* --- 5. el demo ----------------------------------------------------------- */
+/* --- 5. la segunda vez ------------------------------------------------------
+
+   Mas simple y mas baja que los otros movimientos: texto + imagen lado a
+   lado, centrados verticalmente — no hay que apilar nada para que respire.
+   Misma pared con mascara que el desastre y el sotano, pero la imagen va
+   chica y encajonada, no sangrando como la de la apertura. */
+
+.hds-history-bravo {
+  position: relative;
+  z-index: 1;
+  padding: clamp(31px, 4vw, 56px) 24px;
+}
+
+.hds-history-bravo-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 14%,
+    #000 86%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 14%,
+    #000 86%,
+    transparent 100%
+  );
+}
+
+.hds-history-bravo-bg img {
+  object-fit: cover;
+}
+
+.hds-history-bravo-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      180deg,
+      rgba(5, 5, 5, 0.6) 0%,
+      rgba(5, 5, 5, 0.4) 30%,
+      rgba(5, 5, 5, 0.4) 70%,
+      rgba(5, 5, 5, 0.6) 100%
+    ),
+    radial-gradient(
+      ellipse at 30% 50%,
+      rgba(5, 5, 5, 0.4) 0%,
+      rgba(5, 5, 5, 0.16) 55%,
+      rgba(5, 5, 5, 0) 100%
+    );
+}
+
+.hds-history-bravo-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 564px 558px;
+  align-items: center;
+  gap: 40px;
+}
+
+.hds-history-bravo-title {
+  margin: 14px 0 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(32px, 4.4vw, 56px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hds-history-bravo-title span {
+  display: block;
+}
+
+.hds-history-bravo-title span:last-child {
+  color: var(--red);
+}
+
+.hds-history-bravo-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.hds-history-bravo-body p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--gray-1);
+}
+
+.hds-history-bravo-body strong {
+  color: var(--bone);
+  font-weight: 700;
+}
+
+.hds-history-bravo-text .hds-textlink {
+  display: inline-block;
+  margin-top: 26px;
+}
+
+.hds-history-bravo-figure {
+  margin: 0;
+}
+
+.hds-history-bravo-figure-frame {
+  position: relative;
+  border: 1px solid var(--hairline);
+  background: var(--card-black);
+  overflow: hidden;
+}
+
+.hds-history-bravo-figure-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hds-history-bravo-figure-frame::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--red);
+  opacity: 0.55;
+}
+
+/* --- 6. el demo ----------------------------------------------------------- */
 
 .hds-history-demo {
   position: relative;
   z-index: 1;
   /* Mas alto que las otras secciones: la mascara del fondo necesita
      lugar arriba y abajo para desvanecerse sin comerse el texto. */
-  padding: clamp(78px, 10vw, 140px) 24px;
+  padding: clamp(31px, 4vw, 56px) 24px;
 }
 
 /* El fondo cubre el padding box, o sea de borde a borde de la pantalla */
@@ -2783,9 +3027,27 @@ a.hds-track:hover {
   z-index: 1;
 }
 
-.hds-history-demo-intro {
+.hds-history-demo-title {
   margin: 0;
-  max-width: 620px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(30px, 4.2vw, 48px);
+  line-height: 1;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.hds-history-demo-title span {
+  display: block;
+}
+
+.hds-history-demo-title span:last-child {
+  color: var(--red);
+}
+
+.hds-history-demo-intro {
+  margin: 14px 0 0;
+  max-width: 1180px;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(20px, 2.4vw, 30px);
@@ -2798,7 +3060,6 @@ a.hds-track:hover {
    papeles claros se empastaban, y la ilustracion dice mucho mas. */
 .hds-box {
   position: relative;
-  max-width: 960px;
   margin: clamp(30px, 4vw, 48px) 0;
 }
 
@@ -2816,17 +3077,22 @@ a.hds-track:hover {
   );
 }
 
+/* A 1180px de ancho la relacion 1672x941 da ~664px de alto: se tapa a
+   500px y se recorta desde abajo (object-position: top), no al centro. */
 .hds-box-frame {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--hairline);
   background: var(--card-black);
+  height: 500px;
 }
 
 .hds-box-frame img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 
 /* Mismo filo de tinta que la ilustracion grupal de la apertura */
@@ -2854,8 +3120,8 @@ a.hds-track:hover {
 }
 
 .hds-history-demo-body {
-  margin: 0;
-  max-width: 720px;
+  margin: 18px 0 0;
+  max-width: 1180px;
   font-size: 17px;
   line-height: 1.8;
   color: var(--bone);
@@ -2867,14 +3133,25 @@ a.hds-track:hover {
   font-weight: 700;
 }
 
-/* --- 6. el cierre --------------------------------------------------------- */
+.hds-history-demo-slogan {
+  margin: clamp(30px, 4vw, 48px) 0 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(22px, 3.2vw, 36px);
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+/* --- 7. el cierre --------------------------------------------------------- */
 
 /* Centrado a proposito: todo el sitio alinea a la izquierda, asi que el
    cambio de eje marca que la historia termino. */
 .hds-history-end {
   position: relative;
   z-index: 1;
-  padding: clamp(62px, 9vw, 120px) 24px clamp(78px, 11vw, 150px);
+  padding: clamp(25px, 3.6vw, 48px) 24px clamp(31px, 4.4vw, 60px);
   overflow: hidden;
   text-align: center;
 }
@@ -2912,17 +3189,16 @@ a.hds-track:hover {
   color: #fff;
 }
 
-/* El hilo del tiempo: los dos extremos y la espera entre medio. Sin hitos
-   inventados en el camino — la banda estuvo en silencio, no en actividad.
+/* La franja de la espera: la frase que la abre y, debajo, la cronologia
+   ilustrada en vez del hilo con los años.
 
    Los margenes negativos la sacan del padding de la seccion para que el
-   fondo llegue al borde de la pantalla. Solo esta franja lo lleva: las dos
-   frases grandes van sobre el negro. */
+   fondo llegue al borde de la pantalla. */
 .hds-history-wait {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   margin: 0 -24px clamp(46px, 6.5vw, 92px);
   padding: clamp(60px, 7vw, 96px) 24px;
 }
@@ -2982,64 +3258,33 @@ a.hds-track:hover {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
-.hds-history-year {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(38px, 5.2vw, 62px);
-  line-height: 1;
-  letter-spacing: 0.14em;
-  /* compensa el espaciado del ultimo caracter para que quede centrado */
-  text-indent: 0.14em;
-  color: var(--bone);
-  /* La pared de atras tiene tanto contraste como el texto. El mismo
-     recurso que salva el label LYRICS del tracklist sobre los covers. */
-  text-shadow: 0 2px 26px rgba(5, 5, 5, 0.92), 0 0 10px rgba(5, 5, 5, 0.8);
+/* La cronologia ilustrada: una imagen por idioma y por ancho de pantalla.
+   Las cuatro se renderizan siempre — la que no corresponde queda en
+   display:none, así que ni el lazy-loading nativo llega a pedirla. */
+.hds-history-crono {
+  width: 100%;
 }
 
-.hds-history-year--now {
-  color: var(--red);
+.hds-history-crono-img {
+  display: none;
+  width: 100%;
+  height: auto;
 }
 
-.hds-history-thread {
-  position: relative;
-  width: 1px;
-  height: clamp(70px, 10vw, 130px);
-  margin: clamp(16px, 2vw, 24px) 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 18, 18, 0.8),
-    rgba(255, 18, 18, 0.3)
-  );
+.hds-history-crono-img--desktop {
+  display: block;
 }
 
-/* Marcas de regla cruzando el hilo: es lo que lo hace leer como una
-   linea de tiempo y no como un separador cualquiera. Sin anos encima —
-   en el medio no paso nada y no vamos a inventar hitos. */
-.hds-history-thread::before {
-  content: "";
-  position: absolute;
-  left: -7px;
-  right: -7px;
-  top: 6px;
-  bottom: 6px;
-  background-image: repeating-linear-gradient(
-    180deg,
-    rgba(237, 234, 230, 0.38) 0 1px,
-    rgba(237, 234, 230, 0) 1px 26px
-  );
-}
-
-.hds-history-end-mid {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(24px, 3.4vw, 40px);
-  line-height: 1.15;
-  color: #fff;
-  text-shadow: 0 2px 26px rgba(5, 5, 5, 0.92), 0 0 10px rgba(5, 5, 5, 0.8);
+@media (max-width: 900px) {
+  .hds-history-crono-img--desktop {
+    display: none;
+  }
+  .hds-history-crono-img--mobile {
+    display: block;
+  }
 }
 
 .hds-history-end-last {
@@ -3084,6 +3329,18 @@ a.hds-track:hover {
   }
   .hds-history-tascam-grid {
     grid-template-columns: 1fr;
+  }
+  /* Sin recorte en mobile: vuelve a la relacion natural de la imagen */
+  .hds-box-frame {
+    height: auto;
+  }
+  .hds-box-frame img {
+    height: auto;
+    object-fit: initial;
+  }
+  .hds-history-bravo-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
   /* Tres retratos no entran en fila a este ancho: carrusel con snap.
      Sin margenes negativos — sacaban la grilla fuera del padding de la

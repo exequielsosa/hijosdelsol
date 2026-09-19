@@ -6,6 +6,7 @@ import BackToTop from "../../molecules/BackToTop";
 import Hero from "../../organisms/Hero";
 import Record from "../../organisms/Record";
 import LyricsNotebook from "../../organisms/LyricsNotebook";
+import EnsayosTeaser from "../../organisms/EnsayosTeaser";
 import VideoSection from "../../organisms/VideoSection";
 import Channel from "../../organisms/Channel";
 import Retro from "../../organisms/Retro";
@@ -23,6 +24,7 @@ export const Home = () => {
         <Marquee />
         <Record />
         <LyricsNotebook />
+        <EnsayosTeaser />
         <VideoSection />
         <Channel />
         <Retro />

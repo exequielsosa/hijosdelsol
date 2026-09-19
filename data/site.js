@@ -4,7 +4,9 @@ export const SITE_URL = "https://www.hijosdelsol.com.ar";
 
 /**
  * Fecha de ultima modificacion real del contenido (YYYY-MM-DD).
- * Alimenta el <lastmod> del sitemap y el dateModified del JSON-LD.
+ * Alimenta el <lastmod> del sitemap y el dateModified del JSON-LD de las
+ * 12 paginas de tema (/lyrics/*). La home, /history y /ensayos ya tienen
+ * su propia fecha — ver mas abajo.
  * ACTUALIZAR A MANO cuando cambie contenido de verdad: si sale la fecha del
  * request, todas las URLs figuran modificadas todos los dias y Google termina
  * ignorando el lastmod del sitio entero.
@@ -23,6 +25,13 @@ export const HISTORY_LAST_MODIFIED = "2026-09-19";
  * el 2026-09-16 y el resto del contenido no se toco.
  */
 export const ENSAYOS_LAST_MODIFIED = "2026-09-16";
+
+/**
+ * La home tambien tiene su propia fecha, mismo criterio: se separo de
+ * CONTENT_LAST_MODIFIED el 2026-09-19 porque esa constante tambien alimenta
+ * las 12 paginas de tema, y un cambio solo en la home no las toca a ellas.
+ */
+export const HOME_LAST_MODIFIED = "2026-09-19";
 
 export const YOUTUBE_URL = "https://www.youtube.com/@hijosdelsolband";
 export const VIDEO_ID = "FGoVHU16uAk";

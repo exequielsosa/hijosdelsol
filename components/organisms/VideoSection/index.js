@@ -68,7 +68,7 @@ export default function VideoSection() {
               <i />
             </span>
             <span className="hds-videocard-label">
-              {copy.video.watchOnYoutube}
+              {copy.video.cta}
             </span>
           </YoutubeFrame>
         </div>

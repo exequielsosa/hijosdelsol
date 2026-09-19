@@ -26,6 +26,7 @@ export default function HistoryPage() {
   const { copy, locale } = useCopy();
   const history = getHistory(locale);
   const lineup = getLineup(locale);
+  const isEnglish = locale === "en";
 
   return (
     <div className="hds-trackpage hds-historypage">
@@ -236,7 +237,55 @@ export default function HistoryPage() {
         </div>
       </section>
 
-      {/* --------------------------------------------------- 5. el demo del 98 */}
+      {/* --------------------------------------------------- 5. la segunda vez */}
+      <section className="hds-history-bravo">
+        {/* Mismo tratamiento de pared que el desastre y el sotano: fondo
+            propio de punta a punta, con mascara arriba y abajo. */}
+        <div className="hds-history-bravo-bg" aria-hidden="true">
+          <Image
+            src="/backbravo.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            quality={55}
+          />
+          <div className="hds-history-bravo-veil" />
+        </div>
+
+        <div className="hds-shell hds-history-bravo-grid">
+          <div className="hds-history-bravo-text" data-reveal>
+            <span className="hds-eyebrow">{copy.history.bravoEyebrow}</span>
+            <h2 className="hds-history-bravo-title">
+              <span>{history.bravo.title[0]}</span>
+              <span>{history.bravo.title[1]}</span>
+              <span>{history.bravo.studio}</span>
+            </h2>
+            <div className="hds-history-bravo-body">
+              {history.bravo.body.map((text, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <p key={i}>{renderEmphasis(text)}</p>
+              ))}
+            </div>
+            <Link href="/#video" className="hds-textlink hds-textlink--red">
+              {copy.history.bravoCta}
+            </Link>
+          </div>
+
+          <figure className="hds-history-bravo-figure" data-reveal>
+            <div className="hds-history-bravo-figure-frame">
+              <Image
+                src="/bravo.jpg"
+                alt={copy.history.bravoAlt}
+                width={1672}
+                height={941}
+                sizes="(max-width: 900px) 100vw, 558px"
+              />
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      {/* --------------------------------------------------- 6. el demo del 98 */}
       <section className="hds-history-demo">
         {/* Fondo propio del bloque, de punta a punta. Se funde arriba y
             abajo con una mascara: no hay corte con lo que viene antes
@@ -253,9 +302,13 @@ export default function HistoryPage() {
         </div>
 
         <div className="hds-shell hds-history-demo-inner">
-          <h2 className="hds-history-demo-intro" data-reveal>
-            {history.demo.intro}
+          <h2 className="hds-history-demo-title" data-reveal>
+            <span>{history.demo.title[0]}</span>
+            <span>{history.demo.title[1]}</span>
           </h2>
+          <p className="hds-history-demo-intro" data-reveal>
+            {history.demo.intro}
+          </p>
 
           {/* La caja abierta. Reemplaza a la etiqueta que estaba dibujada
               en CSS: la ilustración trae el casete, el arte, la lista de
@@ -267,7 +320,7 @@ export default function HistoryPage() {
                 alt={copy.history.boxAlt}
                 width={1672}
                 height={941}
-                sizes="(max-width: 900px) 100vw, 960px"
+                sizes="(max-width: 900px) 100vw, 1180px"
               />
             </div>
             <figcaption>
@@ -276,23 +329,32 @@ export default function HistoryPage() {
             </figcaption>
           </figure>
 
-          <p className="hds-history-demo-body" data-reveal>
-            {renderEmphasis(history.demo.body)}
+          {history.demo.body.map((text, i) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <p key={i} className="hds-history-demo-body" data-reveal>
+              {renderEmphasis(text)}
+            </p>
+          ))}
+
+          <p className="hds-history-demo-slogan" data-reveal>
+            {history.demo.slogan}
           </p>
         </div>
       </section>
 
-      {/* ------------------------------------------------------ 6. el cierre */}
+      {/* ------------------------------------------------------ 7. el cierre */}
       <section className="hds-history-end">
         {/* El halo crece detrás del remate y engancha con la sección del disco */}
         <div className="hds-history-end-glow" aria-hidden="true" />
 
-        {/* La espera: la frase que la abre, los dos extremos y el hilo que
-            los une. Sin hitos inventados en el medio.
+        {/* La espera: la frase que la abre y, donde antes iba el hilo con
+            los años, la cronologia ilustrada — una imagen por idioma y otra
+            por ancho de pantalla, nunca las dos a la vez. La oculta por CSS
+            ni siquiera llega a pedirse: el lazy-loading nativo no dispara
+            sobre un elemento en display:none.
 
             La franja sale del shell y lleva su propio fondo, fundido arriba
-            y abajo. Termina en el 2026: el remate final va sobre el negro,
-            solo con el halo. */}
+            y abajo, igual que siempre. */}
         <div className="hds-history-wait" data-reveal>
           <div className="hds-history-wait-bg" aria-hidden="true">
             <Image
@@ -307,13 +369,29 @@ export default function HistoryPage() {
 
           <div className="hds-history-wait-inner">
             <p className="hds-history-end-first">{history.closing.first}</p>
-            <span className="hds-history-year">{history.closing.from}</span>
-            <span className="hds-history-thread" aria-hidden="true" />
-            <p className="hds-history-end-mid">{history.closing.middle}</p>
-            <span className="hds-history-thread" aria-hidden="true" />
-            <span className="hds-history-year hds-history-year--now">
-              {history.closing.to}
-            </span>
+
+            <div className="hds-shell hds-history-crono">
+              <Image
+                src={
+                  isEnglish ? "/crono_desktop_EN.jpg" : "/crono_desktop_ES.jpg"
+                }
+                alt={copy.history.cronoAlt}
+                width={2172}
+                height={724}
+                sizes="(max-width: 900px) 0px, 1180px"
+                className="hds-history-crono-img hds-history-crono-img--desktop"
+              />
+              <Image
+                src={
+                  isEnglish ? "/crono_mobile_EN.jpg" : "/crono_mobile_ES.jpg"
+                }
+                alt={copy.history.cronoAlt}
+                width={941}
+                height={1672}
+                sizes="(max-width: 900px) 100vw, 0px"
+                className="hds-history-crono-img hds-history-crono-img--mobile"
+              />
+            </div>
           </div>
         </div>
 

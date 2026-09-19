@@ -8,8 +8,9 @@
  *   opening  → la banda y de dónde salió   (texto + ilustración grupal)
  *   disaster → el primer intento fallido   (texto + video, 2026-09-14)
  *   tascam   → el sótano y la Porta 07     (texto + imagen, 2026-09-19)
+ *   bravo    → la segunda grabación        (texto + imagen, 2026-09-19)
  *   demo     → el Demo '98                  (ficha de archivo)
- *   closing  → el paso del tiempo           (aire creciente + remate)
+ *   closing  → el remate                    (cronología ilustrada + remate, 2026-09-19)
  *
  * Los títulos vienen partidos en líneas porque el display los quiebra a mano:
  * dejarlos al azar del ancho rompía la composición.
@@ -53,16 +54,27 @@ export const HISTORY = {
       ],
       slogan: "4 canales. Un sótano. Demasiadas canciones.",
     },
+    bravo: {
+      title: ["Una vez volvimos", "a un estudio."],
+      studio: "Bravo Paraíso",
+      body: [
+        "Entre **1996** y **1997** volvimos a grabar **“Love Comes Tonight”**, esta vez en Bravo Paraíso.",
+        "Esa grabación sí quedó.",
+        "Y es la misma versión que hoy vuelve a sonar en la Home.",
+      ],
+    },
     demo: {
+      title: ["De todo ese caos, quedó", "Demo ’98."],
       intro:
-        "Algunas quedaron en cintas, otras en cajas, otras directamente en la memoria.",
-      body: "En 1998, después de grabar **“Love Comes Tonight”** para un compilado de Taps Records, parte de ese material terminó reunido en **Demo ’98**: trece canciones guardadas como una pequeña cápsula de tiempo.",
+        "Grabamos mucho más de lo que terminó acá. Algunas cosas quedaron en cintas, otras se perdieron y algunas terminaron en Demo ’98.",
+      body: [
+        "En 1998 reunimos trece canciones y armamos **Demo ’98**. No era todo lo que habíamos grabado: era una selección de lo que más nos gustaba y de lo que mejor había quedado.",
+        "Salvo **Love Comes Tonight**, grabada en Bravo Paraíso y luego incluida en un compilado de Taps Records, buena parte del resto venía de aquellas grabaciones hechas con la **Porta 07** en el sótano.",
+      ],
+      slogan: "Trece canciones guardadas como una pequeña cápsula de tiempo.",
     },
     closing: {
       first: "Y después pasó la vida.",
-      middle: "El demo quedó ahí, esperando.",
-      from: "1998",
-      to: "2026",
       last: ["Más de tres décadas después,", "alguien volvió a abrir la caja."],
     },
   },
@@ -101,16 +113,27 @@ export const HISTORY = {
       ],
       slogan: "4 channels. One basement. Too many songs.",
     },
+    bravo: {
+      title: ["Once, we went back", "to a studio."],
+      studio: "Bravo Paraíso",
+      body: [
+        "Between **1996** and **1997** we recorded **“Love Comes Tonight”** again, this time at Bravo Paraíso.",
+        "That recording actually survived.",
+        "And it’s the same version you can still hear on the Home page today.",
+      ],
+    },
     demo: {
+      title: ["Out of all that chaos, came", "Demo ’98."],
       intro:
-        "Some ended up on tape, some in boxes, and some simply in memory.",
-      body: "In 1998, after recording **“Love Comes Tonight”** for a Taps Records compilation, part of that material was finally gathered into **Demo ’98**: thirteen songs preserved as a small time capsule.",
+        "We recorded a lot more than what ended up here. Some of it stayed on tape, some got lost, and some ended up on Demo ’98.",
+      body: [
+        "In 1998 we gathered thirteen songs and put together **Demo ’98**. It wasn’t everything we’d recorded: it was a selection of what we liked best and what had come out best.",
+        "Except for **Love Comes Tonight**, recorded at Bravo Paraíso and later included on a Taps Records compilation, most of the rest came from those recordings made with the **Porta 07** in the basement.",
+      ],
+      slogan: "Thirteen songs kept as a small time capsule.",
     },
     closing: {
       first: "Then life happened.",
-      middle: "The demo stayed there, waiting.",
-      from: "1998",
-      to: "2026",
       last: ["More than three decades later,", "someone opened the box again."],
     },
   },

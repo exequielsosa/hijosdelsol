@@ -5,6 +5,7 @@ import {
   CONTENT_LAST_MODIFIED,
   HISTORY_LAST_MODIFIED,
   ENSAYOS_LAST_MODIFIED,
+  HOME_LAST_MODIFIED,
 } from "@/data/site";
 import { localeUrl } from "@/data/seo-copy";
 import { LOCALES } from "@/data/copy";
@@ -47,7 +48,10 @@ const homeImages = `    <image:image>
       <image:title>HIJOS DEL SOL - Tapa del Demo&apos;98</image:title>
     </image:image>`;
 
-const historyImages = `    <image:image>
+/* La cronologia varia por idioma: se elige el archivo desktop de cada
+   locale en vez de listar los cuatro (los dos mobile son el mismo
+   contenido, recortado, no una imagen distinta). */
+const historyImages = (locale) => `    <image:image>
       <image:loc>${SITE_URL}/bandFull.jpg</image:loc>
       <image:title>HIJOS DEL SOL - Buenos Aires, principios de los 90</image:title>
       <image:caption>Ilustración de HIJOS DEL SOL basada en una fotografía original de los años 90</image:caption>
@@ -63,6 +67,14 @@ const historyImages = `    <image:image>
     <image:image>
       <image:loc>${SITE_URL}/headtascam.jpg</image:loc>
       <image:title>HIJOS DEL SOL - La Tascam Porta 07 del sótano</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>${SITE_URL}/bravo.jpg</image:loc>
+      <image:title>HIJOS DEL SOL - El estudio Bravo Paraíso</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>${SITE_URL}/crono_desktop_${locale === "en" ? "EN" : "ES"}.jpg</image:loc>
+      <image:title>HIJOS DEL SOL - Cronología aproximada de los hechos</image:title>
     </image:image>`;
 
 const ensayosImages = `    <image:image>
@@ -81,7 +93,7 @@ function buildSitemap() {
   for (const locale of LOCALES) {
     urls.push(`  <url>
     <loc>${localeUrl(locale, "/")}</loc>
-    <lastmod>${CONTENT_LAST_MODIFIED}</lastmod>
+    <lastmod>${HOME_LAST_MODIFIED}</lastmod>
     <priority>1.0</priority>
 ${alternateLinks("/")}
 ${homeImages}
@@ -92,7 +104,7 @@ ${homeImages}
     <lastmod>${HISTORY_LAST_MODIFIED}</lastmod>
     <priority>0.9</priority>
 ${alternateLinks("/history")}
-${historyImages}
+${historyImages(locale)}
   </url>`);
 
     for (const track of LYRIC_TRACKS) {

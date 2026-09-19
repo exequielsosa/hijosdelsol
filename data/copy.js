@@ -54,15 +54,24 @@ export const COPY = {
       readLyrics: "Leé la letra →",
       readLyricsAria: (title) => `Leé la letra de ${title}`,
     },
-    video: {
-      eyebrow: "04 — El video",
+    ensayosTeaser: {
+      eyebrow: "04 — Ensayos",
+      titleLine1: "No todo terminó",
+      titleLine2: "en un demo.",
       blurb:
-        "Un tema, una llamarada. El video abre el archivo de Hijos del Sol: crudo, sin retoques, como sonaba en la sala.",
+        "También quedaron cintas de sala, canciones en proceso, repeticiones, errores y temas que todavía estaban cambiando. Algunas suenan mejor que otras. Todas cuentan algo.",
+      cta: "Escuchar Ensayos →",
+    },
+    video: {
+      eyebrow: "05 — Del archivo · 1996/97",
+      blurb:
+        "En 1996/97 volvimos a grabar “Loves Comes Tonight” en Bravo Paraíso. Contra todo pronóstico, esta versión sobrevivió. Hoy vuelve a sonar desde el archivo.",
+      cta: "Escuchar en YouTube →",
       watchOnYoutube: "Miralo en YouTube",
       playAria: (title) => `Reproducir video: ${title}`,
     },
     channel: {
-      eyebrow: "05 — El canal",
+      eyebrow: "06 — El canal",
       titleLine1: "Todo el archivo",
       titleLine2: "vive en YouTube",
       blurb:
@@ -139,6 +148,12 @@ export const COPY = {
       tascamEyebrow: "Grabar sin estudio",
       tascamAlt:
         "La Tascam Porta 07 en primer plano, con la banda ensayando en el sótano de fondo y cintas apiladas alrededor",
+      bravoEyebrow: "1996 / 1997",
+      bravoAlt:
+        "El estudio Bravo Paraíso: el cassette de \"Love Comes Tonight\" sobre la consola, con el póster del estudio de fondo",
+      bravoCta: "Escuchar en la Home →",
+      cronoAlt:
+        "Cronología aproximada de la banda, de 1992 a 2026, en collage de notas y recortes",
       fullAlt:
         "Hijos del Sol en Buenos Aires a principios de los 90, ilustración basada en la foto original",
       backToRecord: "Escuchá el Demo '98 →",
@@ -161,7 +176,7 @@ export const COPY = {
         "Una cinta de sala rescatada casi tres décadas después.",
         "Ruido, repeticiones, temas que todavía estaban cambiando y una banda tocando sin pensar demasiado en que alguien iba a escuchar esto en 2026.",
       ],
-      readLyrics: "Leé la letra →",
+      readLyrics: "▶ Escuchar · Leé la letra →",
       readLyricsAria: (title) => `Leé la letra de ${title}`,
       back: "← Volver a Ensayos",
       chip: "Ensayo",
@@ -224,15 +239,24 @@ export const COPY = {
       readLyrics: "Read the lyrics →",
       readLyricsAria: (title) => `Read the lyrics of ${title}`,
     },
-    video: {
-      eyebrow: "04 — The video",
+    ensayosTeaser: {
+      eyebrow: "04 — Rehearsals",
+      titleLine1: "Not everything",
+      titleLine2: "ended on a demo.",
       blurb:
-        "One track, one blaze. The video opens the Hijos del Sol archive: raw, untouched, the way it sounded in the rehearsal room.",
+        "There were also rehearsal-room tapes, songs still taking shape, repeats, mistakes and tracks that were still changing. Some sound better than others. All of them say something.",
+      cta: "Listen to Rehearsals →",
+    },
+    video: {
+      eyebrow: "05 — From the archive · 1996/97",
+      blurb:
+        "In 1996/97 we recorded “Loves Comes Tonight” again at Bravo Paraíso. Against all odds, this take survived. Now it's back, straight from the archive.",
+      cta: "Listen on YouTube →",
       watchOnYoutube: "Watch on YouTube",
       playAria: (title) => `Play video: ${title}`,
     },
     channel: {
-      eyebrow: "05 — The channel",
+      eyebrow: "06 — The channel",
       titleLine1: "The whole archive",
       titleLine2: "lives on YouTube",
       blurb:
@@ -309,6 +333,12 @@ export const COPY = {
       tascamEyebrow: "Recording without a studio",
       tascamAlt:
         "The Tascam Porta 07 in the foreground, with the band rehearsing in the basement behind it and cassette tapes stacked around",
+      bravoEyebrow: "1996 / 1997",
+      bravoAlt:
+        "The Bravo Paraíso studio: the \"Love Comes Tonight\" cassette on the mixing desk, with the studio poster in the background",
+      bravoCta: "Listen on the Home page →",
+      cronoAlt:
+        "An approximate timeline of the band, from 1992 to 2026, in a collage of notes and clippings",
       fullAlt:
         "Hijos del Sol in Buenos Aires in the early 1990s, illustration based on the original photograph",
       backToRecord: "Listen to Demo '98 →",
@@ -330,7 +360,7 @@ export const COPY = {
         "A rehearsal room tape rescued almost three decades later.",
         "Noise, repetition, songs that were still changing, and a band playing without giving much thought to someone listening to this in 2026.",
       ],
-      readLyrics: "Read the lyrics →",
+      readLyrics: "▶ Listen · Read the lyrics →",
       readLyricsAria: (title) => `Read the lyrics of ${title}`,
       back: "← Back to Rehearsals",
       chip: "Rehearsal",

@@ -3,13 +3,13 @@ import { useRouter } from "next/router";
 import { ALBUM } from "@/data/tracks";
 import {
   SITE_URL,
-  CONTENT_LAST_MODIFIED,
+  HOME_LAST_MODIFIED,
   VIDEO_ID,
   SOCIAL_PROFILES,
 } from "@/data/site";
 import { getSeoCopy, localeUrl, alternates } from "@/data/seo-copy";
 
-const SITE_LAST_MODIFIED = `${CONTENT_LAST_MODIFIED}T00:00:00+00:00`;
+const SITE_LAST_MODIFIED = `${HOME_LAST_MODIFIED}T00:00:00+00:00`;
 
 // La portada 2026 es el hero del sitio: sirve tambien de imagen social
 const OG_IMAGE = `${SITE_URL}/portada2026.png`;
