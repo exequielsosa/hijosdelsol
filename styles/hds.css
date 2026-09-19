@@ -2612,6 +2612,40 @@ a.hds-track:hover {
   z-index: 1;
 }
 
+.hds-history-disaster-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(28px, 4vw, 56px);
+}
+
+/* Mismo remate que .hds-history-tascam-slogan / .hds-history-demo-slogan */
+.hds-history-disaster-slogan {
+  margin: clamp(30px, 4vw, 48px) 0 0;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(22px, 3.2vw, 36px);
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.hds-history-disaster-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.hds-history-disaster-body-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  /* Ancla el bloque al piso de la fila: la columna izquierda (titulo +
+     bajada + video) suele ser mas alta, y el cuerpo quedaba pegado arriba
+     con un hueco vacio debajo. */
+  align-self: end;
+}
+
 .hds-history-disaster-title {
   margin: 14px 0 0;
   font-family: var(--font-display);
@@ -2633,8 +2667,7 @@ a.hds-track:hover {
 }
 
 .hds-history-disaster-body {
-  margin: 18px 0 0;
-  max-width: 720px;
+  margin: 0;
   font-size: 17px;
   line-height: 1.8;
   color: var(--bone);
@@ -2646,11 +2679,10 @@ a.hds-track:hover {
   font-weight: 700;
 }
 
-/* La ficha del video: mismo halo rojo que la caja del demo, pero en 16:9 */
+/* La ficha del video: mismo halo rojo que la caja del demo, pero en 16:9. */
 .hds-history-disaster-video {
   position: relative;
-  max-width: 960px;
-  margin: clamp(30px, 4vw, 48px) 0 0;
+  margin-top: clamp(20px, 3vw, 32px);
 }
 
 .hds-history-disaster-video::before {
@@ -2833,7 +2865,10 @@ a.hds-track:hover {
 .hds-history-bravo {
   position: relative;
   z-index: 1;
-  padding: clamp(31px, 4vw, 56px) 24px;
+  /* Mas padding vertical que el desastre y el sotano: con menos texto para
+     llenar la seccion, la pared oscura quedaba pegada arriba y abajo del
+     bloque. */
+  padding: clamp(64px, 9vw, 120px) 24px;
 }
 
 .hds-history-bravo-bg {
@@ -2860,6 +2895,8 @@ a.hds-track:hover {
 
 .hds-history-bravo-bg img {
   object-fit: cover;
+  filter: grayscale(1) sepia(0.45) contrast(1.06);
+  opacity: 0.5;
 }
 
 .hds-history-bravo-veil {
@@ -2867,15 +2904,15 @@ a.hds-track:hover {
   inset: 0;
   background: linear-gradient(
       180deg,
-      rgba(5, 5, 5, 0.6) 0%,
-      rgba(5, 5, 5, 0.4) 30%,
-      rgba(5, 5, 5, 0.4) 70%,
-      rgba(5, 5, 5, 0.6) 100%
+      rgba(5, 5, 5, 0.86) 0%,
+      rgba(5, 5, 5, 0.66) 30%,
+      rgba(5, 5, 5, 0.66) 70%,
+      rgba(5, 5, 5, 0.86) 100%
     ),
     radial-gradient(
       ellipse at 30% 50%,
-      rgba(5, 5, 5, 0.4) 0%,
-      rgba(5, 5, 5, 0.16) 55%,
+      rgba(5, 5, 5, 0.6) 0%,
+      rgba(5, 5, 5, 0.28) 55%,
       rgba(5, 5, 5, 0) 100%
     );
 }
@@ -3323,6 +3360,10 @@ a.hds-track:hover {
   }
   .hds-history-figure-frame {
     border-right: 1px solid var(--hairline);
+  }
+  .hds-history-disaster-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
   .hds-history-lead {
     max-width: 620px;

@@ -142,48 +142,62 @@ export default function HistoryPage() {
         </div>
 
         <div className="hds-shell hds-history-disaster-inner">
-          <span className="hds-eyebrow" data-reveal>
-            {copy.history.disasterEyebrow}
-          </span>
-          <h2 className="hds-history-disaster-title" data-reveal>
-            {history.disaster.title}
-          </h2>
-          <p className="hds-history-disaster-lead" data-reveal>
-            {history.disaster.lead}
-          </p>
-
-          {history.disaster.body.map((text, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <p key={i} className="hds-history-disaster-body" data-reveal>
-              {renderEmphasis(text)}
-            </p>
-          ))}
-
-          <div className="hds-history-disaster-video" data-reveal>
-            <YoutubeFrame
-              videoId={DISASTER_VIDEO_ID}
-              title={copy.history.disasterVideoTitle("Love Comes Tonight")}
-              playAria={copy.video.playAria(
-                copy.history.disasterVideoTitle("Love Comes Tonight")
-              )}
-              frameClassName="hds-history-disaster-frame"
-              embedClassName="hds-embed"
-            >
-              <Image
-                src="/LOVEESTAFA.jpg"
-                alt={copy.history.disasterAlt}
-                fill
-                sizes="(max-width: 900px) 100vw, 960px"
-              />
-              <span className="hds-listen-scrim" aria-hidden="true" />
-              <span className="hds-play hds-play--sm" aria-hidden="true">
-                <i />
+          {/* Titulo + bajada + video quedan juntos a la izquierda; los
+              parrafos del cuerpo forman la columna de la derecha. Asi las
+              dos columnas quedan parejas en alto, en vez de un texto largo
+              contra un 16:9 suelto. */}
+          <div className="hds-history-disaster-grid">
+            <div className="hds-history-disaster-text">
+              <span className="hds-eyebrow" data-reveal>
+                {copy.history.disasterEyebrow}
               </span>
-              <span className="hds-listen-label">
-                {copy.video.watchOnYoutube}
-              </span>
-            </YoutubeFrame>
+              <h2 className="hds-history-disaster-title" data-reveal>
+                {history.disaster.title}
+              </h2>
+              <p className="hds-history-disaster-lead" data-reveal>
+                {history.disaster.lead}
+              </p>
+
+              <div className="hds-history-disaster-video" data-reveal>
+                <YoutubeFrame
+                  videoId={DISASTER_VIDEO_ID}
+                  title={copy.history.disasterVideoTitle("Love Comes Tonight")}
+                  playAria={copy.video.playAria(
+                    copy.history.disasterVideoTitle("Love Comes Tonight")
+                  )}
+                  frameClassName="hds-history-disaster-frame"
+                  embedClassName="hds-embed"
+                >
+                  <Image
+                    src="/LOVEESTAFA.jpg"
+                    alt={copy.history.disasterAlt}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 560px"
+                  />
+                  <span className="hds-listen-scrim" aria-hidden="true" />
+                  <span className="hds-play hds-play--sm" aria-hidden="true">
+                    <i />
+                  </span>
+                  <span className="hds-listen-label">
+                    {copy.video.watchOnYoutube}
+                  </span>
+                </YoutubeFrame>
+              </div>
+            </div>
+
+            <div className="hds-history-disaster-body-col">
+              {history.disaster.body.map((text, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <p key={i} className="hds-history-disaster-body" data-reveal>
+                  {renderEmphasis(text)}
+                </p>
+              ))}
+            </div>
           </div>
+
+          <p className="hds-history-disaster-slogan" data-reveal>
+            {history.disaster.slogan}
+          </p>
         </div>
       </section>
 

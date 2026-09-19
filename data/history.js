@@ -38,8 +38,8 @@ export const HISTORY = {
         "Las guitarras casi no se escuchan, las voces quedaron absurdamente fuertes y la voz principal con los coros se grabaron juntos, en la misma pista y en una sola toma.",
         "El resultado fue, siendo generosos, bastante desastroso.",
         "La cinta sobrevivió durante décadas, apareció de nuevo y la digitalizamos. Hoy la subimos a YouTube no porque suene bien, sino porque también forma parte de la historia.",
-        "Algunas grabaciones se remasterizan. Otras se conservan como prueba.",
       ],
+      slogan: "Algunas grabaciones se remasterizan. Otras se conservan como prueba.",
     },
     tascam: {
       title: "La máquina del sótano",
@@ -97,8 +97,8 @@ export const HISTORY = {
         "The guitars are almost inaudible, the vocals came out absurdly loud, and the lead vocal and backing vocals were recorded together, on the same track, in a single take.",
         "The result was, to put it kindly, pretty disastrous.",
         "The tape survived for decades, turned up again, and we digitized it. We’re putting it on YouTube now not because it sounds good, but because it’s part of the story too.",
-        "Some recordings get remastered. Others get kept as evidence.",
       ],
+      slogan: "Some recordings get remastered. Others get kept as evidence.",
     },
     tascam: {
       title: "The basement machine",
