@@ -66,6 +66,7 @@ export const COPY = {
       eyebrow: "05 — Del archivo · 1996/97",
       blurb:
         "En 1996/97 volvimos a grabar “Loves Comes Tonight” en Bravo Paraíso. Contra todo pronóstico, esta versión sobrevivió. Hoy vuelve a sonar desde el archivo.",
+      annotation: "Esta sí sobrevivió →",
       cta: "Escuchar en YouTube →",
       watchOnYoutube: "Miralo en YouTube",
       playAria: (title) => `Reproducir video: ${title}`,
@@ -251,6 +252,7 @@ export const COPY = {
       eyebrow: "05 — From the archive · 1996/97",
       blurb:
         "In 1996/97 we recorded “Loves Comes Tonight” again at Bravo Paraíso. Against all odds, this take survived. Now it's back, straight from the archive.",
+      annotation: "This one survived →",
       cta: "Listen on YouTube →",
       watchOnYoutube: "Watch on YouTube",
       playAria: (title) => `Play video: ${title}`,
