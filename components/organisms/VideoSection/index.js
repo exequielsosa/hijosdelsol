@@ -1,3 +1,4 @@
+import Image from "next/image";
 import YoutubeFrame from "../../molecules/YoutubeFrame";
 import CoverBackdrop from "../../molecules/CoverBackdrop";
 import useCopy from "@/hooks/useCopy";
@@ -31,6 +32,21 @@ export default function VideoSection() {
       className="hds-videosec"
       aria-labelledby="video-heading"
     >
+      {/* En mobile CoverBackdrop no se monta (evita bajar 7 imagenes de mas):
+          una sola toma fija, con el mismo "respira" del hero y la portada
+          de tema (hds-pulse-art), en vez de quedar sin fondo. */}
+      <div className="hds-videosinglebg" aria-hidden="true">
+        <Image
+          src="/backlove/backloves10.jpg"
+          alt=""
+          fill
+          quality={45}
+          sizes="100vw"
+          loading="lazy"
+        />
+        <div className="hds-backdrop-veil" />
+      </div>
+
       <CoverBackdrop covers={BACKLOVE_IMAGES} activeIndex={activeIndex} />
 
       <div className="hds-videoshell" data-reveal>
