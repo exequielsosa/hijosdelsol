@@ -31,7 +31,7 @@ export const ENSAYOS_LAST_MODIFIED = "2026-09-16";
  * CONTENT_LAST_MODIFIED el 2026-09-19 porque esa constante tambien alimenta
  * las 12 paginas de tema, y un cambio solo en la home no las toca a ellas.
  */
-export const HOME_LAST_MODIFIED = "2026-09-19";
+export const HOME_LAST_MODIFIED = "2026-09-27";
 
 export const YOUTUBE_URL = "https://www.youtube.com/@hijosdelsolband";
 export const VIDEO_ID = "FGoVHU16uAk";
@@ -50,17 +50,20 @@ export const VIDEOS_UPLOAD_DATE = "2026-08-22";
 export const FACEBOOK_URL = "https://www.facebook.com/hijosdelsolargentina";
 export const INSTAGRAM_URL = "https://www.instagram.com/hijosdelsolargentina";
 export const TIKTOK_URL = "https://www.tiktok.com/@hijosdelsolargentina";
+export const X_URL = "https://x.com/hijosdelsolband";
+/** Cuenta de X para el `twitter:site` de las Twitter Cards. */
+export const X_HANDLE = "@hijosdelsolband";
 export const CONTACT_EMAIL = "hijosdelsolmusicband@gmail.com";
 
 /** Perfiles oficiales. Alimenta el `sameAs` del JSON-LD, que es la señal con
     la que Google confirma que la entidad "Hijos del Sol" es esta banda.
-    Solo perfiles que existen de verdad: uno inexistente es una señal falsa.
-    (No hay Twitter/X — 2026-09-27.) */
+    Solo perfiles que existen de verdad: uno inexistente es una señal falsa. */
 export const SOCIAL_PROFILES = [
   YOUTUBE_URL,
   INSTAGRAM_URL,
   FACEBOOK_URL,
   TIKTOK_URL,
+  X_URL,
 ];
 
 export const DOWNLOAD_RECORD_URL = "https://files.catbox.moe/y8r65l.rar";

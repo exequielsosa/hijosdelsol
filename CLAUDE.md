@@ -116,7 +116,15 @@ Patrón:
 
 ## Estado actual
 
-_Última actualización: 2026-08-30 (rediseño de `/history`)_
+_Última actualización: 2026-09-27 (redes sociales)_
+
+### Redes sociales (2026-09-27)
+
+- **Facebook cambió de URL**: `facebook.com/hijosdelsolargentina` (antes `profile.php?id=…`).
+- **Se sumaron Instagram, TikTok y X** (`INSTAGRAM_URL`, `TIKTOK_URL`, `X_URL` en `data/site.js`). Las cinco redes están en `SOCIAL_PROFILES` → `sameAs` del JSON-LD de la home, y en el footer (orden: YouTube, Instagram, Facebook, TikTok, X, antes de Contacto).
+- **`twitter:site`** (`X_HANDLE` = `@hijosdelsolband`) en las cinco capas de SEO: `home`, `track`, `history`, `ensayos`, `ensayo-track`.
+- **`HOME_LAST_MODIFIED` → 2026-09-27** por el cambio del `sameAs`. Las otras fechas no se tocaron: en esas páginas solo cambió el footer y una meta.
+- **Pendiente**: revisar el footer en mobile (ahora son 8 links), y poner el link del sitio en la bio de las redes nuevas.
 
 ### Rediseño de `/history` (2026-08-30)
 

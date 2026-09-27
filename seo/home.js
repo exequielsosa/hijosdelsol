@@ -6,6 +6,7 @@ import {
   HOME_LAST_MODIFIED,
   VIDEO_ID,
   SOCIAL_PROFILES,
+  X_HANDLE,
 } from "@/data/site";
 import { getSeoCopy, localeUrl, alternates } from "@/data/seo-copy";
 
@@ -169,6 +170,7 @@ const SeoHome = () => {
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={X_HANDLE} />
       <meta name="twitter:title" content={seo.home.title} />
       <meta name="twitter:description" content={seo.home.description} />
       <meta name="twitter:image" content={OG_IMAGE} />

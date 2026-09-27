@@ -1,6 +1,11 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { SITE_URL, watchTrackUrl, VIDEOS_UPLOAD_DATE } from "@/data/site";
+import {
+  SITE_URL,
+  watchTrackUrl,
+  VIDEOS_UPLOAD_DATE,
+  X_HANDLE,
+} from "@/data/site";
 import { getSeoCopy, localeUrl, alternates } from "@/data/seo-copy";
 
 /**
@@ -146,6 +151,7 @@ const SeoTrack = ({ track }) => {
       <meta property="music:musician" content={SITE_URL} />
 
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={X_HANDLE} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={cover} />
