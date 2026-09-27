@@ -5,6 +5,7 @@ import {
   CONTACT_EMAIL,
   FACEBOOK_URL,
   INSTAGRAM_URL,
+  TIKTOK_URL,
   YOUTUBE_URL,
 } from "@/data/site";
 
@@ -40,6 +41,12 @@ export default function SiteFooter() {
       href: FACEBOOK_URL,
       label: "Facebook",
       title: copy.footer.onNetwork("Facebook"),
+      external: true,
+    },
+    {
+      href: TIKTOK_URL,
+      label: "TikTok",
+      title: copy.footer.onNetwork("TikTok"),
       external: true,
     },
     {

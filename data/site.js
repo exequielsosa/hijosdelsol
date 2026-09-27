@@ -49,13 +49,19 @@ export const DISASTER_VIDEO_ID = "bEjUqCy2iWY";
 export const VIDEOS_UPLOAD_DATE = "2026-08-22";
 export const FACEBOOK_URL = "https://www.facebook.com/hijosdelsolargentina";
 export const INSTAGRAM_URL = "https://www.instagram.com/hijosdelsolargentina";
+export const TIKTOK_URL = "https://www.tiktok.com/@hijosdelsolargentina";
 export const CONTACT_EMAIL = "hijosdelsolmusicband@gmail.com";
 
 /** Perfiles oficiales. Alimenta el `sameAs` del JSON-LD, que es la señal con
     la que Google confirma que la entidad "Hijos del Sol" es esta banda.
     Solo perfiles que existen de verdad: uno inexistente es una señal falsa.
     (No hay Twitter/X — 2026-09-27.) */
-export const SOCIAL_PROFILES = [YOUTUBE_URL, INSTAGRAM_URL, FACEBOOK_URL];
+export const SOCIAL_PROFILES = [
+  YOUTUBE_URL,
+  INSTAGRAM_URL,
+  FACEBOOK_URL,
+  TIKTOK_URL,
+];
 
 export const DOWNLOAD_RECORD_URL = "https://files.catbox.moe/y8r65l.rar";
 export const DOWNLOAD_ARTWORK_URL = "https://files.catbox.moe/z8ale0.rar";
