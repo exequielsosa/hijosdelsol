@@ -47,8 +47,7 @@ export const DISASTER_VIDEO_ID = "bEjUqCy2iWY";
 /** Fecha en que se subieron los 12 videos a YouTube (todos el mismo dia).
     Es campo obligatorio del VideoObject de schema.org. */
 export const VIDEOS_UPLOAD_DATE = "2026-08-22";
-export const FACEBOOK_URL =
-  "https://www.facebook.com/profile.php?id=61593492067967";
+export const FACEBOOK_URL = "https://www.facebook.com/hijosdelsolargentina";
 export const CONTACT_EMAIL = "hijosdelsolmusicband@gmail.com";
 
 /** Perfiles oficiales. Alimenta el `sameAs` del JSON-LD, que es la señal con
