@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import useCopy from "@/hooks/useCopy";
-import { CONTACT_EMAIL, FACEBOOK_URL, YOUTUBE_URL } from "@/data/site";
+import {
+  CONTACT_EMAIL,
+  FACEBOOK_URL,
+  INSTAGRAM_URL,
+  YOUTUBE_URL,
+} from "@/data/site";
 
 export default function SiteFooter() {
   const { copy } = useCopy();
@@ -23,6 +28,12 @@ export default function SiteFooter() {
       href: YOUTUBE_URL,
       label: "YouTube",
       title: copy.footer.onNetwork("YouTube"),
+      external: true,
+    },
+    {
+      href: INSTAGRAM_URL,
+      label: "Instagram",
+      title: copy.footer.onNetwork("Instagram"),
       external: true,
     },
     {
